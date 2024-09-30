@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,10 @@
 		2275D6002CA9931A00C16C8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2275D6032CA9931A00C16C8B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SelectModeScreen; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2275D5F62CA9931800C16C8B /* Frameworks */ = {
@@ -51,6 +55,7 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				2275D5FE2CA9931800C16C8B /* ContentView.swift */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
@@ -81,6 +86,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */,
 			);
 			name = TicTacToe;
 			productName = TicTacToe;
