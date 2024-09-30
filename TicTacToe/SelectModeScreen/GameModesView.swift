@@ -32,23 +32,13 @@ struct GameModesView: View {
                     NavigationLink {
                         // set single player mode
                     } label: {
-                        Label("Single Player", image: "SinglePlayerButtonIcon")
-                            .padding()
-                            .font(.system(size: 20))
-                            .foregroundStyle(.black)
-                            .background(Color.buttonBackground)
-                            .cornerRadius(30)
+                        GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
                     }
                     
                     NavigationLink {
                         // set two players mode
                     } label: {
-                        Label("Single Player", image: "TwoPlayersButtonIcon")
-                            .padding()
-                            .font(.system(size: 20))
-                            .foregroundStyle(.black)
-                            .background(Color.buttonBackground)
-                            .cornerRadius(30)
+                        GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
                     }
                 }
                 .frame(width: 285, height: 247)
