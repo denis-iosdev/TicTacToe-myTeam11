@@ -25,7 +25,9 @@ struct GameModesView: View {
                 Spacer()
                 
                 VStack {
-                    
+                    Text("Select Game")
+                        .font(.system(size: 24))
+                        .fontWeight(.semibold)
                 }
                 .frame(width: 285, height: 247)
                 .background(.white)
