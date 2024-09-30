@@ -10,17 +10,18 @@ import SwiftUI
 struct PlayerIconView: View {
     let text: String
     let isTimerOn: Bool
+    let image: String
     
     var body: some View {
         VStack {
-            Image(.xskin1)
+            Image(image)
                 .padding(.horizontal, 24)
             Text(text)
                 .font(.system(size: 16, weight: .semibold))
         }
         
         .padding(.vertical, 10)
-        .background(isTimerOn ? .lightBlue : .clear)
+        .background(.lightBlue)
         .clipShape(RoundedRectangle(cornerRadius: 30))
     }
 }

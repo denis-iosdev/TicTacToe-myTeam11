@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct GameView: View {
-    @ObservedObject var viewModel: GameViewModel
+    @StateObject var viewModel = GameViewModel(isTwoPlayerMode: false)
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
     
-    var isTimerOn: Bool
-    var initialTime: Int
+    var isTimerOn: Bool = true
+    var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var timeFormatter: String {
@@ -45,7 +45,7 @@ struct GameView: View {
                     }
                     
                     HStack {
-                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn)
+                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.image)
                         
                         Spacer()
                         if isTimerOn {
@@ -54,7 +54,7 @@ struct GameView: View {
                         }
                         Spacer()
                         
-                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn)
+                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.image)
                     }
                     .foregroundStyle(.appBlack)
                 }
@@ -70,12 +70,6 @@ struct GameView: View {
                 
                 VStack {
                     if viewModel.gameOver {
-                        Text("Game Over")
-                        if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
-                            Text("Nobody wins")
-                        } else {
-                            Text("\(viewModel.currentPlayer.name) wins")
-                        }
                         Button("New Game") {
                             viewModel.reset()
                             timeRemaining = initialTime
