@@ -39,6 +39,8 @@ struct GameModesView: View {
                             .background(Color(UIColor(red: 0xE6 / 255, green: 0xE9 / 255, blue: 0xF9 / 255, alpha: 1.0)))
                             .cornerRadius(30)
                     }
+                    
+                    
                 }
                 .frame(width: 285, height: 247)
                 .background(.white)
