@@ -34,6 +34,7 @@ struct GameModesView: View {
                 
                 Spacer()
             }
+            .background(Color(UIColor(red: 0xF5 / 255, green: 0xF7 / 255, blue: 0xFF / 255, alpha: 1.0)))
         }
     }
 }
