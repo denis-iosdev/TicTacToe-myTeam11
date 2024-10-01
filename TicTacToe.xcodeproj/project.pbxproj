@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,10 @@
 		CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLinkWithAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SelectModeScreen; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		2275D5F62CA9931800C16C8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -69,6 +73,7 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
@@ -148,6 +153,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				79B40DA22CAB07EC0062B8C7 /* SelectModeScreen */,
 			);
 			name = TicTacToe;
 			productName = TicTacToe;
