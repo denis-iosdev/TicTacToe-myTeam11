@@ -34,6 +34,15 @@ struct CustomNavBarRightButtonHiddenPreferenceKeys: PreferenceKey {
     }
 }
 
+struct CustomNavBarBackgroundColorPreferenceKeys: PreferenceKey {
+    
+    static var defaultValue: NavigationBarBackgroundColor = .main
+    
+    static func reduce(value: inout NavigationBarBackgroundColor, nextValue: () -> NavigationBarBackgroundColor) {
+        value = nextValue()
+    }
+}
+
 extension View {
     
     func customNavigationTitle(_ title: String) -> some View {
@@ -48,14 +57,20 @@ extension View {
         preference(key: CustomNavBarRightButtonHiddenPreferenceKeys.self, value: value)
     }
     
+    func customNavigationBarBackgroundColor(_ value: NavigationBarBackgroundColor) -> some View {
+        preference(key: CustomNavBarBackgroundColorPreferenceKeys.self, value: value)
+    }
+    
     func customNavBarItems(
         title: String = "",
         leftButtonState: CustomLeftButton = .back,
-        rightButtonHidden: Bool = true
+        rightButtonHidden: Bool = true,
+        navBarBackgroundColor: NavigationBarBackgroundColor = .main
     ) -> some View {
         self
             .customNavigationTitle(title)
             .customNavigationLeftButtonState(leftButtonState)
             .customNavigationRightButtonHidden(rightButtonHidden)
+            .customNavigationBarBackgroundColor(navBarBackgroundColor)
     }
 }

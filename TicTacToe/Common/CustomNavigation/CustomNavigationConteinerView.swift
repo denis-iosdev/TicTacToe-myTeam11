@@ -16,6 +16,7 @@ struct CustomNavigationConteinerView<Content: View>: View {
     @State private var title: String = ""
     @State private var leftButtonState: CustomLeftButton = .back
     @State private var showRightButton: Bool = true
+    @State private var navBarBackgroundColor: NavigationBarBackgroundColor = .main
     
     init(
         rightButtonAction: VoidBlock? = nil,
@@ -33,6 +34,7 @@ struct CustomNavigationConteinerView<Content: View>: View {
                 title: title,
                 leftButtonState: leftButtonState,
                 showRightButton: showRightButton,
+                backgroundColor: navBarBackgroundColor,
                 rightButtonAction: rightButtonAction,
                 leftButtonAction: leftButtonAction
             )
@@ -48,6 +50,9 @@ struct CustomNavigationConteinerView<Content: View>: View {
         })
         .onPreferenceChange(CustomNavBarRightButtonHiddenPreferenceKeys.self, perform: { value in
             self.showRightButton = !value
+        })
+        .onPreferenceChange(CustomNavBarBackgroundColorPreferenceKeys.self ,perform: { value in
+            self.navBarBackgroundColor = value
         })
     }
 }

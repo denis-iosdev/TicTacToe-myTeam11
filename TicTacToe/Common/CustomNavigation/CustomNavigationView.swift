@@ -13,15 +13,21 @@ enum CustomLeftButton {
     case hidden
 }
 
+enum NavigationBarBackgroundColor {
+    case white
+    case main
+}
+
 struct CustomNavigationView: View {
     
     @Environment(\.presentationMode) var presentationMode
     let title: String
     let leftButtonState: CustomLeftButton
     let showRightButton: Bool
+    let backgroundColor: NavigationBarBackgroundColor
     var rightButtonAction: VoidBlock?
     var leftButtonAction: VoidBlock?
-    @State private var isWhiteBackground: Bool = false
+    
     
     var body: some View {
         HStack {
@@ -50,9 +56,12 @@ struct CustomNavigationView: View {
         .accentColor(.white)
         .padding()
         .background {
-            return isWhiteBackground
-            ? Color.white.ignoresSafeArea(edges: .top)
-            : Color.blue.ignoresSafeArea(edges: .top)
+            switch backgroundColor {
+            case .white:
+                Color.white.ignoresSafeArea(edges: .top)
+            case .main:
+                Color.blue.ignoresSafeArea(edges: .top)
+            }
         }
     }
 }
@@ -62,7 +71,8 @@ struct CustomNavigationView: View {
         CustomNavigationView(
             title: "Title",
             leftButtonState: .back,
-            showRightButton: false
+            showRightButton: false,
+            backgroundColor: .main
         )
         Spacer()
     }
@@ -86,7 +96,6 @@ extension CustomNavigationView {
     
     private var helpButton: some View {
         Button {
-            isWhiteBackground = true
             leftButtonAction?()
         } label: {
             Image(uiImage: UIImage.helpIcon)

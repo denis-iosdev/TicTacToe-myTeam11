@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+// статья по нативной навигации
+// https://habr.com/ru/articles/652593/
+// По этому видео делалась навигация
+// https://www.youtube.com/watch?v=aIDT4uuMLHc&ab_channel=SwiftfulThinking
+
 struct TestAppContentView: View {
     
     @State private var showSettingView: Bool = false
@@ -51,7 +56,8 @@ struct TestAppContentView: View {
             .customNavBarItems(
                 title: "RootView",
                 leftButtonState: .help,
-                rightButtonHidden: false
+                rightButtonHidden: false,
+                navBarBackgroundColor: .white
             )
         }
     }
