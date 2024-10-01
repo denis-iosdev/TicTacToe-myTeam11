@@ -7,15 +7,7 @@
 
 import Foundation
 
-enum GamePiece {
-    case x, o
-    
-    var image: String {
-        switch self {
-        case .x:
-            "Xskin1"
-        case .o:
-            "Oskin1"
-        }
-    }
+enum GamePiece: String {
+    case x = "Xskin1"
+    case o = "Oskin1"
 }

@@ -19,6 +19,7 @@
 		4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD8F2CAAADEE00F1CE8B /* GameSquare.swift */; };
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
+		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		4888FD8F2CAAADEE00F1CE8B /* GameSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSquare.swift; sourceTree = "<group>"; };
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				487C8F072CA9BE20000C3486 /* GameView.swift */,
 				48075E912CAAFE7200811224 /* PlayingFieldView.swift */,
+				48DABBF42CABD38800B92FF4 /* WinningLineView.swift */,
 				48075E8F2CAAFD9300811224 /* PlayerIconView.swift */,
 			);
 			path = View;
@@ -197,6 +200,7 @@
 				2275D5FF2CA9931800C16C8B /* ContentView.swift in Sources */,
 				487C8F082CA9BE20000C3486 /* GameView.swift in Sources */,
 				48075E902CAAFD9300811224 /* PlayerIconView.swift in Sources */,
+				48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */,
 				4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */,
 				4888FD8C2CAA886A00F1CE8B /* GamePiece.swift in Sources */,
 				4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */,

@@ -5,20 +5,20 @@
 //  Created by Даниил Сивожелезов on 30.09.2024.
 //
 
-import SwiftUI
+import Foundation
 
 struct GameSquare {
-    var id: Int
+    var index: Int
     var player: Player?
     
-    var image: Image {
-        return Image(player?.gamePiece.image ?? "")
+    var image: String? {
+        player?.gamePiece.rawValue
     }
     
     static func reset() -> [GameSquare] {
         var squares: [GameSquare] = []
         for i in 0..<9 {
-            squares.append(GameSquare(id: i))
+            squares.append(GameSquare(index: i))
         }
         return squares
     }

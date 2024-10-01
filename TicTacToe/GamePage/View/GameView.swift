@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var viewModel = GameViewModel(isTwoPlayerMode: false)
+    @StateObject var viewModel = GameViewModel(isTwoPlayerMode: true)
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
@@ -31,36 +31,23 @@ struct GameView: View {
             
             VStack(spacing: 45) {
                 
-                VStack(spacing: 30) {
-                    HStack {
-                        Button {
-                            dismiss()
-                        } label: {
-                            Image(systemName: "arrow.left")
-                                .font(.system(size: 22, weight: .bold))
-                                .foregroundStyle(.appBlack)
-                        }
-                        
-                        Spacer()
-                    }
+                HStack {
+                    PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
                     
-                    HStack {
-                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.image)
-                        
-                        Spacer()
-                        if isTimerOn {
-                            Text(timeFormatter)
-                                .font(.system(size: 20, weight: .bold))
-                        }
-                        Spacer()
-                        
-                        PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.image)
+                    Spacer()
+                    if isTimerOn {
+                        Text(timeFormatter)
+                            .font(.system(size: 20, weight: .bold))
                     }
-                    .foregroundStyle(.appBlack)
+                    Spacer()
+                    
+                    PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
                 }
+                .foregroundStyle(.appBlack)
+                
                 
                 HStack {
-                    Image(viewModel.currentPlayer.gamePiece.image)
+                    Image(viewModel.currentPlayer.gamePiece.rawValue)
                     Text("\(viewModel.currentPlayer.name) turn")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(.appBlack)
@@ -91,17 +78,21 @@ struct GameView: View {
             timerRunning = isTimerOn
         }
         .onReceive(timer) { _ in
-            if self.timerRunning && self.timeRemaining > 0 {
-                self.timeRemaining -= 1
-            } else if self.timerRunning && self.timeRemaining == 0 {
-                viewModel.gameOver = true
-                timerRunning = false
-            }
+            timerSetting()
         }
         .onChange(of: viewModel.gameOver) { _ in
             if viewModel.gameOver {
                 timerRunning = false
             }
+        }
+    }
+    
+    private func timerSetting() {
+        if timerRunning && timeRemaining > 0 {
+            timeRemaining -= 1
+        } else if timerRunning && timeRemaining == 0 {
+            viewModel.gameOver = true
+            timerRunning = false
         }
     }
 }
