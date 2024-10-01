@@ -57,7 +57,7 @@ struct TestAppContentView: View {
                 title: "RootView",
                 leftButtonState: .help,
                 rightButtonHidden: false,
-                navBarBackgroundColor: .white
+                navBarBackgroundColor: .onboarding
             )
         }
     }

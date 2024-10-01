@@ -75,11 +75,11 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				480507422CAC5ED6005EB458 /* SelectModeScreen */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
+				480507422CAC5ED6005EB458 /* SelectModeScreen */,
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
 				2275D6022CA9931A00C16C8B /* Preview Content */,
@@ -95,14 +95,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4805073E2CAC5ED6005EB458 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				4805073D2CAC5ED6005EB458 /* Color + Ext.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		480507402CAC5ED6005EB458 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +106,6 @@
 		480507422CAC5ED6005EB458 /* SelectModeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				4805073E2CAC5ED6005EB458 /* Extensions */,
 				480507402CAC5ED6005EB458 /* Views */,
 				480507412CAC5ED6005EB458 /* GameModesView.swift */,
 			);
@@ -162,6 +153,7 @@
 		CE0F1B8E2CAC06FE00EFADE5 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4805073D2CAC5ED6005EB458 /* Color + Ext.swift */,
 				CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */,
 			);
 			path = Extension;
@@ -237,7 +229,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2275D5FF2CA9931800C16C8B /* ContentView.swift in Sources */,
 				480507432CAC5ED6005EB458 /* Color + Ext.swift in Sources */,
 				480507442CAC5ED6005EB458 /* GameModeLabel.swift in Sources */,
 				480507452CAC5ED6005EB458 /* GameModesView.swift in Sources */,

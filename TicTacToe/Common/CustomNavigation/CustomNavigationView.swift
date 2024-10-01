@@ -14,7 +14,7 @@ enum CustomLeftButton {
 }
 
 enum NavigationBarBackgroundColor {
-    case white
+    case onboarding
     case main
 }
 
@@ -57,10 +57,10 @@ struct CustomNavigationView: View {
         .padding()
         .background {
             switch backgroundColor {
-            case .white:
+            case .onboarding:
                 Color.white.ignoresSafeArea(edges: .top)
             case .main:
-                Color.blue.ignoresSafeArea(edges: .top)
+                Color.background.ignoresSafeArea(edges: .top)
             }
         }
     }
