@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var viewModel = GameViewModel(isTwoPlayerMode: true)
+    @StateObject var viewModel: GameViewModel
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
@@ -55,23 +55,11 @@ struct GameView: View {
                 
                 PlayingFieldView(viewModel: viewModel)
                 
-                VStack {
-                    if viewModel.gameOver {
-                        Button("New Game") {
-                            viewModel.reset()
-                            timeRemaining = initialTime
-                            timerRunning = isTimerOn
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                }
-                
                 Spacer()
             }
             .padding(.horizontal, 44)
             .padding(.top, 20)
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             viewModel.reset()
             timeRemaining = initialTime

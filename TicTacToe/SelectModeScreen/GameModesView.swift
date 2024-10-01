@@ -9,19 +9,11 @@ import SwiftUI
 
 struct GameModesView: View {
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            
             VStack {
-                HStack {
-                    Spacer()
-                    
-                    NavigationLink {
-                        // go to setting screen
-                    } label: {
-                        Image("SettingButtonIcon")
-                            .padding()
-                    }
-                }
-                
                 Spacer()
                 
                 VStack(spacing: 20) {
@@ -29,26 +21,28 @@ struct GameModesView: View {
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                     
-                    NavigationLink {
-                        // set single player mode
+                    CustomNavigationLink {
+                        GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
                     } label: {
                         GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
+                            
                     }
                     
-                    NavigationLink {
-                        // set two players mode
+                    CustomNavigationLink {
+                        GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
                     } label: {
                         GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
+                            
                     }
                 }
-                .frame(width: 285, height: 247)
+                .padding(20)
                 .background(.white)
                 .cornerRadius(30)
                 .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
                 
                 Spacer()
             }
-            .background(Color.background)
+            .customNavigationRightButtonHidden(false)
         }
     }
 }
