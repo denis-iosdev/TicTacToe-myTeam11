@@ -10,17 +10,45 @@ import SwiftUI
 struct CustomNavigationConteinerView<Content: View>: View {
     
     let content: Content
+    var rightButtonAction: VoidBlock?
+    var leftButtonAction: VoidBlock?
     
-    init(@ViewBuilder content: () -> Content) {
+    @State private var title: String = ""
+    @State private var leftButtonState: CustomLeftButton = .back
+    @State private var showRightButton: Bool = true
+    
+    init(
+        rightButtonAction: VoidBlock? = nil,
+        leftButtonAction: VoidBlock? = nil,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.rightButtonAction = rightButtonAction
+        self.leftButtonAction = leftButtonAction
         self.content = content()
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavigationView()
+            CustomNavigationView(
+                title: title,
+                leftButtonState: leftButtonState,
+                showRightButton: showRightButton,
+                rightButtonAction: rightButtonAction,
+                leftButtonAction: leftButtonAction
+            )
+            
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .onPreferenceChange(CustomNavBarTitlePreferenceKeys.self, perform: { value in
+            self.title = value
+        })
+        .onPreferenceChange(CustomNavBarBackLeftButtonStatePreferenceKeys.self, perform: { value in
+            self.leftButtonState = value
+        })
+        .onPreferenceChange(CustomNavBarRightButtonHiddenPreferenceKeys.self, perform: { value in
+            self.showRightButton = !value
+        })
     }
 }
 

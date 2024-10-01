@@ -10,16 +10,29 @@ import SwiftUI
 struct CustomNavView<Content: View>: View {
     
     let content: Content
+    var rightButtonAction: VoidBlock?
+    var leftButtonAction: VoidBlock?
     
-    init(@ViewBuilder content: () -> Content) {
+    init(
+        rightButtonAction: VoidBlock? = nil,
+        leftButtonAction: VoidBlock? = nil,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.rightButtonAction = rightButtonAction
+        self.leftButtonAction = leftButtonAction
         self.content = content()
     }
     
     var body: some View {
         NavigationView {
-            CustomNavigationConteinerView {
+            CustomNavigationConteinerView(
+                rightButtonAction: rightButtonAction,
+                leftButtonAction: leftButtonAction
+            ) {
                 content
             }
+
+            
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -36,3 +49,13 @@ struct CustomNavView<Content: View>: View {
         }
     }
 }
+
+// adds a swipe back feature
+
+//extension UINavigationController {
+//    
+//    open override func viewDidLoad() {
+//        super.viewDidLoad()
+//        interactivePopGestureRecognizer?.delegate = nil
+//    }
+//}

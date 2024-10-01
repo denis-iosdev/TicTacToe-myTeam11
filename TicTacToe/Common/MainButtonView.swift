@@ -15,31 +15,29 @@ struct MainButtonView: View {
     
     let title: String
     let style: MainButtonStyle
-    let action: () -> Void
     
     var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: 20))
-                .bold()
-                .frame(maxWidth: .infinity)
-                .frame(height: 72)
-                .background(style == .fill ? .basicBlue : .white)
-                .foregroundColor(style == .fill ? .white : .basicBlue)
-                .cornerRadius(30)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 30)
-                        .stroke(style == .fill ? .white : .basicBlue, lineWidth: 2)
-                }
-                .padding(.horizontal, 20)
-        }
+        
+        Text(title)
+            .font(.system(size: 20))
+            .bold()
+            .frame(maxWidth: .infinity)
+            .frame(height: 72)
+            .background(style == .fill ? .basicBlue : .white)
+            .foregroundColor(style == .fill ? .white : .basicBlue)
+            .cornerRadius(30)
+            .overlay {
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(style == .fill ? .white : .basicBlue, lineWidth: 2)
+            }
+            .padding(.horizontal, 20)
     }
 }
 
 #Preview {
     VStack {
-        MainButtonView(title: "Button", style: .fill , action: {})
+        MainButtonView(title: "Button", style: .fill)
         
-        MainButtonView(title: "Button with border", style: .border , action: {})
+        MainButtonView(title: "Button with border", style: .border)
     }
 }
