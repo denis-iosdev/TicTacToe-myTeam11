@@ -16,7 +16,7 @@ struct PlayingFieldView: View {
     private let winningLines: [[Int]: (start: CGPoint, end: CGPoint)] = [
         // Горизонтальные линии
         [0, 1, 2]: (start: CGPoint(x: 0.1, y: 0.24), end: CGPoint(x: 0.9, y: 0.24)),
-        [3, 4, 5]: (start: CGPoint(x: 0.1, y: 0.5),    end: CGPoint(x: 0.9, y: 0.5)),
+        [3, 4, 5]: (start: CGPoint(x: 0.1, y: 0.5), end: CGPoint(x: 0.9, y: 0.5)),
         [6, 7, 8]: (start: CGPoint(x: 0.1, y: 0.76), end: CGPoint(x: 0.9, y: 0.76)),
         
         // Вертикальные линии
