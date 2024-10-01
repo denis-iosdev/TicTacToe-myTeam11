@@ -44,14 +44,13 @@ struct OnboardingView: View {
                 Spacer()
                 
                 CustomNavigationLink {
-                    // TODO: enter your next view here
-                    Text("SelectView")
+                    GameModesView()
                 } label: {
                     MainButtonView(title: buttonTitle, style: .fill)
                         .padding(.bottom, isSmallScreen() ? 20 : 0)
                 }
             }
-            .customNavBarItems(leftButtonState: .help, rightButtonHidden: false)
+            .customNavBarItems(leftButtonState: .help, rightButtonHidden: false, navBarBackgroundColor: .onboarding)
         }
     }
     
