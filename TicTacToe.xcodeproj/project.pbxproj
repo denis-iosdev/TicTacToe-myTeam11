@@ -22,6 +22,7 @@
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
+		79B40DC92CAC73C60062B8C7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B40DC82CAC73C60062B8C7 /* Settings.swift */; };
 		CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B722CA9C4BE00EFADE5 /* OnboardingView.swift */; };
 		CE0F1B762CA9C4F300EFADE5 /* MainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B752CA9C4F300EFADE5 /* MainButtonView.swift */; };
 		CE0F1B782CAAFDB600EFADE5 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B772CAAFDB600EFADE5 /* CustomNavigationView.swift */; };
@@ -51,6 +52,7 @@
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
+		79B40DC82CAC73C60062B8C7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CE0F1B722CA9C4BE00EFADE5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CE0F1B752CA9C4F300EFADE5 /* MainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonView.swift; sourceTree = "<group>"; };
 		CE0F1B772CAAFDB600EFADE5 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				79B40DC72CAC73B50062B8C7 /* Models */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				487C8F062CA9BDC2000C3486 /* GamePage */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
@@ -169,6 +172,14 @@
 				4888FD912CAAAE1100F1CE8B /* Player.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		79B40DC72CAC73B50062B8C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79B40DC82CAC73C60062B8C7 /* Settings.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CE0F1B712CA9C49000EFADE5 /* Onboarding */ = {
@@ -306,6 +317,7 @@
 				CE0F1B762CA9C4F300EFADE5 /* MainButtonView.swift in Sources */,
 				CE0F1B812CAB507A00EFADE5 /* CustomNavPreferenceKeys.swift in Sources */,
 				CE0F1B7F2CAB0EA900EFADE5 /* CustomNavigationLink.swift in Sources */,
+				79B40DC92CAC73C60062B8C7 /* Settings.swift in Sources */,
 				CE0F1B782CAAFDB600EFADE5 /* CustomNavigationView.swift in Sources */,
 				CE0F1B7B2CAB060600EFADE5 /* CustomNavigationConteinerView.swift in Sources */,
 				CE0F1B7D2CAB08C900EFADE5 /* CustomNavView.swift in Sources */,
