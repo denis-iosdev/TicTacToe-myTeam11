@@ -34,6 +34,7 @@
 		CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */; };
 		CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */; };
 		CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */; };
+		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppContentView.swift; sourceTree = "<group>"; };
 		CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLinkWithAction.swift; sourceTree = "<group>"; };
+		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,8 +206,8 @@
 		CE0F1B742CA9C4CE00EFADE5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CE0F1B792CAB05D400EFADE5 /* CustomNavigation */,
 				CE0F1B752CA9C4F300EFADE5 /* MainButtonView.swift */,
+				CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -226,6 +228,7 @@
 		CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				CE0F1B792CAB05D400EFADE5 /* CustomNavigation */,
 				CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */,
 			);
 			path = TestCustomNavigation;
@@ -315,6 +318,7 @@
 				79B40DCC2CAC74FC0062B8C7 /* StorageManager.swift in Sources */,
 				48075E902CAAFD9300811224 /* PlayerIconView.swift in Sources */,
 				48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */,
+				CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */,
 				4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */,
 				4888FD8C2CAA886A00F1CE8B /* GamePiece.swift in Sources */,
 				4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */,
