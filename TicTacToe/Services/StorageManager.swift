@@ -28,14 +28,4 @@ final class StorageManager: ObservableObject {
             oSkin = newValue.oSkin
         }
     }
-    
-    func updateTimer(isEnabled: Bool, seconds: Int?) {
-        isTimerEnabled = isEnabled
-        timerSeconds = seconds ?? 60
-    }
-    
-    func updateSkins(newXSkin: Int, newOSkin: Int) {
-        xSkin = newXSkin
-        oSkin = newOSkin
-    }
 }

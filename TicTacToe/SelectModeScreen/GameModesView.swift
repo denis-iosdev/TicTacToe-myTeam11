@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GameModesView: View {
-//    @Environment (\.presentationMode) var presentationMode
     @State private var settingViewIsOn: Bool = false
     
     var body: some View {
@@ -35,14 +34,12 @@ struct GameModesView: View {
                             GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
                         } label: {
                             GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
-                            
                         }
                         
                         NavigationLink {
                             GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
                         } label: {
                             GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
-                            
                         }
                     }
                     .padding()
