@@ -17,6 +17,8 @@ struct GameView: View {
     
     @Binding var isGameActive: Bool
     
+    @StateObject private var audioPlayer = AudioPlayer() // Создаем экземпляр аудио-плеера
+    
     var isTimerOn: Bool = true
     var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -87,6 +89,14 @@ struct GameView: View {
         .fullScreenCover(isPresented: $showResult) {
             openResultView()
         }
+        
+        .onAppear {
+            audioPlayer.playSound() // Воспроизведение музыки при появлении экрана
+        }
+        .onDisappear {
+            audioPlayer.stopSound() // Остановка музыки при исчезновении экрана
+        }
+        
     }
     
     @ViewBuilder
