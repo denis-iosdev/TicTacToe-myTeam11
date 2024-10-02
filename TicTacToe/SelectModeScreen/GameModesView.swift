@@ -22,14 +22,14 @@ struct GameModesView: View {
                         .fontWeight(.semibold)
                     
                     CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
+                        GameView(isTwoPlayerMode: false)
                     } label: {
                         GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
                             
                     }
                     
                     CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
+                        GameView(isTwoPlayerMode: true)
                     } label: {
                         GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
                             

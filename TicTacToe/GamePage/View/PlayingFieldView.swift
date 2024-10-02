@@ -21,7 +21,7 @@ struct PlayingFieldView: View {
         
         // Вертикальные линии
         [0, 3, 6]: (start: CGPoint(x: 0.19, y: 0.16), end: CGPoint(x: 0.19, y: 0.84)),
-        [1, 4, 7]: (start: CGPoint(x: 0.5,    y: 0.16), end: CGPoint(x: 0.5,    y: 0.84)),
+        [1, 4, 7]: (start: CGPoint(x: 0.5, y: 0.16), end: CGPoint(x: 0.5, y: 0.84)),
         [2, 5, 8]: (start: CGPoint(x: 0.81, y: 0.16), end: CGPoint(x: 0.81, y: 0.84)),
         
         // Диагональные линии

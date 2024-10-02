@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var viewModel: GameViewModel
+    @ObservedObject var viewModel: GameViewModel
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
+    
+    let isTwoPlayerMode: Bool
     
     var isTimerOn: Bool = true
     var initialTime: Int = 65
@@ -22,6 +24,11 @@ struct GameView: View {
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
         return String(format: "%01d:%02d", minutes, seconds)
+    }
+    
+    init(isTwoPlayerMode: Bool) {
+        self.isTwoPlayerMode = isTwoPlayerMode
+        self.viewModel = GameViewModel(isTwoPlayerMode: isTwoPlayerMode)
     }
     
     var body: some View {
@@ -45,7 +52,6 @@ struct GameView: View {
                 }
                 .foregroundStyle(.appBlack)
                 
-                
                 HStack {
                     Image(viewModel.currentPlayer.gamePiece.rawValue)
                     Text("\(viewModel.currentPlayer.name) turn")
@@ -55,7 +61,7 @@ struct GameView: View {
                 
                 PlayingFieldView(viewModel: viewModel)
                 
-                Spacer()
+
             }
             .padding(.horizontal, 44)
             .padding(.top, 20)
