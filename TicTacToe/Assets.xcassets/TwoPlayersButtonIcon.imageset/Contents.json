@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Capa_1.png",
+      "filename" : "TwoPlayersButtonIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TwoPlayersButtonIcon 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "TwoPlayersButtonIcon 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

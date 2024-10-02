@@ -27,17 +27,17 @@ struct GameModesView: View {
                         .fontWeight(.semibold)
                     
                     NavigationLink(
-                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isResultActive: $isResultActive, isGameActive: $isSinglePlayerActive),
-                        isActive: $isSinglePlayerActive,
-                        label: {
-                            GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
-                        })
-                    
-                    NavigationLink(
                         destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isResultActive: $isResultActive, isGameActive: $isTwoPlayerActive),
                         isActive: $isTwoPlayerActive,
                         label: {
                             GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
+                        })
+                    
+                    NavigationLink(
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isResultActive: $isResultActive, isGameActive: $isSinglePlayerActive),
+                        isActive: $isSinglePlayerActive,
+                        label: {
+                            GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
                         })
                     
                 }
