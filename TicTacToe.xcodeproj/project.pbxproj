@@ -23,6 +23,7 @@
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
+		7945FE2D2CAD80AA004749A9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2C2CAD80AA004749A9 /* TimerView.swift */; };
 		79B40DC92CAC73C60062B8C7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B40DC82CAC73C60062B8C7 /* Settings.swift */; };
 		79B40DCC2CAC74FC0062B8C7 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B40DCB2CAC74FC0062B8C7 /* StorageManager.swift */; };
 		CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B722CA9C4BE00EFADE5 /* OnboardingView.swift */; };
@@ -55,6 +56,7 @@
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7945FE2C2CAD80AA004749A9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		79B40DC82CAC73C60062B8C7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		79B40DCB2CAC74FC0062B8C7 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		CE0F1B722CA9C4BE00EFADE5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -183,9 +185,18 @@
 		7945FE292CAD6CF8004749A9 /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7945FE2E2CAD80AF004749A9 /* Views */,
 				7945FE2A2CAD6D13004749A9 /* SettingsView.swift */,
 			);
 			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		7945FE2E2CAD80AF004749A9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7945FE2C2CAD80AA004749A9 /* TimerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		79B40DC72CAC73B50062B8C7 /* Models */ = {
@@ -330,6 +341,7 @@
 				4888FD8C2CAA886A00F1CE8B /* GamePiece.swift in Sources */,
 				4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */,
 				4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */,
+				7945FE2D2CAD80AA004749A9 /* TimerView.swift in Sources */,
 				4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */,
 				480507432CAC5ED6005EB458 /* Color + Ext.swift in Sources */,
 				CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */,

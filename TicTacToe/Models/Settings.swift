@@ -10,8 +10,8 @@ import SwiftUI
 struct GameSettings {
     var isTimerEnabled: Bool
     var timerSeconds: Int
-    let xSkin: Int
-    let oSkin: Int
+    var xSkin: Int
+    var oSkin: Int
     
     init(isTimerEnabled: Bool = false, timerSeconds: Int = 60, xSkin: Int = 1, oSkin: Int = 1) {
         self.isTimerEnabled = isTimerEnabled
