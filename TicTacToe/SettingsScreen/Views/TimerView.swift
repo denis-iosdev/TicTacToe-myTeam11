@@ -19,11 +19,11 @@ struct TimerView: View {
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
                 }
-                .padding()
-                .background(Color.buttonLightBackground)
-                .cornerRadius(30)
-                
+                .tint(.buttonDarkBackground)
             }
+            .padding()
+            .background(Color.buttonLightBackground)
+            .cornerRadius(30)
             
             if isTimerEnabled {
                 VStack {
