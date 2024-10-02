@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GameModesView: View {
     @State private var settingViewIsOn: Bool = false
+    @State private var isSinglePlayerActive = false
+    @State private var isTwoPlayerActive = false
     
     var body: some View {
         ZStack {

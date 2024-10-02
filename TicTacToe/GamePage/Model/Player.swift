@@ -8,6 +8,12 @@
 import Foundation
 
 struct Player: Equatable {
+    
+    enum GamePiece: String {
+        case x = "Xskin1"
+        case o = "Oskin1"
+    }
+    
     let gamePiece: GamePiece
     let name: String
     var moves: [Int] = []
