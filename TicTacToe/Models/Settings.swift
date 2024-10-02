@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameSettings {
-    let isTimerEnabled: Bool
+    var isTimerEnabled: Bool
     let timerSeconds: Int
     let xSkin: Int
     let oSkin: Int

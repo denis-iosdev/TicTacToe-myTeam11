@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject private var storageManager = StorageManager()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Toggle(isOn: $storageManager.settings.isTimerEnabled) {
+                    Text("Game Time")
+                        .font(.system(size: 20))
+                }
+                .padding()
+                .background(Color.buttonBackground)
+                .cornerRadius(30)
+            }
+            .padding()
+        }
+        .padding()
     }
 }
 
