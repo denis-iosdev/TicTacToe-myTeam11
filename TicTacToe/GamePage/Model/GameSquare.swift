@@ -15,7 +15,7 @@ struct GameSquare {
         player?.gamePiece.rawValue
     }
     
-    static func reset() -> [GameSquare] {
+    static func defaultValue() -> [GameSquare] {
         var squares: [GameSquare] = []
         for i in 0..<9 {
             squares.append(GameSquare(index: i))

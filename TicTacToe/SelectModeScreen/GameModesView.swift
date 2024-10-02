@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameModesView: View {
+    @State private var isResultActive = false
+    
     var body: some View {
         ZStack {
             Color.background

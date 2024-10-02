@@ -13,6 +13,7 @@ struct GameView: View {
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
+    @State private var showResult = false
     
     let isTwoPlayerMode: Bool
     
@@ -61,9 +62,7 @@ struct GameView: View {
             .padding(.top, 20)
         }
         .onAppear {
-            viewModel.reset()
-            timeRemaining = initialTime
-            timerRunning = isTimerOn
+            resetGame()
         }
         .onReceive(timer) { _ in
             timerSetting()
@@ -71,6 +70,22 @@ struct GameView: View {
         .onChange(of: viewModel.gameOver) { _ in
             if viewModel.gameOver {
                 timerRunning = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    showResult = true
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $showResult) {
+            if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
+                ResultView(text: "Draw!", imageName: "drawIcon", playAgain: { resetGame() })
+            } else if isTwoPlayerMode {
+                ResultView(text: "\(viewModel.winner?.name ?? "") win!", imageName: "winIcon", playAgain: { resetGame() })
+            } else {
+                if viewModel.winner == viewModel.player1 {
+                    ResultView(text: "\(viewModel.player1.name) win!", imageName: "winIcon", playAgain: { resetGame() })
+                } else {
+                    ResultView(text: "\(viewModel.player1.name) Lose!", imageName: "loseIcon", playAgain: { resetGame() })
+                }
             }
         }
     }
@@ -82,5 +97,11 @@ struct GameView: View {
             viewModel.gameOver = true
             timerRunning = false
         }
+    }
+    
+    private func resetGame() {
+        viewModel.reset()
+        timeRemaining = initialTime
+        timerRunning = isTimerOn
     }
 }
