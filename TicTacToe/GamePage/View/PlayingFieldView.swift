@@ -30,42 +30,50 @@ struct PlayingFieldView: View {
     ]
     
     var body: some View {
-        ZStack {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(0..<9) { index in
-                    Button {
-                        viewModel.makeMove(index: index)
-                    } label: {
-                        if let imageName = viewModel.gameBoard[index].image {
-                            Image(imageName)
-                                .resizable()
-                                .padding(10)
-                        } else {
-                            Color.lightBlue
+        GeometryReader { proxy in
+            ZStack {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(0..<9) { index in
+                        Button {
+                            viewModel.makeMove(index: index)
+                        } label: {
+                            if let imageName = viewModel.gameBoard[index].image {
+                                Image(imageName)
+                                    .resizable()
+                                    .padding(10)
+                            } else {
+                                Color.lightBlue
+                            }
                         }
+                        .background(.lightBlue)
+                        .frame(height: getSquareWidth())
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
-                    .background(.lightBlue)
-                    .frame(height: getWidth())
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
-            }
-            .disabled(viewModel.boardDisabled)
-            .padding(20)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 30))
-            .shadow(color: .black.opacity(0.2), radius: 10)
-            
-            // Создание перечеркивающей линии
-            if let winningCombination = viewModel.winningCombination {
-                if let linePoints = winningLines[winningCombination] {
-                    WinningLineView(line: linePoints)
+                .disabled(viewModel.boardDisabled)
+                .padding(20)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(color: .black.opacity(0.2), radius: 10)
+                
+                // Создание перечеркивающей линии
+                if let winningCombination = viewModel.winningCombination {
+                    if let linePoints = winningLines[winningCombination] {
+                        WinningLineView(line: linePoints)
+                    }
                 }
             }
         }
+        .frame(width: getFieldWidth(), height: getFieldWidth())
+    }
+    
+    // Получение ширины игрового поля
+    func getFieldWidth() -> CGFloat {
+        return UIScreen.main.bounds.width - (44 * 2)
     }
     
     // Получение ширины одной ячейки игрового поля
-    func getWidth() -> CGFloat {
+    func getSquareWidth() -> CGFloat {
         let width = UIScreen.main.bounds.width - ((44 * 2) + (20 * 4))
         return width / 3
     }

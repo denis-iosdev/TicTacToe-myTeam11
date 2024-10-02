@@ -61,7 +61,7 @@ struct GameView: View {
                 
                 PlayingFieldView(viewModel: viewModel)
                 
-
+                Spacer()
             }
             .padding(.horizontal, 44)
             .padding(.top, 20)
