@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct GameModesView: View {
+//    @Environment (\.presentationMode) var presentationMode
+    @State private var settingViewIsOn: Bool = false
+    
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.background.ignoresSafeArea()
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            
+            VStack {
+                NavigationLink(isActive: $settingViewIsOn) {
+                    SettingsView()
+                } label: { }
+                
+                Spacer()
                 
                 VStack {
                     Spacer()
@@ -42,18 +52,23 @@ struct GameModesView: View {
                     
                     Spacer()
                 }
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        NavigationLink(destination: SettingsView()) {
-                            Image("SettingButtonIcon")
-                        }
-                    }
-                }
             }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolBarNavigationItems(
+                rightButtonHiddeb: false,
+                rightAction: {
+                    settingViewIsOn.toggle()
+                }
+            )
         }
     }
 }
 
 #Preview {
-    GameModesView()
+    NavigationView {
+        GameModesView()
+    }
 }

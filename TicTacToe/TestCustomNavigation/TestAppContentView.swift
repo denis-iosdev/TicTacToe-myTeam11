@@ -12,6 +12,7 @@ import SwiftUI
 // По этому видео делалась навигация
 // https://www.youtube.com/watch?v=aIDT4uuMLHc&ab_channel=SwiftfulThinking
 
+#if DEBUG
 struct TestAppContentView: View {
     
     @State private var showSettingView: Bool = false
@@ -169,6 +170,8 @@ struct TestSecondView: View {
         .customNavigationTitle("TestSecondView")
     }
 }
+
+#endif
 
 #Preview {
     TestAppContentView()
