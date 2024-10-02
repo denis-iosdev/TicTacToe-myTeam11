@@ -13,10 +13,10 @@ final class GameViewModel: ObservableObject {
     @Published var player2: Player
     @Published var possibleMoves = Move.all
     @Published var gameOver = false
-    @Published var gameBoard = GameSquare.reset()
+    @Published var gameBoard = GameSquare.defaultValue()
     @Published var isThinking = false
-    
     @Published var winningCombination: [Int]? = nil
+    @Published var winner: Player?
     
     var isTwoPlayerMode: Bool
     
@@ -40,9 +40,10 @@ final class GameViewModel: ObservableObject {
         player1.moves.removeAll()
         player2.moves.removeAll()
         winningCombination = nil
+        winner = nil
         gameOver = false
         possibleMoves = Move.all
-        gameBoard = GameSquare.reset()
+        gameBoard = GameSquare.defaultValue()
     }
     
     func updateMoves(index: Int) {
@@ -55,12 +56,6 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    //    func checkWinner() {
-    //        if player1.isWinner() || player2.isWinner() {
-    //            gameOver = true
-    //        }
-    //    }
-    
     func checkWinner() {
         let winningCombinations = Move.winningMoves
         
@@ -68,10 +63,12 @@ final class GameViewModel: ObservableObject {
             if combination.allSatisfy(player1.moves.contains) {
                 gameOver = true
                 winningCombination = combination
+                winner = player1
                 return
             } else if combination.allSatisfy(player2.moves.contains) {
                 gameOver = true
                 winningCombination = combination
+                winner = player2
                 return
             }
         }

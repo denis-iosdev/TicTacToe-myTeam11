@@ -8,62 +8,70 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject var viewModel: GameViewModel
+    @ObservedObject var viewModel: GameViewModel
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
+    @State private var showResult = false
+    
+    @Binding var isGameActive: Bool
     
     var isTimerOn: Bool = true
     var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var timeFormatter: String {
-        let minutes = timeRemaining / 60
-        let seconds = timeRemaining % 60
-        return String(format: "%01d:%02d", minutes, seconds)
-    }
-    
     var body: some View {
         ZStack {
             Color.background
                 .ignoresSafeArea()
-            
-            VStack(spacing: 45) {
+            VStack(spacing: 30) {
                 
                 HStack {
-                    PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
-                    
-                    Spacer()
-                    if isTimerOn {
-                        Text(timeFormatter)
-                            .font(.system(size: 20, weight: .bold))
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(.backButtonIcon)
                     }
-                    Spacer()
                     
-                    PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                    Spacer()
                 }
-                .foregroundStyle(.appBlack)
+                .padding(.horizontal, 20)
                 
-                
-                HStack {
-                    Image(viewModel.currentPlayer.gamePiece.rawValue)
-                    Text("\(viewModel.currentPlayer.name) turn")
-                        .font(.system(size: 20, weight: .bold))
+                VStack(spacing: 45) {
+                        
+                        HStack {
+                            PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
+                            
+                            Spacer()
+                            if isTimerOn {
+                                Text(timeRemaining.timeFormatter)
+                                    .font(.system(size: 20, weight: .bold))
+                            }
+                            Spacer()
+                            
+                            PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                        }
                         .foregroundStyle(.appBlack)
+
+                    HStack {
+                        Image(viewModel.currentPlayer.gamePiece.rawValue)
+                        Text("\(viewModel.currentPlayer.name) turn")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(.appBlack)
+                    }
+                    
+                    PlayingFieldView(viewModel: viewModel)
+                    
+                    Spacer()
                 }
-                
-                PlayingFieldView(viewModel: viewModel)
-                
-                Spacer()
+                .padding(.horizontal, 44)
             }
-            .padding(.horizontal, 44)
-            .padding(.top, 20)
+            .padding(.top, 25)
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
-            viewModel.reset()
-            timeRemaining = initialTime
-            timerRunning = isTimerOn
+            resetGame()
         }
         .onReceive(timer) { _ in
             timerSetting()
@@ -71,6 +79,34 @@ struct GameView: View {
         .onChange(of: viewModel.gameOver) { _ in
             if viewModel.gameOver {
                 timerRunning = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                    showResult = true
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $showResult) {
+            openResultView()
+        }
+    }
+    
+    @ViewBuilder
+    private func createResultView(text: String, image: String) -> some View {
+        ResultView(text: text,
+                   imageName: image,
+                   playAgain: { resetGame() },
+                   onBack: { isGameActive = false })
+    }
+    
+    private func openResultView() -> some View {
+        if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
+            return createResultView(text: "Draw!", image: "drawIcon")
+        } else if viewModel.isTwoPlayerMode {
+            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", image: "winIcon")
+        } else {
+            if viewModel.winner == viewModel.player1 {
+                return createResultView(text: "\(viewModel.player1.name) win!", image: "winIcon")
+            } else {
+                return createResultView(text: "\(viewModel.player1.name) Lose!", image: "loseIcon")
             }
         }
     }
@@ -82,5 +118,11 @@ struct GameView: View {
             viewModel.gameOver = true
             timerRunning = false
         }
+    }
+    
+    private func resetGame() {
+        viewModel.reset()
+        timeRemaining = initialTime
+        timerRunning = isTimerOn
     }
 }

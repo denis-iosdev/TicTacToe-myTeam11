@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct GameModesView: View {
+
 //    @Environment (\.presentationMode) var presentationMode
     @State private var settingViewIsOn: Bool = false
+    @State private var isSinglePlayerActive = false
+    @State private var isTwoPlayerActive = false
     
     var body: some View {
         ZStack {
@@ -29,19 +32,20 @@ struct GameModesView: View {
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                     
-                    CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
-                    } label: {
-                        GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
-                            
-                    }
+                    NavigationLink(
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isGameActive: $isTwoPlayerActive),
+                        isActive: $isTwoPlayerActive,
+                        label: {
+                            GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
+                        })
                     
-                    CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
-                    } label: {
-                        GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
-                            
-                    }
+                    NavigationLink(
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isGameActive: $isSinglePlayerActive),
+                        isActive: $isSinglePlayerActive,
+                        label: {
+                            GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
+                        })
+                    
                 }
                 .padding(20)
                 .background(.white)
