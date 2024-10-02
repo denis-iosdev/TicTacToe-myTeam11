@@ -20,7 +20,7 @@ struct TimerView: View {
                         .fontWeight(.semibold)
                 }
                 .padding()
-                .background(Color.buttonBackground)
+                .background(Color.buttonLightBackground)
                 .cornerRadius(30)
                 
             }
@@ -40,7 +40,7 @@ struct TimerView: View {
                     }
                 }
                 .padding()
-                .background(Color.buttonBackground)
+                .background(Color.buttonLightBackground)
                 .cornerRadius(30)
             }
         }
