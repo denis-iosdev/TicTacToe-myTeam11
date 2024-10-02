@@ -15,7 +15,6 @@ struct GameView: View {
     @State private var timeRemaining = 0
     @State private var showResult = false
     
-    @Binding var isResultActive: Bool
     @Binding var isGameActive: Bool
     
     var isTimerOn: Bool = true

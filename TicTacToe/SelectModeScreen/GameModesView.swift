@@ -11,7 +11,6 @@ struct GameModesView: View {
     
     @State private var isSinglePlayerActive = false
     @State private var isTwoPlayerActive = false
-    @State private var isResultActive = false
     
     var body: some View {
         ZStack {
@@ -27,14 +26,14 @@ struct GameModesView: View {
                         .fontWeight(.semibold)
                     
                     NavigationLink(
-                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isResultActive: $isResultActive, isGameActive: $isTwoPlayerActive),
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isGameActive: $isTwoPlayerActive),
                         isActive: $isTwoPlayerActive,
                         label: {
                             GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
                         })
                     
                     NavigationLink(
-                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isResultActive: $isResultActive, isGameActive: $isSinglePlayerActive),
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isGameActive: $isSinglePlayerActive),
                         isActive: $isSinglePlayerActive,
                         label: {
                             GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
