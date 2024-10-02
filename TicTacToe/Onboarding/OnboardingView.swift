@@ -22,8 +22,7 @@ struct OnboardingView: View {
             } label: { }
             
             NavigationLink(isActive: $settingViewIsOn) {
-                // TODO: enter your next view here
-                Text("Setting view")
+                SettingsView()
             } label: { }
             
             Spacer()

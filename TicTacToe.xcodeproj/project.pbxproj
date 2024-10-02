@@ -105,13 +105,13 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				487C8F062CA9BDC2000C3486 /* GamePage */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
 				480507422CAC5ED6005EB458 /* SelectModeScreen */,
+				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
 				79B40DCA2CAC74ED0062B8C7 /* Services */,
 				79B40DC72CAC73B50062B8C7 /* Models */,
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,

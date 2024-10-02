@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject private var storageManager = StorageManager()
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
