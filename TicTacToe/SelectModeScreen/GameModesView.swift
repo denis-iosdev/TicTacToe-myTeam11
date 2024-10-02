@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GameModesView: View {
+    
+    @State private var isSinglePlayerActive = false
+    @State private var isTwoPlayerActive = false
     @State private var isResultActive = false
     
     var body: some View {
@@ -23,19 +26,20 @@ struct GameModesView: View {
                         .font(.system(size: 24))
                         .fontWeight(.semibold)
                     
-                    CustomNavigationLink {
-                        GameView(isTwoPlayerMode: false)
-                    } label: {
-                        GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
-                            
-                    }
+                    NavigationLink(
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isResultActive: $isResultActive, isGameActive: $isSinglePlayerActive),
+                        isActive: $isSinglePlayerActive,
+                        label: {
+                            GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
+                        })
                     
-                    CustomNavigationLink {
-                        GameView(isTwoPlayerMode: true)
-                    } label: {
-                        GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
-                            
-                    }
+                    NavigationLink(
+                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isResultActive: $isResultActive, isGameActive: $isTwoPlayerActive),
+                        isActive: $isTwoPlayerActive,
+                        label: {
+                            GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
+                        })
+                    
                 }
                 .padding(20)
                 .background(.white)

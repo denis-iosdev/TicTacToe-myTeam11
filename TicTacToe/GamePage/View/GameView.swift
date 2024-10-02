@@ -15,52 +15,62 @@ struct GameView: View {
     @State private var timeRemaining = 0
     @State private var showResult = false
     
-    let isTwoPlayerMode: Bool
+    @Binding var isResultActive: Bool
+    @Binding var isGameActive: Bool
     
     var isTimerOn: Bool = true
     var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(isTwoPlayerMode: Bool) {
-        self.isTwoPlayerMode = isTwoPlayerMode
-        self.viewModel = GameViewModel(isTwoPlayerMode: isTwoPlayerMode)
-    }
-    
     var body: some View {
         ZStack {
             Color.background
                 .ignoresSafeArea()
-            
-            VStack(spacing: 45) {
+            VStack(spacing: 30) {
                 
                 HStack {
-                    PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
-                    
-                    Spacer()
-                    if isTimerOn {
-                        Text(timeRemaining.timeFormatter)
-                            .font(.system(size: 20, weight: .bold))
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(.backButtonIcon)
                     }
-                    Spacer()
                     
-                    PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                    Spacer()
                 }
-                .foregroundStyle(.appBlack)
+                .padding(.horizontal, 20)
                 
-                HStack {
-                    Image(viewModel.currentPlayer.gamePiece.rawValue)
-                    Text("\(viewModel.currentPlayer.name) turn")
-                        .font(.system(size: 20, weight: .bold))
+                VStack(spacing: 45) {
+                        
+                        HStack {
+                            PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
+                            
+                            Spacer()
+                            if isTimerOn {
+                                Text(timeRemaining.timeFormatter)
+                                    .font(.system(size: 20, weight: .bold))
+                            }
+                            Spacer()
+                            
+                            PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                        }
                         .foregroundStyle(.appBlack)
+
+                    HStack {
+                        Image(viewModel.currentPlayer.gamePiece.rawValue)
+                        Text("\(viewModel.currentPlayer.name) turn")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(.appBlack)
+                    }
+                    
+                    PlayingFieldView(viewModel: viewModel)
+                    
+                    Spacer()
                 }
-                
-                PlayingFieldView(viewModel: viewModel)
-                
-                Spacer()
+                .padding(.horizontal, 44)
             }
-            .padding(.horizontal, 44)
-            .padding(.top, 20)
+            .padding(.top, 25)
         }
+        .navigationBarBackButtonHidden()
         .onAppear {
             resetGame()
         }
@@ -70,22 +80,34 @@ struct GameView: View {
         .onChange(of: viewModel.gameOver) { _ in
             if viewModel.gameOver {
                 timerRunning = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                     showResult = true
                 }
             }
         }
         .fullScreenCover(isPresented: $showResult) {
-            if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
-                ResultView(text: "Draw!", imageName: "drawIcon", playAgain: { resetGame() })
-            } else if isTwoPlayerMode {
-                ResultView(text: "\(viewModel.winner?.name ?? "") win!", imageName: "winIcon", playAgain: { resetGame() })
+            openResultView()
+        }
+    }
+    
+    @ViewBuilder
+    private func createResultView(text: String, image: String) -> some View {
+        ResultView(text: text,
+                   imageName: image,
+                   playAgain: { resetGame() },
+                   onBack: { isGameActive = false })
+    }
+    
+    private func openResultView() -> some View {
+        if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
+            return createResultView(text: "Draw!", image: "drawIcon")
+        } else if viewModel.isTwoPlayerMode {
+            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", image: "winIcon")
+        } else {
+            if viewModel.winner == viewModel.player1 {
+                return createResultView(text: "\(viewModel.player1.name) win!", image: "winIcon")
             } else {
-                if viewModel.winner == viewModel.player1 {
-                    ResultView(text: "\(viewModel.player1.name) win!", imageName: "winIcon", playAgain: { resetGame() })
-                } else {
-                    ResultView(text: "\(viewModel.player1.name) Lose!", imageName: "loseIcon", playAgain: { resetGame() })
-                }
+                return createResultView(text: "\(viewModel.player1.name) Lose!", image: "loseIcon")
             }
         }
     }

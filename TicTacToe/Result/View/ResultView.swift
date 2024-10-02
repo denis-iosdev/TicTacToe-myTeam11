@@ -10,10 +10,11 @@ import SwiftUI
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-    
+        
     let text: String
     let imageName: String
     let playAgain: () -> Void
+    let onBack: () -> Void
     
     var body: some View {
         VStack {
@@ -40,7 +41,8 @@ struct ResultView: View {
                 }
                 
                 Button {
-                    //
+                    onBack()
+                    dismiss()
                 } label: {
                     Text("Back")
                         .resultButton(color: .appBlue)
@@ -54,5 +56,6 @@ struct ResultView: View {
             .font(.system(size: 20, weight: .medium))
         }
         .padding(.horizontal, 21)
+        .padding(.bottom, 18)
     }
 }
