@@ -15,22 +15,21 @@ struct PlayingFieldView: View {
     // Массив выигрышных комбинаций и кортеж координат для отрисовки линии
     private let winningLines: [[Int]: (start: CGPoint, end: CGPoint)] = [
         // Горизонтальные линии
-        [0, 1, 2]: (start: CGPoint(x: 0.1, y: 0.24), end: CGPoint(x: 0.9, y: 0.24)),
+        [0, 1, 2]: (start: CGPoint(x: 0.1, y: 0.2), end: CGPoint(x: 0.9, y: 0.2)),
         [3, 4, 5]: (start: CGPoint(x: 0.1, y: 0.5), end: CGPoint(x: 0.9, y: 0.5)),
-        [6, 7, 8]: (start: CGPoint(x: 0.1, y: 0.76), end: CGPoint(x: 0.9, y: 0.76)),
+        [6, 7, 8]: (start: CGPoint(x: 0.1, y: 0.8), end: CGPoint(x: 0.9, y: 0.8)),
         
         // Вертикальные линии
-        [0, 3, 6]: (start: CGPoint(x: 0.19, y: 0.16), end: CGPoint(x: 0.19, y: 0.84)),
-        [1, 4, 7]: (start: CGPoint(x: 0.5, y: 0.16), end: CGPoint(x: 0.5, y: 0.84)),
-        [2, 5, 8]: (start: CGPoint(x: 0.81, y: 0.16), end: CGPoint(x: 0.81, y: 0.84)),
+        [0, 3, 6]: (start: CGPoint(x: 0.19, y: 0.1), end: CGPoint(x: 0.19, y: 0.9)),
+        [1, 4, 7]: (start: CGPoint(x: 0.5, y: 0.1), end: CGPoint(x: 0.5, y: 0.9)),
+        [2, 5, 8]: (start: CGPoint(x: 0.81, y: 0.1), end: CGPoint(x: 0.81, y: 0.9)),
         
         // Диагональные линии
-        [0, 4, 8]: (start: CGPoint(x: 0.1, y: 0.16), end: CGPoint(x: 0.9, y: 0.84)),
-        [2, 4, 6]: (start: CGPoint(x: 0.9, y: 0.16), end: CGPoint(x: 0.1, y: 0.84)),
+        [0, 4, 8]: (start: CGPoint(x: 0.1, y: 0.1), end: CGPoint(x: 0.9, y: 0.9)),
+        [2, 4, 6]: (start: CGPoint(x: 0.9, y: 0.1), end: CGPoint(x: 0.1, y: 0.9)),
     ]
     
     var body: some View {
-        GeometryReader { proxy in
             ZStack {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(0..<9) { index in
@@ -63,8 +62,7 @@ struct PlayingFieldView: View {
                     }
                 }
             }
-        }
-        .frame(width: getFieldWidth(), height: getFieldWidth())
+            .frame(width: getFieldWidth(), height: getFieldWidth())
     }
     
     // Получение ширины игрового поля

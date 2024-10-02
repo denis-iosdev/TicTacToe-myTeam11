@@ -20,12 +20,6 @@ struct GameView: View {
     var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var timeFormatter: String {
-        let minutes = timeRemaining / 60
-        let seconds = timeRemaining % 60
-        return String(format: "%01d:%02d", minutes, seconds)
-    }
-    
     init(isTwoPlayerMode: Bool) {
         self.isTwoPlayerMode = isTwoPlayerMode
         self.viewModel = GameViewModel(isTwoPlayerMode: isTwoPlayerMode)
@@ -43,7 +37,7 @@ struct GameView: View {
                     
                     Spacer()
                     if isTimerOn {
-                        Text(timeFormatter)
+                        Text(timeRemaining.timeFormatter)
                             .font(.system(size: 20, weight: .bold))
                     }
                     Spacer()
