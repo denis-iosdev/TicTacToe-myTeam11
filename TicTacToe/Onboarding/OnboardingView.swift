@@ -15,51 +15,49 @@ struct OnboardingView: View {
     private let titleText: String = "TIC-TAC-TOE"
     
     var body: some View {
-        
-        CustomNavView(
-            rightButtonAction: showSettingViewAction,
-            leftButtonAction: showshowHelpViewAction
-        ) {
-            VStack {
-                CustomNavigationLinkWithAction(action: $helpViewIsOn) {
-                    // TODO: enter your next view here
-                    Text("Help view")
-                } label: { }
-                
-                CustomNavigationLinkWithAction(action: $settingViewIsOn) {
-                    // TODO: enter your next view here
-                    Text("Setting view")
-                } label: { }
-                
-                Spacer()
-                
-                Image(uiImage: .logo)
-                    .padding(.horizontal, 60)
-                
-                Text(titleText)
-                    .font(.title)
-                    .bold()
-                    .padding(.top, 30)
-                
-                Spacer()
-                
-                CustomNavigationLink {
-                    GameModesView()
-                } label: {
-                    MainButtonView(title: buttonTitle, style: .fill)
-                        .padding(.bottom, isSmallScreen() ? 20 : 0)
-                }
+        VStack {
+            NavigationLink(isActive: $helpViewIsOn) {
+                // TODO: enter your next view here
+                Text("Help view")
+            } label: { }
+            
+            NavigationLink(isActive: $settingViewIsOn) {
+                // TODO: enter your next view here
+                Text("Setting view")
+            } label: { }
+            
+            Spacer()
+            
+            Image(uiImage: .logo)
+                .padding(.horizontal, 60)
+            
+            Text(titleText)
+                .font(.title)
+                .bold()
+                .padding(.top, 30)
+            
+            Spacer()
+            
+            NavigationLink {
+                GameModesView()
+            } label: {
+                MainButtonView(title: buttonTitle, style: .fill)
+                    .padding(.bottom, isSmallScreen() ? 20 : 0)
             }
-            .customNavBarItems(leftButtonState: .help, rightButtonHidden: false, navBarBackgroundColor: .onboarding)
         }
-    }
-    
-    private func showSettingViewAction() {
-        settingViewIsOn.toggle()
-    }
-    
-    private func showshowHelpViewAction() {
-        helpViewIsOn.toggle()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolBarNavigationItems(
+                leftButtonState: .help,
+                rightButtonHiddeb: false,
+                leftAction: {
+                    helpViewIsOn.toggle()
+                },
+                rightAction: {
+                    settingViewIsOn.toggle()
+                }
+            )
+        }
     }
     
     func isSmallScreen() -> Bool {
@@ -69,5 +67,7 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView()
+    NavigationView {
+        OnboardingView()
+    }
 }

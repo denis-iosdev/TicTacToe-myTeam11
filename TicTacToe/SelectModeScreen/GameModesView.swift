@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct GameModesView: View {
-    
+
+//    @Environment (\.presentationMode) var presentationMode
+    @State private var settingViewIsOn: Bool = false
     @State private var isSinglePlayerActive = false
     @State private var isTwoPlayerActive = false
     
@@ -18,6 +20,11 @@ struct GameModesView: View {
                 .ignoresSafeArea()
             
             VStack {
+                NavigationLink(isActive: $settingViewIsOn) {
+                    // TODO: enter your next view here
+                    Text("Setting view")
+                } label: { }
+                
                 Spacer()
                 
                 VStack(spacing: 20) {
@@ -47,11 +54,22 @@ struct GameModesView: View {
                 
                 Spacer()
             }
-            .customNavigationRightButtonHidden(false)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolBarNavigationItems(
+                rightButtonHiddeb: false,
+                rightAction: {
+                    settingViewIsOn.toggle()
+                }
+            )
         }
     }
 }
 
 #Preview {
-    GameModesView()
+    NavigationView {
+        GameModesView()
+    }
 }
