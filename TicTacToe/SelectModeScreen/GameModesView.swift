@@ -40,6 +40,7 @@ struct GameModesView: View {
                         Text("Select Game")
                             .font(.system(size: 24))
                             .fontWeight(.semibold)
+                            .foregroundStyle(.appBlack)
                         
                         NavigationLink(
                             destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false),

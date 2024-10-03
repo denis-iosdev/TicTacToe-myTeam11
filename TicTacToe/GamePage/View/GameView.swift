@@ -14,12 +14,10 @@ struct GameView: View {
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
-    @State private var showResult = false
+    @State private var isResultActive = false
     
     @Binding var isGameActive: Bool
     
-//    var isTimerOn: Bool = true
-//    var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -81,21 +79,20 @@ struct GameView: View {
             if viewModel.gameOver {
                 timerRunning = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    showResult = true
+                    isResultActive = true
                 }
             }
         }
-        .fullScreenCover(isPresented: $showResult) {
-            openResultView()
-        }
+        NavigationLink(destination: openResultView(), isActive: $isResultActive, label: {})
     }
     
     @ViewBuilder
     private func createResultView(text: String, image: String) -> some View {
-        ResultView(text: text,
+        ResultView(isResultActive: $isResultActive,
+                   isGameActive: $isGameActive,
+                   text: text,
                    imageName: image,
-                   playAgain: { resetGame() },
-                   onBack: { isGameActive = false })
+                   playAgain: { resetGame() })
     }
     
     private func openResultView() -> some View {
