@@ -23,32 +23,32 @@ struct ResultGame: Hashable {
 }
 
 // window
-// --> Onbording
+// --> Onbording (done)
 // Onbording
-// --> help
-// --> setting
-// --> gameMod
+// --> help (wait screen) !!!!!
+// --> setting (done)
+// --> gameMod (done)
 
 // help
-// <-- (back) Onbording
+// <-- (back) Onbording (wait screen) !!!!!
 // setting
-// <-- (back) Onbording
+// <-- (back) Onbording (done)
 
 // gameMod
-// <-- (back) Onbording
-// --> setting
-// --> (ture) game
-// --> (false) game
-// --> difflvl (fullScreen) (под вопросом как будет работать переход назад)
-// --> leaderboard
+// <-- (back) Onbording (done)
+// --> setting (done)
+// --> (ture) game (done)
+// --> (false) game (done)
+// --> difflvl (fullScreen) (под вопросом как будет работать переход назад) (wait screen) !!!!!
+// --> leaderboard (wait screen) !!!!!
 
 // setting
-// <-- (back) gameMod
+// <-- (back) gameMod (done)
 // difflvl
-// <-- (back) gameMod
+// <-- (back) gameMod (wait screen) !!!!!
 // leaderboard
-// <-- (back) gameMod
+// <-- (back) gameMod (wait screen) !!!!!
 
 // game
-// <-- (back) gameMod
-// --> result (String, GameResult)
+// <-- (back) gameMod (done)
+// --> result (String, GameResult) (done)

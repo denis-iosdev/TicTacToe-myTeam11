@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 struct GameView: View {
+    @EnvironmentObject var navigator: PathNavigator
     @ObservedObject var viewModel: GameViewModel
     @ObservedObject var settings: StorageManager
-    @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
-    @State private var isResultActive = false
-    
-//    @Binding var isGameActive: Bool
+//    @State private var isResultActive = false
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -24,18 +23,8 @@ struct GameView: View {
         ZStack {
             Color.background
                 .ignoresSafeArea()
+            
             VStack(spacing: 30) {
-                
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(.backButtonIcon)
-                    }
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
                 
                 VStack(spacing: 45) {
                         
@@ -68,7 +57,6 @@ struct GameView: View {
             }
             .padding(.top, 25)
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             resetGame()
         }
@@ -79,39 +67,33 @@ struct GameView: View {
             if viewModel.gameOver {
                 timerRunning = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    isResultActive = true
+                    openResultView()
                 }
             }
         }
-        NavigationLink(destination: openResultView(), isActive: $isResultActive, label: {})
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolBarNavigationItems(leftAction: { navigator.pop() })
+        }
     }
     
 //    @ViewBuilder
-    private func createResultView(text: String, result: ResultGameModel.Result) -> some View {
-        
+    private func createResultView(text: String, result: ResultGameModel.Result) {
         let result = ResultGameModel(userName: text, result: result)
-        
-        return ResultView(result: result)
-        
-//        return ResultView(
-//            isResultActive: $isResultActive,
-//                   isGameActive: $isGameActive,
-//                   text: text,
-//                   result: result,
-//                   playAgain: { resetGame() })
+        navigator.push(Router.result(result))
     }
     
-    private func openResultView() -> some View {
-        
+    private func openResultView() {
         if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
-            return createResultView(text: "Draw!", result: .draw)
+            createResultView(text: "Draw!", result: .draw)
         } else if viewModel.isTwoPlayerMode {
-            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
+            createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
         } else {
             if viewModel.winner == viewModel.player1 {
-                return createResultView(text: "\(viewModel.player1.name) win!", result: .win)
+                createResultView(text: "\(viewModel.player1.name) win!", result: .win)
             } else {
-                return createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
+                createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
             }
         }
     }
