@@ -35,6 +35,7 @@ struct GameModesView: View {
                 }
                 
                 Button {
+                    navigator.push(Router.game(true))
                 } label: {
                     MenuButtonsLabel(
                         title: "Two Players",
