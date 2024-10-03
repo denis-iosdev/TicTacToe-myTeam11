@@ -6,64 +6,50 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 struct GameView: View {
+    @EnvironmentObject var navigator: PathNavigator
     @ObservedObject var viewModel: GameViewModel
-    @Environment(\.dismiss) var dismiss
+    @ObservedObject var settings: StorageManager
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
-    @State private var showResult = false
-    
-    @Binding var isGameActive: Bool
     
     @StateObject private var audioPlayer = AudioPlayer() // Создаем экземпляр аудио-плеера
-    
-    var isTimerOn: Bool = true
-    var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
             Color.background
                 .ignoresSafeArea()
+            
             VStack(spacing: 30) {
-                
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(.backButtonIcon)
-                    }
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
                 
                 VStack(spacing: 45) {
                         
                         HStack {
-                            PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
+                            PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
                             
                             Spacer()
-                            if isTimerOn {
+                            if settings.isTimerEnabled {
                                 Text(timeRemaining.timeFormatter)
                                     .font(.system(size: 20, weight: .bold))
                             }
                             Spacer()
                             
-                            PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                            PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
                         }
                         .foregroundStyle(.appBlack)
 
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece.rawValue)
+                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(settings.oSkin)")
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
                     }
                     
-                    PlayingFieldView(viewModel: viewModel)
+                    PlayingFieldView(settings: settings, viewModel: viewModel)
                     
                     Spacer()
                 }
@@ -71,7 +57,6 @@ struct GameView: View {
             }
             .padding(.top, 25)
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             resetGame()
         }
@@ -82,12 +67,14 @@ struct GameView: View {
             if viewModel.gameOver {
                 timerRunning = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    showResult = true
+                    openResultView()
                 }
             }
         }
-        .fullScreenCover(isPresented: $showResult) {
-            openResultView()
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolBarNavigationItems(leftAction: { navigator.pop() })
         }
         
         .onAppear {
@@ -99,35 +86,29 @@ struct GameView: View {
         
     }
     
-    @ViewBuilder
-    private func createResultView(text: String, image: String) -> some View {
-        ResultView(text: text,
-                   imageName: image,
-                   playAgain: { resetGame() },
-                   onBack: { isGameActive = false },
-                   audioPlayer: audioPlayer // Передаем аудиоплеер
-        )
-                    
+    private func createResultView(text: String, result: ResultGameModel.Result) {
+        let result = ResultGameModel(userName: text, result: result)
+        navigator.push(Router.result(result))
     }
     
-    private func openResultView() -> some View {
-        if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
-            return createResultView(text: "Draw!", image: "drawIcon")
+    private func openResultView() {
+        if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
+            createResultView(text: "Draw!", result: .draw)
         } else if viewModel.isTwoPlayerMode {
-            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", image: "winIcon")
+            createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
         } else {
             if viewModel.winner == viewModel.player1 {
-                return createResultView(text: "\(viewModel.player1.name) win!", image: "winIcon")
+                createResultView(text: "\(viewModel.player1.name) win!", result: .win)
             } else {
-                return createResultView(text: "\(viewModel.player1.name) Lose!", image: "loseIcon")
+                createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
             }
         }
     }
     
     private func timerSetting() {
-        if timerRunning && timeRemaining > 0 {
+        if settings.isTimerEnabled && timerRunning && timeRemaining > 0 {
             timeRemaining -= 1
-        } else if timerRunning && timeRemaining == 0 {
+        } else if settings.isTimerEnabled && timerRunning && timeRemaining == 0 {
             viewModel.gameOver = true
             timerRunning = false
         }
@@ -135,7 +116,7 @@ struct GameView: View {
     
     private func resetGame() {
         viewModel.reset()
-        timeRemaining = initialTime
-        timerRunning = isTimerOn
+        timeRemaining = settings.timerSeconds
+        timerRunning = settings.isTimerEnabled
     }
 }

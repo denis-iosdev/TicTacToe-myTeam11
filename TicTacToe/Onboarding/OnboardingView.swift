@@ -6,26 +6,70 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 struct OnboardingView: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @StateObject var storageManager = StorageManager()
+    @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
+    
+    var body: some View {
+        NBNavigationLink(value: Router.help) {
+            EmptyView()
+        }
+        NBNavigationLink(value: Router.setting) {
+            EmptyView()
+        }
+        OnboardingContentView()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolBarNavigationItems(
+                    leftButtonState: .help,
+                    rightButtonHiddeb: false,
+                    leftAction: {
+                        navigator.push(Router.help)
+                    },
+                    rightAction: {
+                        navigator.push(Router.setting)
+                    }
+                )
+            }
+            .nbNavigationDestination(for: Router.self) { value in
+                switch value {
+                case .onbording:
+                    OnboardingView()
+                case .help:
+                    Text("Help")
+                case .setting:
+                    SettingsView(storageManager: storageManager)
+                case .gameMod:
+                    GameModesView()
+                case .game(let isTwoPlayer):
+                    let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer)
+                    GameView(viewModel: gameVM, settings: storageManager)
+                case .leaderboard:
+                    Text("leaderboard")
+                case .result(let resultGame):
+                    ResultView(result: resultGame)
+                }
+            }
+    }
+}
+
+//#Preview {
+//    NavigationView {
+//        OnboardingView()
+//    }
+//}
+
+struct OnboardingContentView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     private let buttonTitle: String = "Let's play"
     private let titleText: String = "TIC-TAC-TOE"
     
     var body: some View {
         VStack {
-            NavigationLink(isActive: $helpViewIsOn) {
-                // TODO: enter your next view here
-                Text("Help view")
-            } label: { }
-            
-            NavigationLink(isActive: $settingViewIsOn) {
-                // TODO: enter your next view here
-                Text("Setting view")
-            } label: { }
-            
             Spacer()
             
             Image(uiImage: .logo)
@@ -38,36 +82,15 @@ struct OnboardingView: View {
             
             Spacer()
             
-            NavigationLink {
-                GameModesView()
-            } label: {
+            NBNavigationLink(value: Router.gameMod) {
                 MainButtonView(title: buttonTitle, style: .fill)
                     .padding(.bottom, isSmallScreen() ? 20 : 0)
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolBarNavigationItems(
-                leftButtonState: .help,
-                rightButtonHiddeb: false,
-                leftAction: {
-                    helpViewIsOn.toggle()
-                },
-                rightAction: {
-                    settingViewIsOn.toggle()
-                }
-            )
         }
     }
     
     func isSmallScreen() -> Bool {
         let screenHeight = UIScreen.main.bounds.height
         return screenHeight <= 667
-    }
-}
-
-#Preview {
-    NavigationView {
-        OnboardingView()
     }
 }

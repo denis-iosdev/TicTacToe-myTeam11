@@ -6,45 +6,30 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var navigator: PathNavigator
+
+    let result: ResultGameModel
+
     @ObservedObject var audioPlayer: AudioPlayer // Получаем переданный аудиоплеер
-        
-    let text: String
-    let imageName: String
-    let playAgain: () -> Void
-    let onBack: () -> Void
-    
-    // Добавляем инициализатор
-        init(text: String, imageName: String, playAgain: @escaping () -> Void, onBack: @escaping () -> Void, audioPlayer: AudioPlayer) {
-            self.text = text
-            self.imageName = imageName
-            self.playAgain = playAgain
-            self.onBack = onBack
-            self.audioPlayer = audioPlayer // Присваиваем аудиоплеер
-        }
-    
     var body: some View {
         VStack {
             Spacer()
             
             VStack {
-                Text(text)
+                Text(result.userName)
                     .font(.system(size: 20, weight: .bold))
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 230, height: 230)
+                ResultImage(retult: result.result)
             }
             
             Spacer()
             
             VStack(spacing: 12) {
                 Button {
-                    playAgain()
-                    dismiss()
+                    navigator.pop()
                 } label: {
                     Text("Play again")
                         .resultButton(color: .playAgainButton)
@@ -52,8 +37,7 @@ struct ResultView: View {
                 }
                 
                 Button {
-                    onBack()
-                    dismiss()
+                    navigator.popTo(Router.gameMod)
                 } label: {
                     Text("Back")
                         .resultButton(color: .appBlue)
@@ -69,7 +53,29 @@ struct ResultView: View {
                 audioPlayer.stopSound() // Воспроизведение музыки при появлении экрана
             }
         }
+        .navigationBarHidden(true)
         .padding(.horizontal, 21)
         .padding(.bottom, 18)
+    }
+}
+
+struct ResultImage: View {
+    let retult: ResultGameModel.Result
+    
+    var body: some View {
+        switch retult {
+        case .win:
+            image
+        case .lose:
+            image
+        case .draw:
+            image
+        }
+    }
+    
+    private var image: some View {
+        Image(retult.imageName)
+            .resizable()
+            .frame(width: 230, height: 230)
     }
 }

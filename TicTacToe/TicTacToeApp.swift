@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 @main
 struct TicTacToeApp: App {
- 
+    
+    @State var path = NBNavigationPath()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NBNavigationStack(path: $path) {
                 OnboardingView()
             }
         }
