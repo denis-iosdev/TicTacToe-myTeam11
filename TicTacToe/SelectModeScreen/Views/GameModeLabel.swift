@@ -17,7 +17,7 @@ struct GameModeLabel: View {
             .padding(.vertical, 20)
             .font(.system(size: 20, weight: .medium))
             .foregroundStyle(.black)
-            .background(Color.buttonBackground)
+            .background(Color.buttonLightBackground)
             .cornerRadius(30)
     }
 }

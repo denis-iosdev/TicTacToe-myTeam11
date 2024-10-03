@@ -40,7 +40,7 @@ struct GameView: View {
                 VStack(spacing: 45) {
                         
                         HStack {
-                            PlayerIconView(text: viewModel.player1.name, image: "xSkin\(settings.xSkin)")
+                            PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
                             
                             Spacer()
                             if settings.isTimerEnabled {
@@ -49,12 +49,12 @@ struct GameView: View {
                             }
                             Spacer()
                             
-                            PlayerIconView(text: viewModel.player2.name, image: "oSkin\(settings.oSkin)")
+                            PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
                         }
                         .foregroundStyle(.appBlack)
 
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece == .x ? "xSkin\(settings.xSkin)" : "oSkin\(settings.oSkin)")
+                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(settings.oSkin)")
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
@@ -87,24 +87,24 @@ struct GameView: View {
     }
     
     @ViewBuilder
-    private func createResultView(text: String, image: String) -> some View {
+    private func createResultView(text: String, result: GameResult) -> some View {
         ResultView(isResultActive: $isResultActive,
                    isGameActive: $isGameActive,
                    text: text,
-                   imageName: image,
+                   result: result,
                    playAgain: { resetGame() })
     }
     
     private func openResultView() -> some View {
         if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
-            return createResultView(text: "Draw!", image: "drawIcon")
+            return createResultView(text: "Draw!", result: .draw)
         } else if viewModel.isTwoPlayerMode {
-            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", image: "winIcon")
+            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
         } else {
             if viewModel.winner == viewModel.player1 {
-                return createResultView(text: "\(viewModel.player1.name) win!", image: "winIcon")
+                return createResultView(text: "\(viewModel.player1.name) win!", result: .win)
             } else {
-                return createResultView(text: "\(viewModel.player1.name) Lose!", image: "loseIcon")
+                return createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
             }
         }
     }

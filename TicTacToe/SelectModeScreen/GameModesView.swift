@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GameModesView: View {
-    @StateObject private var settings = StorageManager()
-    //    @Environment (\.presentationMode) var presentationMode
+    @StateObject var settings = StorageManager()
+    
     @State private var settingViewIsOn: Bool = false
     @State private var isSinglePlayerActive = false
     @State private var isTwoPlayerActive = false
@@ -29,7 +29,7 @@ struct GameModesView: View {
                             Image(.settingIcon)
                         }
                         .fullScreenCover(isPresented: $settingViewIsOn) {
-                            SettingsView(settings: settings)
+                            SettingsView(storageManager: settings)
                         }
                     }
 

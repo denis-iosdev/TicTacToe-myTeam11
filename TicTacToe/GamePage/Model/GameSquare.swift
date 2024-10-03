@@ -13,7 +13,7 @@ struct GameSquare {
     
     func image(gameSettings: StorageManager) -> String? {
         guard let player = player else { return nil }
-        return player.gamePiece == .x ? "xSkin\(gameSettings.xSkin)" : "oSkin\(gameSettings.oSkin)"
+        return player.gamePiece == .x ? "Xskin\(gameSettings.xSkin)" : "Oskin\(gameSettings.oSkin)"
     }
     
     //    var image: String? {
