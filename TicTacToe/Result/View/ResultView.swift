@@ -6,48 +6,29 @@
 //
 
 import SwiftUI
-
-enum GameResult {
-    case win
-    case lose
-    case draw
-}
+import NavigationBackport
 
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.dismiss) var dismiss
-        
-    @Binding var isResultActive: Bool
-    @Binding var isGameActive: Bool
-    
-    let text: String
-    let result: GameResult
-    let playAgain: () -> Void
-    
+    @EnvironmentObject var navigator: PathNavigator
+
+    let result: ResultGameModel
+
     var body: some View {
         VStack {
             Spacer()
             
             VStack {
-                Text(text)
+                Text(result.userName)
                     .font(.system(size: 20, weight: .bold))
-                switch result {
-                case .win:
-                    ResultImage(image: "winIcon")
-                case .lose:
-                    ResultImage(image: "loseIcon")
-                case .draw:
-                    ResultImage(image: "drawIcon")
-                }
-                
+                ResultImage(retult: result.result)
             }
             
             Spacer()
             
             VStack(spacing: 12) {
                 Button {
-                    playAgain()
-                    dismiss()
+                    navigator.pop()
                 } label: {
                     Text("Play again")
                         .resultButton(color: .playAgainButton)
@@ -55,8 +36,7 @@ struct ResultView: View {
                 }
                 
                 Button {
-                    isResultActive = false
-                    isGameActive = false
+                    navigator.popTo(Router.gameMod)
                 } label: {
                     Text("Back")
                         .resultButton(color: .appBlue)
@@ -69,17 +49,28 @@ struct ResultView: View {
             }
             .font(.system(size: 20, weight: .medium))
         }
-        .navigationBarBackButtonHidden()
+        .navigationBarHidden(true)
         .padding(.horizontal, 21)
         .padding(.bottom, 18)
     }
 }
 
 struct ResultImage: View {
-    let image: String
+    let retult: ResultGameModel.Result
     
     var body: some View {
-        Image(image)
+        switch retult {
+        case .win:
+            image
+        case .lose:
+            image
+        case .draw:
+            image
+        }
+    }
+    
+    private var image: some View {
+        Image(retult.imageName)
             .resizable()
             .frame(width: 230, height: 230)
     }

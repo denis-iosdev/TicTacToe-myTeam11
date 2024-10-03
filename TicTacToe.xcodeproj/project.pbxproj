@@ -41,7 +41,11 @@
 		CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */; };
 		CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */; };
 		CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */; };
+		CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE6F32CAEB61D00684647 /* Router.swift */; };
+		CE6DE6F72CAEC16C00684647 /* ResultGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */; };
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
+		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
+		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +84,10 @@
 		CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppContentView.swift; sourceTree = "<group>"; };
 		CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLinkWithAction.swift; sourceTree = "<group>"; };
+		CE6DE6F32CAEB61D00684647 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGameModel.swift; sourceTree = "<group>"; };
 		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
+		CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNativeNavAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,12 +128,13 @@
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
 				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
-				480507422CAC5ED6005EB458 /* SelectModeScreen */,
+				480507422CAC5ED6005EB458 /* GemeMod */,
 				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
 				22D093752CADAB0B006644C8 /* Rules */,
 				79B40DCA2CAC74ED0062B8C7 /* Services */,
 				79B40DC72CAC73B50062B8C7 /* Models */,
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,
+				CECFF1AC2CAEA4970082C2DC /* NativeNavTest */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
 				2275D6022CA9931A00C16C8B /* Preview Content */,
 			);
@@ -156,13 +165,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		480507422CAC5ED6005EB458 /* SelectModeScreen */ = {
+		480507422CAC5ED6005EB458 /* GemeMod */ = {
 			isa = PBXGroup;
 			children = (
 				480507402CAC5ED6005EB458 /* Views */,
 				480507412CAC5ED6005EB458 /* GameModesView.swift */,
 			);
-			path = SelectModeScreen;
+			path = GemeMod;
 			sourceTree = "<group>";
 		};
 		48075E8D2CAAFD0800811224 /* View */ = {
@@ -195,6 +204,7 @@
 		4876F0242CAD2F9800C13A46 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				CE6DE6F52CAEC15600684647 /* Model */,
 				4876F0252CAD2FB400C13A46 /* View */,
 			);
 			path = Result;
@@ -275,6 +285,7 @@
 			children = (
 				CE0F1B752CA9C4F300EFADE5 /* MainButtonView.swift */,
 				CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */,
+				CE6DE6F32CAEB61D00684647 /* Router.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -312,6 +323,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CE6DE6F52CAEC15600684647 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CECFF1AC2CAEA4970082C2DC /* NativeNavTest */ = {
+			isa = PBXGroup;
+			children = (
+				CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */,
+			);
+			path = NativeNavTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -328,6 +355,9 @@
 			dependencies = (
 			);
 			name = TicTacToe;
+			packageProductDependencies = (
+				CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */,
+			);
 			productName = TicTacToe;
 			productReference = 2275D5F92CA9931800C16C8B /* TicTacToe.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +386,9 @@
 				Base,
 			);
 			mainGroup = 2275D5F02CA9931800C16C8B;
+			packageReferences = (
+				CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */,
+			);
 			productRefGroup = 2275D5FA2CA9931800C16C8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -387,6 +420,7 @@
 				79B40DCC2CAC74FC0062B8C7 /* StorageManager.swift in Sources */,
 				48075E902CAAFD9300811224 /* PlayerIconView.swift in Sources */,
 				48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */,
+				CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */,
 				CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */,
 				4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */,
 				4876F0272CAD2FC500C13A46 /* ResultView.swift in Sources */,
@@ -400,6 +434,7 @@
 				CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */,
 				CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */,
 				480507442CAC5ED6005EB458 /* GameModeLabel.swift in Sources */,
+				CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */,
 				480507452CAC5ED6005EB458 /* GameModesView.swift in Sources */,
 				2275D5FD2CA9931800C16C8B /* TicTacToeApp.swift in Sources */,
 				2275D60B2CAAD31C00C16C8B /* RulesView.swift in Sources */,
@@ -413,6 +448,7 @@
 				CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */,
 				CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */,
 				484AFD6F2CAD5C02007CD7B4 /* ResultButton.swift in Sources */,
+				CE6DE6F72CAEC16C00684647 /* ResultGameModel.swift in Sources */,
 				484AFD6C2CAD4D43007CD7B4 /* View+Ex.swift in Sources */,
 				7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */,
 			);
@@ -630,6 +666,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnpatrickmorgan/NavigationBackport";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */;
+			productName = NavigationBackport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2275D5F12CA9931800C16C8B /* Project object */;
 }

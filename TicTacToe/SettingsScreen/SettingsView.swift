@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import NavigationBackport
 
 struct SettingsView: View {
+    @EnvironmentObject var navigator: PathNavigator
     @ObservedObject var storageManager: StorageManager
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -29,15 +30,13 @@ struct SettingsView: View {
                 }
                 .padding()
                 .animation(.easeInOut(duration: 0.3), value: storageManager.settings.isTimerEnabled)
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
                 .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button() {
-                            dismiss()
-                        } label: {
-                            Image("backButtonIconImage")
-                        }
-                    }
+                    ToolBarNavigationItems(
+                        leftAction: { navigator.pop() }
+                    )
+                    
                 }
             }
         }
