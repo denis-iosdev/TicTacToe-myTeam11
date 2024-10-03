@@ -16,7 +16,7 @@ struct GameView: View {
     @State private var timeRemaining = 0
     @State private var isResultActive = false
     
-    @Binding var isGameActive: Bool
+//    @Binding var isGameActive: Bool
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     

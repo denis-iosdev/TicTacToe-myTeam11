@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameModesView: View {
-    @StateObject var settings = StorageManager()
+//    @StateObject var settings = StorageManager()
     
     @State private var settingViewIsOn: Bool = false
     @State private var isSinglePlayerActive = false

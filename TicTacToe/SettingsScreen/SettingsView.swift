@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var storageManager: StorageManager
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct SettingsView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button() {
-                            dismiss()
+//                            dismiss()
                         } label: {
                             Image("backButtonIconImage")
                         }

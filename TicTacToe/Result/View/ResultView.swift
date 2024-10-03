@@ -7,47 +7,33 @@
 
 import SwiftUI
 
-enum GameResult {
-    case win
-    case lose
-    case draw
-}
-
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
         
-    @Binding var isResultActive: Bool
-    @Binding var isGameActive: Bool
+//    @Binding var isResultActive: Bool
+//    @Binding var isGameActive: Bool
     
-    let text: String
-    let result: GameResult
-    let playAgain: () -> Void
+//    let text: String
+    let result: ResultGameModel
+//    let playAgain: () -> Void
     
     var body: some View {
         VStack {
             Spacer()
             
             VStack {
-                Text(text)
+                Text(result.userName)
                     .font(.system(size: 20, weight: .bold))
-                switch result {
-                case .win:
-                    ResultImage(image: "winIcon")
-                case .lose:
-                    ResultImage(image: "loseIcon")
-                case .draw:
-                    ResultImage(image: "drawIcon")
-                }
-                
+                ResultImage(retult: result.result)
             }
             
             Spacer()
             
             VStack(spacing: 12) {
                 Button {
-                    playAgain()
-                    dismiss()
+//                    playAgain()
+//                    dismiss()
                 } label: {
                     Text("Play again")
                         .resultButton(color: .playAgainButton)
@@ -55,8 +41,8 @@ struct ResultView: View {
                 }
                 
                 Button {
-                    isResultActive = false
-                    isGameActive = false
+//                    isResultActive = false
+//                    isGameActive = false
                 } label: {
                     Text("Back")
                         .resultButton(color: .appBlue)
@@ -76,10 +62,21 @@ struct ResultView: View {
 }
 
 struct ResultImage: View {
-    let image: String
+    let retult: ResultGameModel.Result
     
     var body: some View {
-        Image(image)
+        switch retult {
+        case .win:
+            image
+        case .lose:
+            image
+        case .draw:
+            image
+        }
+    }
+    
+    private var image: some View {
+        Image(retult.imageName)
             .resizable()
             .frame(width: 230, height: 230)
     }

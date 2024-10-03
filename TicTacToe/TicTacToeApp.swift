@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct TicTacToeApp: App {
- 
+    
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                OnboardingView()
-            }
+            OnboardingView()
         }
     }
 }

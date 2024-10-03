@@ -15,7 +15,7 @@ enum Router: Hashable {
     case game(Bool)
     case difflvl
     case leaderboard
-    case result(ResultGame)
+    case result(ResultGameModel)
 }
 
 struct ResultGame: Hashable {
@@ -53,4 +53,3 @@ struct ResultGame: Hashable {
 // game
 // <-- (back) gameMod
 // --> result (String, GameResult)
-

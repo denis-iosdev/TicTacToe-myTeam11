@@ -41,6 +41,7 @@
 		CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */; };
 		CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */; };
 		CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE6F32CAEB61D00684647 /* Router.swift */; };
+		CE6DE6F72CAEC16C00684647 /* ResultGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */; };
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
 		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
@@ -82,6 +83,7 @@
 		CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLinkWithAction.swift; sourceTree = "<group>"; };
 		CE6DE6F32CAEB61D00684647 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGameModel.swift; sourceTree = "<group>"; };
 		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
 		CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNativeNavAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +126,7 @@
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
 				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
-				480507422CAC5ED6005EB458 /* SelectModeScreen */,
+				480507422CAC5ED6005EB458 /* GemeMod */,
 				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
 				79B40DCA2CAC74ED0062B8C7 /* Services */,
 				79B40DC72CAC73B50062B8C7 /* Models */,
@@ -152,13 +154,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		480507422CAC5ED6005EB458 /* SelectModeScreen */ = {
+		480507422CAC5ED6005EB458 /* GemeMod */ = {
 			isa = PBXGroup;
 			children = (
 				480507402CAC5ED6005EB458 /* Views */,
 				480507412CAC5ED6005EB458 /* GameModesView.swift */,
 			);
-			path = SelectModeScreen;
+			path = GemeMod;
 			sourceTree = "<group>";
 		};
 		48075E8D2CAAFD0800811224 /* View */ = {
@@ -191,6 +193,7 @@
 		4876F0242CAD2F9800C13A46 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				CE6DE6F52CAEC15600684647 /* Model */,
 				4876F0252CAD2FB400C13A46 /* View */,
 			);
 			path = Result;
@@ -309,6 +312,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		CE6DE6F52CAEC15600684647 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CECFF1AC2CAEA4970082C2DC /* NativeNavTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +436,7 @@
 				CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */,
 				CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */,
 				484AFD6F2CAD5C02007CD7B4 /* ResultButton.swift in Sources */,
+				CE6DE6F72CAEC16C00684647 /* ResultGameModel.swift in Sources */,
 				484AFD6C2CAD4D43007CD7B4 /* View+Ex.swift in Sources */,
 				7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */,
 			);
