@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RulesView: View {
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -31,24 +31,25 @@ struct RulesView: View {
                     RuleItem(number: "4",
                              text: "The first player to align three of their markers horizontally, vertically, or diagonally wins.\nExamples of Winning Combinations:\nHorizontal: Squares 1, 2, 3 or 4, 5, 6 or 7, 8, 9\nVertical: Squares 1, 4, 7 or 2, 5, 8 or 3, 6, 9\nDiagonal: Squares 1, 5, 9 or 3, 5, 7.")
                 }
-                .padding(.top, 24)
+//                .padding(.top, 24)
                 .toolbar {
-                    ToolbarItemGroup(placement: .topBarLeading) {
-                        Button(action: {dismiss()}) {
-                            Image("Back-Icon").resizable().frame(width: 30, height: 22)
-                        }
-                        
-                        ForEach(0 ..< 9) { item in
-                            Spacer()
-                        }
-                        
-                        Text("How to play")
-                            .font(.custom("SF Pro Display", size: 24).weight(.bold))
-                            .foregroundStyle(Color(red: 0.14,
-                                                   green: 0.16,
-                                                   blue: 0.27))
-                            .multilineTextAlignment(.center)
-                    }
+                    ToolBarNavigationItems(title: "How to play", leftButtonState: .back, rightButtonHiddeb: true)
+//                    ToolbarItemGroup(placement: .topBarLeading) {
+//                        Button(action: {dismiss()}) {
+//                            Image("Back-Icon").resizable().frame(width: 30, height: 22)
+//                        }
+//                        
+//                        ForEach(0 ..< 9) { item in
+//                            Spacer()
+//                        }
+//                        
+//                        Text("How to play")
+//                            .font(.custom("SF Pro Display", size: 24).weight(.bold))
+//                            .foregroundStyle(Color(red: 0.14,
+//                                                   green: 0.16,
+//                                                   blue: 0.27))
+//                            .multilineTextAlignment(.center)
+//                    }
                 }
             }
         }
