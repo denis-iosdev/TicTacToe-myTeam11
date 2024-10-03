@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "SinglePlayerButtonIcon.png",
+      "filename" : "Isolation_Mode.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "SinglePlayerButtonIcon 1.png",
+      "filename" : "Isolation_Mode@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "SinglePlayerButtonIcon 2.png",
+      "filename" : "Isolation_Mode@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

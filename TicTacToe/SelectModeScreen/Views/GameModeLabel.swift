@@ -13,10 +13,11 @@ struct GameModeLabel: View {
     
     var body: some View {
         Label(title, image: iconName)
-            .padding()
-            .font(.system(size: 20))
+            .padding(.horizontal, 45)
+            .padding(.vertical, 20)
+            .font(.system(size: 20, weight: .medium))
             .foregroundStyle(.black)
-            .background(Color.buttonBackground)
+            .background(Color.buttonLightBackground)
             .cornerRadius(30)
     }
 }

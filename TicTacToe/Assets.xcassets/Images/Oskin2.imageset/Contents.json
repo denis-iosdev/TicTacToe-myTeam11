@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "SinglePlayerButtonIcon.png",
+      "filename" : "Oskin4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "SinglePlayerButtonIcon 1.png",
+      "filename" : "Oskin4@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "SinglePlayerButtonIcon 2.png",
+      "filename" : "Oskin4@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

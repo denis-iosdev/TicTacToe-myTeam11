@@ -9,9 +9,9 @@ import Foundation
 
 struct Player: Equatable {
     
-    enum GamePiece: String {
-        case x = "Xskin1"
-        case o = "Oskin1"
+    enum GamePiece {
+        case x
+        case o
     }
     
     let gamePiece: GamePiece
