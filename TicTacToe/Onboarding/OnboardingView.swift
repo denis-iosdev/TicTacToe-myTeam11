@@ -9,30 +9,29 @@ import SwiftUI
 import NavigationBackport
 
 struct OnboardingView: View {
-    @State var path = NBNavigationPath()
     @StateObject var storageManager = StorageManager()
+    @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
     
     var body: some View {
-        NBNavigationStack(path: $path) {
-            NBNavigationLink(value: Router.help) {
-                EmptyView()
-            }
-            NBNavigationLink(value: Router.setting) {
-                EmptyView()
-            }
-            OnboardingContentView()
+        NBNavigationLink(value: Router.help) {
+            EmptyView()
+        }
+        NBNavigationLink(value: Router.setting) {
+            EmptyView()
+        }
+        OnboardingContentView()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolBarNavigationItems(
                     leftButtonState: .help,
                     rightButtonHiddeb: false,
                     leftAction: {
-                        helpViewIsOn.toggle()
+                        navigator.push(Router.help)
                     },
                     rightAction: {
-                        settingViewIsOn.toggle()
+                        navigator.push(Router.setting)
                     }
                 )
             }
@@ -49,23 +48,20 @@ struct OnboardingView: View {
                 case .game(let bool):
                     let gameVM = GameViewModel(isTwoPlayerMode: bool)
                     GameView(viewModel: gameVM, settings: storageManager)
-                case .difflvl:
-                    Text("diff lvl")
                 case .leaderboard:
                     Text("leaderboard")
                 case .result(let resultGame):
                     ResultView(result: resultGame)
                 }
             }
-        }
     }
 }
 
-#Preview {
-    NavigationView {
-        OnboardingView()
-    }
-}
+//#Preview {
+//    NavigationView {
+//        OnboardingView()
+//    }
+//}
 
 struct OnboardingContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass

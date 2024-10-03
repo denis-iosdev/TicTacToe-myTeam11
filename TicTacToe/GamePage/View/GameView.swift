@@ -86,16 +86,23 @@ struct GameView: View {
         NavigationLink(destination: openResultView(), isActive: $isResultActive, label: {})
     }
     
-    @ViewBuilder
-    private func createResultView(text: String, result: GameResult) -> some View {
-        ResultView(isResultActive: $isResultActive,
-                   isGameActive: $isGameActive,
-                   text: text,
-                   result: result,
-                   playAgain: { resetGame() })
+//    @ViewBuilder
+    private func createResultView(text: String, result: ResultGameModel.Result) -> some View {
+        
+        let result = ResultGameModel(userName: text, result: result)
+        
+        return ResultView(result: result)
+        
+//        return ResultView(
+//            isResultActive: $isResultActive,
+//                   isGameActive: $isGameActive,
+//                   text: text,
+//                   result: result,
+//                   playAgain: { resetGame() })
     }
     
     private func openResultView() -> some View {
+        
         if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
             return createResultView(text: "Draw!", result: .draw)
         } else if viewModel.isTwoPlayerMode {
