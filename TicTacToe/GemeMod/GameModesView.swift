@@ -49,7 +49,6 @@ struct GameModesView: View {
             
             Spacer()
         }
-        .padding(.horizontal, 21)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
