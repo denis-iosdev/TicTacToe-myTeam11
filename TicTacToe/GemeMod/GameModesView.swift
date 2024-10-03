@@ -50,7 +50,7 @@ struct GameModesView: View {
                     MenuButtonsLabel(
                         title: "Leaderboard",
                         iconName: "LeaderboardButtonIcon",
-                        colorButton: Color.buttonLightBackground
+                        colorButton: Color.leaderboardButton
                     )
                 }
             }
