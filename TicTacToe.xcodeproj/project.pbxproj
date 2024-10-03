@@ -37,6 +37,7 @@
 		CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */; };
 		CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */; };
 		CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */; };
+		CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE6F32CAEB61D00684647 /* Router.swift */; };
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
 		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
@@ -74,6 +75,7 @@
 		CE0F1B852CAB687300EFADE5 /* TestAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppContentView.swift; sourceTree = "<group>"; };
 		CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationLinkWithAction.swift; sourceTree = "<group>"; };
+		CE6DE6F32CAEB61D00684647 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
 		CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNativeNavAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +246,7 @@
 			children = (
 				CE0F1B752CA9C4F300EFADE5 /* MainButtonView.swift */,
 				CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */,
+				CE6DE6F32CAEB61D00684647 /* Router.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				79B40DCC2CAC74FC0062B8C7 /* StorageManager.swift in Sources */,
 				48075E902CAAFD9300811224 /* PlayerIconView.swift in Sources */,
 				48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */,
+				CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */,
 				CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */,
 				4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */,
 				4876F0272CAD2FC500C13A46 /* ResultView.swift in Sources */,
