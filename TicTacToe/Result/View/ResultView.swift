@@ -10,11 +10,22 @@ import SwiftUI
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
+    
+    @ObservedObject var audioPlayer: AudioPlayer // Получаем переданный аудиоплеер
         
     let text: String
     let imageName: String
     let playAgain: () -> Void
     let onBack: () -> Void
+    
+    // Добавляем инициализатор
+        init(text: String, imageName: String, playAgain: @escaping () -> Void, onBack: @escaping () -> Void, audioPlayer: AudioPlayer) {
+            self.text = text
+            self.imageName = imageName
+            self.playAgain = playAgain
+            self.onBack = onBack
+            self.audioPlayer = audioPlayer // Присваиваем аудиоплеер
+        }
     
     var body: some View {
         VStack {
@@ -54,6 +65,9 @@ struct ResultView: View {
                 }
             }
             .font(.system(size: 20, weight: .medium))
+            .onAppear {
+                audioPlayer.stopSound() // Воспроизведение музыки при появлении экрана
+            }
         }
         .padding(.horizontal, 21)
         .padding(.bottom, 18)

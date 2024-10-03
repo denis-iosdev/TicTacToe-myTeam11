@@ -104,7 +104,10 @@ struct GameView: View {
         ResultView(text: text,
                    imageName: image,
                    playAgain: { resetGame() },
-                   onBack: { isGameActive = false })
+                   onBack: { isGameActive = false },
+                   audioPlayer: audioPlayer // Передаем аудиоплеер
+        )
+                    
     }
     
     private func openResultView() -> some View {
