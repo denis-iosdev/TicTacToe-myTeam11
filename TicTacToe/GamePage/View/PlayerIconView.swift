@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlayerIconView: View {
     let text: String
-    let isTimerOn: Bool
     let image: String
     
     var body: some View {

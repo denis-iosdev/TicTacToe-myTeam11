@@ -23,7 +23,7 @@ struct ToolBarNavigationItems: ToolbarContent {
         }
     }
     
-    @Environment (\.presentationMode) private var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     let title: String
     let leftButtonState: ToolBarLeftItemState
     let rightButtonHiddeb: Bool

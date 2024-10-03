@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlayingFieldView: View {
+    @ObservedObject var settings: StorageManager
+    
     let viewModel: GameViewModel
     
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 3)
@@ -36,7 +38,7 @@ struct PlayingFieldView: View {
                         Button {
                             viewModel.makeMove(index: index)
                         } label: {
-                            if let imageName = viewModel.gameBoard[index].image {
+                            if let imageName = viewModel.gameBoard[index].image(gameSettings: settings) {
                                 Image(imageName)
                                     .resizable()
                                     .padding(10)
