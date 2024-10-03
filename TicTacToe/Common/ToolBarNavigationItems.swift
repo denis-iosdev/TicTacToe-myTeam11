@@ -48,7 +48,7 @@ struct ToolBarNavigationItems: ToolbarContent {
     
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            button(leftButtonState.image, action: leftAction)
+            leftButton
         }
         ToolbarItem(placement: .principal) {
             Text(title)
@@ -57,21 +57,30 @@ struct ToolBarNavigationItems: ToolbarContent {
         }
         ToolbarItem(placement: .topBarTrailing) {
             if !rightButtonHiddeb {
-                button(.settingButtonIcon, action: rightAction)
+                rightButton
             }
         }
     }
     
-    private func button(_ uiImage: UIImage, action: VoidBlock?) -> some View {
+    private var leftButton: some View {
         Button {
             switch leftButtonState {
             case .back:
                 presentationMode.wrappedValue.dismiss()
             case .help:
-                action?()
+                leftAction?()
             }
         } label: {
-            Image(uiImage: uiImage)
+            Image(uiImage: leftButtonState.image)
+                .padding(.bottom, 4)
+        }
+    }
+    
+    private var rightButton: some View {
+        Button {
+            rightAction?()
+        } label: {
+            Image(uiImage: .settingIcon)
                 .padding(.bottom, 4)
         }
     }

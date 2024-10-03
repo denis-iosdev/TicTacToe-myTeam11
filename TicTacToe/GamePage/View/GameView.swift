@@ -15,7 +15,7 @@ struct GameView: View {
     @State private var timeRemaining = 0
     @State private var showResult = false
     
-    @Binding var isGameActive: Bool
+//    @Binding var isGameActive: Bool
     
     var isTimerOn: Bool = true
     var initialTime: Int = 65
@@ -94,7 +94,8 @@ struct GameView: View {
         ResultView(text: text,
                    imageName: image,
                    playAgain: { resetGame() },
-                   onBack: { isGameActive = false })
+                   onBack: { dismiss() }
+                   )
     }
     
     private func openResultView() -> some View {

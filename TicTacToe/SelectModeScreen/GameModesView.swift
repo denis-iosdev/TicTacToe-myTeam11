@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct GameModesView: View {
-
-//    @Environment (\.presentationMode) var presentationMode
     @State private var settingViewIsOn: Bool = false
     @State private var isSinglePlayerActive = false
     @State private var isTwoPlayerActive = false
@@ -21,38 +19,38 @@ struct GameModesView: View {
             
             VStack {
                 NavigationLink(isActive: $settingViewIsOn) {
-                    // TODO: enter your next view here
-                    Text("Setting view")
+                    SettingsView()
                 } label: { }
                 
                 Spacer()
                 
-                VStack(spacing: 20) {
-                    Text("Select Game")
-                        .font(.system(size: 24))
-                        .fontWeight(.semibold)
+                VStack {
+                    Spacer()
                     
-                    NavigationLink(
-                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false), isGameActive: $isTwoPlayerActive),
-                        isActive: $isTwoPlayerActive,
-                        label: {
+                    VStack(spacing: 20) {
+                        Text("Select Game")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                        
+                        NavigationLink {
+                            GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
+                        } label: {
                             GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
-                        })
-                    
-                    NavigationLink(
-                        destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true), isGameActive: $isSinglePlayerActive),
-                        isActive: $isSinglePlayerActive,
-                        label: {
+                        }
+                        
+                        NavigationLink {
+                            GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
+                        } label: {
                             GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
-                        })
+                        }
+                    }
+                    .padding()
+                    .background(.white)
+                    .cornerRadius(30)
+                    .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
                     
+                    Spacer()
                 }
-                .padding(20)
-                .background(.white)
-                .cornerRadius(30)
-                .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
-                
-                Spacer()
             }
         }
         .navigationBarTitleDisplayMode(.inline)
