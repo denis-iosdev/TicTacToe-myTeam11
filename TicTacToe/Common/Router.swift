@@ -17,11 +17,6 @@ enum Router: Hashable {
     case result(ResultGameModel)
 }
 
-struct ResultGame: Hashable {
-    let name: String
-    let image: String
-}
-
 // window
 // --> Onbording (done)
 // Onbording

@@ -15,7 +15,6 @@ struct GameView: View {
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
-//    @State private var isResultActive = false
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -78,7 +77,6 @@ struct GameView: View {
         }
     }
     
-//    @ViewBuilder
     private func createResultView(text: String, result: ResultGameModel.Result) {
         let result = ResultGameModel(userName: text, result: result)
         navigator.push(Router.result(result))
