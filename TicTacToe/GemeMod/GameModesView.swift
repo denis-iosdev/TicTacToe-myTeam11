@@ -35,11 +35,20 @@ struct GameModesView: View {
                 }
                 
                 Button {
-                    navigator.push(Router.game(true))
                 } label: {
                     MenuButtonsLabel(
                         title: "Two Players",
                         iconName: "TwoPlayersButtonIcon",
+                        colorButton: Color.buttonLightBackground
+                    )
+                }
+                
+                Button {
+                    // TODO: open modally DifficultyLevel
+                } label: {
+                    MenuButtonsLabel(
+                        title: "Difficulty Level",
+                        iconName: "DifficultyLevelButtonIcon",
                         colorButton: Color.buttonLightBackground
                     )
                 }
