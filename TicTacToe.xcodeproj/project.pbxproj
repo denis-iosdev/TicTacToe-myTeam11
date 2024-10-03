@@ -39,6 +39,7 @@
 		CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F1B8C2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift */; };
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
+		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +305,9 @@
 			dependencies = (
 			);
 			name = TicTacToe;
+			packageProductDependencies = (
+				CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */,
+			);
 			productName = TicTacToe;
 			productReference = 2275D5F92CA9931800C16C8B /* TicTacToe.app */;
 			productType = "com.apple.product-type.application";
@@ -331,6 +336,9 @@
 				Base,
 			);
 			mainGroup = 2275D5F02CA9931800C16C8B;
+			packageReferences = (
+				CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */,
+			);
 			productRefGroup = 2275D5FA2CA9931800C16C8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnpatrickmorgan/NavigationBackport";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CECFF1AD2CAEA5D60082C2DC /* XCRemoteSwiftPackageReference "NavigationBackport" */;
+			productName = NavigationBackport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2275D5F12CA9931800C16C8B /* Project object */;
 }
