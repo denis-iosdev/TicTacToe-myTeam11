@@ -27,18 +27,30 @@ struct GameModesView: View {
                 Button {
                     navigator.push(Router.game(false))
                 } label: {
-                    GameModeLabel(
+                    MenuButtonsLabel(
                         title: "Single Player",
-                        iconName: "SinglePlayerButtonIcon"
+                        iconName: "SinglePlayerButtonIcon",
+                        colorButton: Color.buttonLightBackground
                     )
                 }
                 
                 Button {
                     navigator.push(Router.game(true))
                 } label: {
-                    GameModeLabel(
+                    MenuButtonsLabel(
                         title: "Two Players",
-                        iconName: "TwoPlayersButtonIcon"
+                        iconName: "TwoPlayersButtonIcon",
+                        colorButton: Color.buttonLightBackground
+                    )
+                }
+                
+                Button {
+                    navigator.push(Router.leaderboard)
+                } label: {
+                    MenuButtonsLabel(
+                        title: "Leaderboard",
+                        iconName: "LeaderboardButtonIcon",
+                        colorButton: Color.buttonLightBackground
                     )
                 }
             }
