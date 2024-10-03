@@ -21,9 +21,9 @@ struct OnboardingView: View {
                 Text("Help view")
             } label: { }
             
-            NavigationLink(isActive: $settingViewIsOn) {
-                SettingsView()
-            } label: { }
+//            NavigationLink(isActive: $settingViewIsOn) {
+//                SettingsView()
+//            } label: { }
             
             Spacer()
             

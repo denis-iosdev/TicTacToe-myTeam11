@@ -7,14 +7,22 @@
 
 import SwiftUI
 
+enum GameResult {
+    case win
+    case lose
+    case draw
+}
+
 struct ResultView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
         
+    @Binding var isResultActive: Bool
+    @Binding var isGameActive: Bool
+    
     let text: String
-    let imageName: String
+    let result: GameResult
     let playAgain: () -> Void
-    let onBack: () -> Void
     
     var body: some View {
         VStack {
@@ -23,9 +31,15 @@ struct ResultView: View {
             VStack {
                 Text(text)
                     .font(.system(size: 20, weight: .bold))
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 230, height: 230)
+                switch result {
+                case .win:
+                    ResultImage(image: "winIcon")
+                case .lose:
+                    ResultImage(image: "loseIcon")
+                case .draw:
+                    ResultImage(image: "drawIcon")
+                }
+                
             }
             
             Spacer()
@@ -41,8 +55,8 @@ struct ResultView: View {
                 }
                 
                 Button {
-                    onBack()
-                    dismiss()
+                    isResultActive = false
+                    isGameActive = false
                 } label: {
                     Text("Back")
                         .resultButton(color: .appBlue)
@@ -55,7 +69,18 @@ struct ResultView: View {
             }
             .font(.system(size: 20, weight: .medium))
         }
+        .navigationBarBackButtonHidden()
         .padding(.horizontal, 21)
         .padding(.bottom, 18)
+    }
+}
+
+struct ResultImage: View {
+    let image: String
+    
+    var body: some View {
+        Image(image)
+            .resizable()
+            .frame(width: 230, height: 230)
     }
 }

@@ -9,16 +9,15 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
+    @ObservedObject var settings: StorageManager
     @Environment(\.dismiss) var dismiss
     
     @State private var timerRunning = false
     @State private var timeRemaining = 0
-    @State private var showResult = false
+    @State private var isResultActive = false
     
-//    @Binding var isGameActive: Bool
+    @Binding var isGameActive: Bool
     
-    var isTimerOn: Bool = true
-    var initialTime: Int = 65
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -41,27 +40,27 @@ struct GameView: View {
                 VStack(spacing: 45) {
                         
                         HStack {
-                            PlayerIconView(text: viewModel.player1.name, isTimerOn: isTimerOn, image: viewModel.player1.gamePiece.rawValue)
+                            PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
                             
                             Spacer()
-                            if isTimerOn {
+                            if settings.isTimerEnabled {
                                 Text(timeRemaining.timeFormatter)
                                     .font(.system(size: 20, weight: .bold))
                             }
                             Spacer()
                             
-                            PlayerIconView(text: viewModel.player2.name, isTimerOn: isTimerOn, image: viewModel.player2.gamePiece.rawValue)
+                            PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
                         }
                         .foregroundStyle(.appBlack)
 
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece.rawValue)
+                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(settings.oSkin)")
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
                     }
                     
-                    PlayingFieldView(viewModel: viewModel)
+                    PlayingFieldView(settings: settings, viewModel: viewModel)
                     
                     Spacer()
                 }
@@ -80,42 +79,40 @@ struct GameView: View {
             if viewModel.gameOver {
                 timerRunning = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    showResult = true
+                    isResultActive = true
                 }
             }
         }
-        .fullScreenCover(isPresented: $showResult) {
-            openResultView()
-        }
+        NavigationLink(destination: openResultView(), isActive: $isResultActive, label: {})
     }
     
     @ViewBuilder
-    private func createResultView(text: String, image: String) -> some View {
-        ResultView(text: text,
-                   imageName: image,
-                   playAgain: { resetGame() },
-                   onBack: { dismiss() }
-                   )
+    private func createResultView(text: String, result: GameResult) -> some View {
+        ResultView(isResultActive: $isResultActive,
+                   isGameActive: $isGameActive,
+                   text: text,
+                   result: result,
+                   playAgain: { resetGame() })
     }
     
     private func openResultView() -> some View {
-        if viewModel.possibleMoves.isEmpty || (isTimerOn && timeRemaining == 0) {
-            return createResultView(text: "Draw!", image: "drawIcon")
+        if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
+            return createResultView(text: "Draw!", result: .draw)
         } else if viewModel.isTwoPlayerMode {
-            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", image: "winIcon")
+            return createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
         } else {
             if viewModel.winner == viewModel.player1 {
-                return createResultView(text: "\(viewModel.player1.name) win!", image: "winIcon")
+                return createResultView(text: "\(viewModel.player1.name) win!", result: .win)
             } else {
-                return createResultView(text: "\(viewModel.player1.name) Lose!", image: "loseIcon")
+                return createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
             }
         }
     }
     
     private func timerSetting() {
-        if timerRunning && timeRemaining > 0 {
+        if settings.isTimerEnabled && timerRunning && timeRemaining > 0 {
             timeRemaining -= 1
-        } else if timerRunning && timeRemaining == 0 {
+        } else if settings.isTimerEnabled && timerRunning && timeRemaining == 0 {
             viewModel.gameOver = true
             timerRunning = false
         }
@@ -123,7 +120,7 @@ struct GameView: View {
     
     private func resetGame() {
         viewModel.reset()
-        timeRemaining = initialTime
-        timerRunning = isTimerOn
+        timeRemaining = settings.timerSeconds
+        timerRunning = settings.isTimerEnabled
     }
 }

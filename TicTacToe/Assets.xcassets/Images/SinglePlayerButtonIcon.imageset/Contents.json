@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Single-Player-Icon.png",
+      "filename" : "SinglePlayerButtonIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "SinglePlayerButtonIcon 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "SinglePlayerButtonIcon 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

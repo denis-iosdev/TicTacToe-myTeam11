@@ -13,10 +13,9 @@ struct GameModeLabel: View {
     
     var body: some View {
         Label(title, image: iconName)
-            .padding()
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
-            .font(.system(size: 20))
+            .padding(.horizontal, 45)
+            .padding(.vertical, 20)
+            .font(.system(size: 20, weight: .medium))
             .foregroundStyle(.black)
             .background(Color.buttonLightBackground)
             .cornerRadius(30)

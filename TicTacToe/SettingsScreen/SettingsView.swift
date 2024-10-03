@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject private var storageManager = StorageManager()
+    @ObservedObject var storageManager: StorageManager
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -42,8 +42,4 @@ struct SettingsView: View {
             }
         }
     }
-}
-
-#Preview {
-    SettingsView()
 }
