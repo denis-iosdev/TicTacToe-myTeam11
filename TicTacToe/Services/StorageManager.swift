@@ -8,10 +8,10 @@
 import SwiftUI
 
 final class StorageManager: ObservableObject {
-    @AppStorage("isTimerEnabled") private var isTimerEnabled = false
-    @AppStorage("timerSeconds") private var timerSeconds = 60
-    @AppStorage("xSkin") private var xSkin = 1
-    @AppStorage("oSkin") private var oSkin = 1
+    @AppStorage("isTimerEnabled") var isTimerEnabled = false
+    @AppStorage("timerSeconds") var timerSeconds = 60
+    @AppStorage("xSkin") var xSkin = 1
+    @AppStorage("oSkin") var oSkin = 1
     
     var settings: GameSettings {
         get {
@@ -27,15 +27,5 @@ final class StorageManager: ObservableObject {
             xSkin = newValue.xSkin
             oSkin = newValue.oSkin
         }
-    }
-    
-    func updateTimer(isEnabled: Bool, seconds: Int?) {
-        isTimerEnabled = isEnabled
-        timerSeconds = seconds ?? 60
-    }
-    
-    func updateSkins(newXSkin: Int, newOSkin: Int) {
-        xSkin = newXSkin
-        oSkin = newOSkin
     }
 }

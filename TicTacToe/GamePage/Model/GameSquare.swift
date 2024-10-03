@@ -11,11 +11,16 @@ struct GameSquare {
     var index: Int
     var player: Player?
     
-    var image: String? {
-        player?.gamePiece.rawValue
+    func image(gameSettings: StorageManager) -> String? {
+        guard let player = player else { return nil }
+        return player.gamePiece == .x ? "Xskin\(gameSettings.xSkin)" : "Oskin\(gameSettings.oSkin)"
     }
     
-    static func reset() -> [GameSquare] {
+    //    var image: String? {
+    //        player?.gamePiece.rawValue
+    //    }
+    
+    static func defaultValue() -> [GameSquare] {
         var squares: [GameSquare] = []
         for i in 0..<9 {
             squares.append(GameSquare(index: i))

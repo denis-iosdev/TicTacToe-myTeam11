@@ -3,6 +3,16 @@
     {
       "filename" : "settingIconImage.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "settingIconImage 1.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

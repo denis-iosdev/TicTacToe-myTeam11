@@ -8,58 +8,70 @@
 import SwiftUI
 
 struct GameModesView: View {
-//    @Environment (\.presentationMode) var presentationMode
+    @StateObject var settings = StorageManager()
+    
     @State private var settingViewIsOn: Bool = false
+    @State private var isSinglePlayerActive = false
+    @State private var isTwoPlayerActive = false
     
     var body: some View {
         ZStack {
             Color.background
                 .ignoresSafeArea()
             
-            VStack {
-                NavigationLink(isActive: $settingViewIsOn) {
-                    // TODO: enter your next view here
-                    Text("Setting view")
-                } label: { }
-                
-                Spacer()
-                
-                VStack(spacing: 20) {
-                    Text("Select Game")
-                        .font(.system(size: 24))
-                        .fontWeight(.semibold)
-                    
-                    CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: false))
-                    } label: {
-                        GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
-                            
+            NavigationView {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            settingViewIsOn = true
+                        } label: {
+                            Image(.settingIcon)
+                        }
+                        .fullScreenCover(isPresented: $settingViewIsOn) {
+                            SettingsView(storageManager: settings)
+                        }
                     }
+
                     
-                    CustomNavigationLink {
-                        GameView(viewModel: GameViewModel(isTwoPlayerMode: true))
-                    } label: {
-                        GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
+                    Spacer()
+                    
+                    VStack(spacing: 20) {
+                        Text("Select Game")
+                            .font(.system(size: 24))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.appBlack)
+                        
+                        NavigationLink(
+                            destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: false),
+                                                  settings: settings,
+                                                  isGameActive: $isSinglePlayerActive),
+                            isActive: $isSinglePlayerActive,
+                            label: {
+                                GameModeLabel(title: "Single Player", iconName: "SinglePlayerButtonIcon")
+                            })
+                        
+                        NavigationLink(
+                            destination: GameView(viewModel: GameViewModel(isTwoPlayerMode: true),
+                                                  settings: settings,
+                                                  isGameActive: $isTwoPlayerActive),
                             
+                            isActive: $isTwoPlayerActive,
+                            label: {
+                                GameModeLabel(title: "Two Players", iconName: "TwoPlayersButtonIcon")
+                            })
+                        
                     }
+                    .padding(20)
+                    .background(.white)
+                    .cornerRadius(30)
+                    .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
+                    
+                    Spacer()
                 }
-                .padding(20)
-                .background(.white)
-                .cornerRadius(30)
-                .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
-                
-                Spacer()
+                .padding(.horizontal, 21)
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolBarNavigationItems(
-                rightButtonHiddeb: false,
-                rightAction: {
-                    settingViewIsOn.toggle()
-                }
-            )
+            
         }
     }
 }

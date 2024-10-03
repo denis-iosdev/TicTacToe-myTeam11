@@ -3,6 +3,16 @@
     {
       "filename" : "helpIconImage.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "helpIconImage 1.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
