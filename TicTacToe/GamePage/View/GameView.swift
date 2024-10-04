@@ -9,8 +9,6 @@ import SwiftUI
 import NavigationBackport
 
 struct GameView: View {
-    // TODO: Перенести всю логику во viewModel
-    
     @EnvironmentObject var navigator: PathNavigator
     @ObservedObject var viewModel: GameViewModel
     @ObservedObject var settings: StorageManager
