@@ -40,7 +40,7 @@ struct OnboardingView: View {
                 case .onbording:
                     OnboardingView()
                 case .help:
-                    Text("Help")
+                    RulesView()
                 case .setting:
                     SettingsView(storageManager: storageManager)
                 case .gameMod:
