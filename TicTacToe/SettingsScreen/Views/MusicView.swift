@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct MusicView: View {
+    @Binding var isMusicEnabled: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            HStack {
+                Toggle(isOn: $isMusicEnabled) {
+                    Text("Music")
+                        .font(.system(size: 20, weight: .semibold))
+                }
+                .tint(.buttonDarkBackground)
+                .padding()
+                .background(Color.buttonLightBackground)
+                .cornerRadius(30)
+            }
+        }
     }
 }
 
 #Preview {
-    MusicView()
+    MusicView(isMusicEnabled: .constant(true))
 }

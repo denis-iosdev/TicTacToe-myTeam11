@@ -16,8 +16,7 @@ struct TimerView: View {
             HStack {
                 Toggle(isOn: $isTimerEnabled) {
                     Text("Game Time")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
+                        .font(.system(size: 20, weight: .semibold))
                 }
                 .tint(.buttonDarkBackground)
             }
