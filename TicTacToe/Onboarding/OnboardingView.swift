@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer, difficultyLevel: difficultyLevel, settings: storageManager)
                     GameView(viewModel: gameVM, settings: storageManager)
                 case .difficultyLevel:
-                    DifficultyLevelView()
+                    DifficultyLevelView(storageManager: storageManager)
                 case .leaderboard:
                     Text("leaderboard")
                 case .result(let resultGame):

@@ -8,7 +8,7 @@
 import SwiftUI
 import NavigationBackport
 
-enum DifficultyLevel {
+enum DifficultyLevel: String {
     case easy, medium, hard
 }
 
@@ -193,14 +193,14 @@ final class GameViewModel: ObservableObject {
         
         let moveIndex: Int
         
-        switch difficultyLevel {
-        case .easy:
+        switch settings.difficultyLevelRawValue {
+        case "easy":
             moveIndex = selectEasyMode()
-        case .medium:
+        case "medium":
             moveIndex = selectMediumMode()
-        case .hard:
+        case "hard":
             moveIndex = selectHardMode()
-        case .none:
+        default:
             return
         }
         
