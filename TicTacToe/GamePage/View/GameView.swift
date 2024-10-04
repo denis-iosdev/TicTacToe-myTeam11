@@ -15,9 +15,6 @@ struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @ObservedObject var settings: StorageManager
     
-    @State private var timerRunning = false
-    @State private var timeRemaining = 0
-    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -28,23 +25,23 @@ struct GameView: View {
             VStack(spacing: 30) {
                 
                 VStack(spacing: 45) {
-                        
-                        HStack {
-                            PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
-                            
-                            Spacer()
-                            if settings.isTimerEnabled {
-                                Text(timeRemaining.timeFormatter)
-                                    .font(.system(size: 20, weight: .bold))
-                            }
-                            Spacer()
-                            
-                            PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
-                        }
-                        .foregroundStyle(.appBlack)
-
+                    
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(settings.oSkin)")
+                        PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
+                        
+                        Spacer()
+                        if settings.isTimerEnabled {
+                            Text(viewModel.timeRemaining.timeFormatter)
+                                .font(.system(size: 20, weight: .bold))
+                        }
+                        Spacer()
+                        
+                        PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
+                    }
+                    .foregroundStyle(.appBlack)
+                    
+                    HStack {
+                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(viewModel.settings.oSkin)")
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
@@ -59,17 +56,16 @@ struct GameView: View {
             .padding(.top, 25)
         }
         .onAppear {
-            resetGame()
+            viewModel.reset()
         }
         .onReceive(timer) { _ in
-            timerSetting()
+            viewModel.timerTick()
         }
         .onChange(of: viewModel.gameOver) { _ in
-            if viewModel.gameOver {
-                timerRunning = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    openResultView()
-                }
+            viewModel.handleGameOver()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                guard let resultModel  = viewModel.resultModel else { return }
+                navigator.push(Router.result(resultModel))
             }
         }
         .navigationBarBackButtonHidden()
@@ -77,39 +73,5 @@ struct GameView: View {
         .toolbar {
             ToolBarNavigationItems(leftAction: { navigator.pop() })
         }
-    }
-    
-    private func createResultView(text: String, result: ResultGameModel.Result) {
-        let result = ResultGameModel(userName: text, result: result)
-        navigator.push(Router.result(result))
-    }
-    
-    private func openResultView() {
-        if viewModel.possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
-            createResultView(text: "Draw!", result: .draw)
-        } else if viewModel.isTwoPlayerMode {
-            createResultView(text: "\(viewModel.winner?.name ?? "") win!", result: .win)
-        } else {
-            if viewModel.winner == viewModel.player1 {
-                createResultView(text: "\(viewModel.player1.name) win!", result: .win)
-            } else {
-                createResultView(text: "\(viewModel.player1.name) Lose!", result: .lose)
-            }
-        }
-    }
-    
-    private func timerSetting() {
-        if settings.isTimerEnabled && timerRunning && timeRemaining > 0 {
-            timeRemaining -= 1
-        } else if settings.isTimerEnabled && timerRunning && timeRemaining == 0 {
-            viewModel.gameOver = true
-            timerRunning = false
-        }
-    }
-    
-    private func resetGame() {
-        viewModel.reset()
-        timeRemaining = settings.timerSeconds
-        timerRunning = settings.isTimerEnabled
     }
 }

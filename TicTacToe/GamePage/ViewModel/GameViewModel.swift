@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import NavigationBackport
 
 enum DifficultyLevel {
     case easy, medium, hard
@@ -14,6 +14,7 @@ enum DifficultyLevel {
 
 @MainActor
 final class GameViewModel: ObservableObject {
+    // MARK: - Published Properties
     @Published var player1: Player
     @Published var player2: Player
     @Published var winner: Player?
@@ -28,6 +29,14 @@ final class GameViewModel: ObservableObject {
     
     @Published var gameBoard = GameSquare.defaultValue()
     
+    @Published var timerRunning = false
+    @Published var timeRemaining = 0
+    
+    @Published var resultModel: ResultGameModel?
+    
+    // MARK: - Properties
+    let settings: StorageManager
+    
     var isTwoPlayerMode: Bool
     
     var currentPlayer: Player {
@@ -35,62 +44,55 @@ final class GameViewModel: ObservableObject {
     }
     
     var boardDisabled: Bool {
-        gameOver || isThinking
+        gameOver || isThinking || timeRemaining == 0
     }
     
-    init(isTwoPlayerMode: Bool) {
+    // MARK: - Initializer
+    init(isTwoPlayerMode: Bool, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
+        self.settings = settings
         self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One" : "You")
         self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two" : "Computer")
+        
+        settings.isTimerEnabled ? startTimer() : nil
+    }
+    
+    // MARK: - Methods
+    func timerTick() {
+        guard timerRunning, timeRemaining > 0 else {
+            if settings.isTimerEnabled {
+                gameOver = true
+            }
+            timerRunning = false
+            return
+        }
+        
+        timeRemaining -= 1
+    }
+    
+    func handleGameOver() {
+        if gameOver {
+            self.openResultView()
+        }
     }
     
     func reset() {
+        gameOver = false
         player1.isCurrent = true
         player2.isCurrent = false
+        
         player1.moves.removeAll()
         player2.moves.removeAll()
+        
         winningCombination = nil
+        resultModel = nil
         winner = nil
-        gameOver = false
+        
         possibleMoves = Move.all
         gameBoard = GameSquare.defaultValue()
-    }
-    
-    func updateMoves(index: Int) {
-        if player1.isCurrent {
-            player1.moves.append(index)
-            gameBoard[index].player = player1
-        } else {
-            player2.moves.append(index)
-            gameBoard[index].player = player2
-        }
-    }
-    
-    func checkWinner() {
-        let winningCombinations = Move.winningMoves
         
-        for combination in winningCombinations {
-            if combination.allSatisfy(player1.moves.contains) {
-                gameOver = true
-                winningCombination = combination
-                winner = player1
-                return
-            } else if combination.allSatisfy(player2.moves.contains) {
-                gameOver = true
-                winningCombination = combination
-                winner = player2
-                return
-            }
-        }
-        
-        if possibleMoves.isEmpty {
-            gameOver = true
-        }
-    }
-    
-    func toggleCurrentPlayer() {
-        player1.isCurrent.toggle()
-        player2.isCurrent.toggle()
+        timeRemaining = settings.timerSeconds
+        timerRunning = settings.isTimerEnabled
     }
     
     func makeMove(index: Int) {
@@ -119,7 +121,70 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func makeComputerMove() async {
+    // MARK: - Private Methods
+    private func updateMoves(index: Int) {
+        if player1.isCurrent {
+            player1.moves.append(index)
+            gameBoard[index].player = player1
+        } else {
+            player2.moves.append(index)
+            gameBoard[index].player = player2
+        }
+    }
+    
+    private func checkWinner() {
+        let winningCombinations = Move.winningMoves
+        
+        for combination in winningCombinations {
+            if combination.allSatisfy(player1.moves.contains) {
+                gameOver = true
+                winningCombination = combination
+                winner = player1
+                return
+            } else if combination.allSatisfy(player2.moves.contains) {
+                gameOver = true
+                winningCombination = combination
+                winner = player2
+                return
+            }
+        }
+        
+        if possibleMoves.isEmpty {
+            gameOver = true
+        }
+    }
+    
+    private func toggleCurrentPlayer() {
+        player1.isCurrent.toggle()
+        player2.isCurrent.toggle()
+    }
+    
+    private func startTimer() {
+        timerRunning = true
+        timeRemaining = settings.timerSeconds
+    }
+    
+    private func createResultView(text: String, result: ResultGameModel.Result) {
+        let model = ResultGameModel(userName: text, result: result)
+        resultModel = model
+    }
+    
+    private func openResultView() {
+        if possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
+            createResultView(text: "Draw!", result: .draw)
+        } else if isTwoPlayerMode {
+            createResultView(text: "\(winner?.name ?? "") win!", result: .win)
+        } else {
+            if winner == player1 {
+                createResultView(text: "\(player1.name) win!", result: .win)
+            } else {
+                createResultView(text: "\(player1.name) Lose!", result: .lose)
+            }
+        }
+    }
+    
+    // MARK: - Computer Moves
+    private func makeComputerMove() async {
         guard !gameOver else { return }
         isThinking.toggle()
         
@@ -143,15 +208,23 @@ final class GameViewModel: ObservableObject {
         }
     }
     
+    // Легкий уровень: случайный ход
     private func selectEasyMove() -> Int {
         guard let move = possibleMoves.randomElement() else { return 0 }
         return move
     }
     
+    // Средний уровень: попытка выиграть или блокировать игрока, иначе случайный ход
     private func selectMediumMove() -> Int {
         return 0
     }
     
+    // Поиск выигрышного хода для заданного игрока
+    private func findWinningMove(for player: Player) -> Int {
+        return 0
+    }
+    
+    // Сложный уровень: алгоритм Minimax
     private func selectHardMove() -> Int {
         return 0
     }

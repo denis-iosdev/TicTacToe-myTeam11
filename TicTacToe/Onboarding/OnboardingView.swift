@@ -46,7 +46,7 @@ struct OnboardingView: View {
                 case .gameMod:
                     GameModesView()
                 case .game(let isTwoPlayer):
-                    let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer)
+                    let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer, settings: storageManager)
                     GameView(viewModel: gameVM, settings: storageManager)
                 case .difficultyLevel:
                     DifficultyLevelView()
