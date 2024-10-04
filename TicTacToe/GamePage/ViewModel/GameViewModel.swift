@@ -10,8 +10,6 @@ import NavigationBackport
 
 enum DifficultyLevel {
     case easy, medium, hard
-    
-//    static var selectedLevel: DifficultyLevel = .easy
 }
 
 @MainActor
@@ -197,11 +195,11 @@ final class GameViewModel: ObservableObject {
         
         switch difficultyLevel {
         case .easy:
-            moveIndex = selectEasyMove()
+            moveIndex = selectEasyMode()
         case .medium:
-            moveIndex = selectMediumMove()
+            moveIndex = selectMediumMode()
         case .hard:
-            moveIndex = selectHardMove()
+            moveIndex = selectHardMode()
         case .none:
             return
         }
@@ -213,52 +211,282 @@ final class GameViewModel: ObservableObject {
     }
     
     // Легкий уровень: случайный ход
-    private func selectEasyMove() -> Int {
+    private func selectEasyMode() -> Int {
+        // Проверяем не равен ли рандомный элемент из массива possibleMoves nil
         guard let move = possibleMoves.randomElement() else { return 0 }
+        // Возвращаем рандомный элемент
         return move
     }
     
     // Средний уровень: попытка выиграть или блокировать игрока, иначе случайный ход
-    private func selectMediumMove() -> Int {
-        // Попытка выиграть
+    private func selectMediumMode() -> Int {
+        // Попытаться выиграть: Если у компьютера есть возможность выиграть за текущий ход, он делает этот ход.
         if let winningMove = findWinningMove(for: player2) {
             return winningMove
         }
         
-        // Блокировка игрока
+        // Блокировать игрока: Если игрок может выиграть за следующий ход, компьютер блокирует этот ход.
         if let blockingMove = findWinningMove(for: player1) {
             return blockingMove
         }
         
-        // Случайный ход
-        return selectEasyMove()
+        // Случайный ход: Если ни одно из вышеупомянутых условий не выполнено, компьютер делает случайный ход.
+        return selectEasyMode()
     }
     
-    // Поиск выигрышного хода для заданного игрока
+    // Эта функция ищет выигрышный ход для заданного игрока (player1 или player2). Она симулирует каждый возможный ход и проверяет, приводит ли он к победе.
     private func findWinningMove(for player: Player) -> Int? {
+        
+        // Проходит по каждому доступному ходу из массива possibleMoves, который содержит индексы свободных клеток на доске.
         for move in possibleMoves {
+            
+            // Создает копию текущего состояния доски в newBoard.
             var newBoard = gameBoard
+            
+            // Симулирует ход заданного игрока, помечая клетку move своим символом.
             newBoard[move].player = player
-            let tempMove = player.isCurrent ? player1.moves + [move] : player2.moves + [move]
+            
+            // Создает временный массив ходов для игрока, добавляя симулированный ход к его текущим ходам.
+            let tempMove = (player.gamePiece == player1.gamePiece) ? player1.moves + [move] : player2.moves + [move]
+            
+            // Вызывает функцию isWinning, чтобы проверить, приводит ли симулированный ход к победе
             if isWinning(board: newBoard, moves: tempMove) {
+                // Возвращает этот ход как выигрышный
                 return move
             }
         }
+        // Если ни один из ходов не приводит к победе, функция возвращает nil.
         return nil
     }
     
+    // Эта функция проверяет, приводит ли заданный набор ходов (moves) к победе на доске board.
     private func isWinning(board: [GameSquare], moves: [Int]) -> Bool {
+        
+        // Извлекает все возможные выигрышные комбинации (тройки индексов), определенные в Move.winningMoves.
         let winningCombinations = Move.winningMoves
+        
+        // Итерирует по каждой возможной выигрышной комбинации.
         for combination in winningCombinations {
+            
+            // Использует метод allSatisfy для проверки, содержатся ли все элементы комбинации в массиве moves.
             if combination.allSatisfy(moves.contains) {
+                
+                // Если условие выполняется, функция возвращает true
                 return true
             }
         }
+        
+        // Если ни одна комбинация не приводит к победе, функция возвращает false
         return false
     }
     
-    // Сложный уровень: алгоритм Minimax
-    private func selectHardMove() -> Int {
-        return 0
+    // MARK: - Hard Level: Minimax Algorithm
+    
+    // Ищет лучший ход для компьютера, используя minimax.
+    private func selectHardMode() -> Int {
+        
+        // Инициализируется как минимальное возможное целое число (Int.min), будет хранить наилучшую оценку, найденную для ходов.
+        var bestScore = Int.min
+        
+        // Инициализируется как -1, будет хранить индекс лучшего хода.
+        var bestMove = -1
+        
+        for move in possibleMoves {
+            // Создаем копию текущей доски, чтобы не изменять оригинал при симуляции ходов.
+            var newBoard = gameBoard
+            
+            // На копии доски делаем ход компьютера (player2) в текущую свободную клетку (index).
+            newBoard[move].player = player2
+            
+            // Вызываем функцию minimax, передавая ей обновленную доску, начальную глубину рекурсии (0) и устанавливаем isMaximizing в false, так как следующий ход будет за игроком (минимизирующим игроком).
+            let score = minimax(board: newBoard, depth: 0, isMaximizing: false)
+            
+            // Если оценка текущего хода (score) лучше, чем bestScore, обновляем bestScore и bestMove.
+            if score > bestScore {
+                bestScore = score
+                bestMove = move
+            }
+        }
+        
+        // После проверки всех возможных ходов, возвращаем индекс лучшего хода, который будет сделан компьютером.
+        return bestMove
+    }
+    
+    // Рекурсивно оценивает все возможные ходы и возвращает оценку для текущего игрока.
+    private func minimax(board: [GameSquare], depth: Int, isMaximizing: Bool) -> Int {
+        // Вычитаем или прибавляем depth, чтобы предпочесть победу в меньшем количестве ходов.
+        
+        // Вызываем checkWinner(for:) для проверки, есть ли победитель на текущей доске.
+        if let winner = checkWinner(for: board) {
+            
+            // Если победил компьютер (player2), возвращаем положительную оценку (10 - depth).
+            if winner.gamePiece == player2.gamePiece {
+                return 10 - depth // Победа компьютера
+                
+                // Если победил игрок (player1), возвращаем отрицательную оценку (depth - 10)
+            } else if winner.gamePiece == player1.gamePiece {
+                return depth - 10 // Победа игрока
+            }
+            
+            // Если доска заполнена и нет победителя, возвращаем 0 (ничья)
+        } else if isBoardFull(board: board) {
+            return 0 // Ничья
+        }
+        
+        // Перебор всех возможных ходов:
+        
+        //Для максимизирующего игрока (компьютера):
+        if isMaximizing {
+            
+            // Инициализируем bestScore как минимальное целое число.
+            var bestScore = Int.min
+            
+            // Проходим по всем пустым клеткам на доске.
+            for index in 0..<board.count where board[index].player == nil {
+                
+                // Создаем копию текущей доски, чтобы не изменять оригинал при симуляции ходов.
+                var newBoard = board
+                
+                // Делаем ход за компьютера (player2)
+                newBoard[index].player = player2
+                
+                // Рекурсивно вызываем minimax для нового состояния доски, увеличивая глубину (depth + 1) и переключая isMaximizing на false (теперь ход минимизирующего игрока)
+                let score = minimax(board: newBoard, depth: depth + 1, isMaximizing: false)
+                
+                // Обновляем bestScore, выбирая максимальное значение из текущего bestScore и score, полученного из рекурсивного вызова.
+                bestScore = max(bestScore, score)
+            }
+            // Возвращаем bestScore после перебора всех возможных ходов.
+            return bestScore
+            
+        // Для минимизирующего игрока (игрока):
+        } else {
+            // Инициализируем bestScore как максимальное целое число.
+            var bestScore = Int.max
+            
+            // Проходим по всем пустым клеткам на доске.
+            for index in 0..<board.count where board[index].player == nil {
+                
+                // Создаем копию текущей доски, чтобы не изменять оригинал при симуляции ходов.
+                var newBoard = board
+                
+                // Делаем ход за игрока (player1)
+                newBoard[index].player = player1
+                
+                // Рекурсивно вызываем minimax для нового состояния доски, увеличивая глубину (depth + 1) и переключая isMaximizing на true (теперь ход максимизирующего игрока).
+                let score = minimax(board: newBoard, depth: depth + 1 , isMaximizing: true)
+                
+                // Обновляем bestScore, выбирая минимальное значение из текущего bestScore и score, полученного из рекурсивного вызова.
+                bestScore = min(bestScore, score)
+            }
+            
+            // Возвращаем bestScore после перебора всех возможных ходов.
+            return bestScore
+        }
+        
+        //        Объяснение оценки:
+        ///       Победа компьютера: Оценивается как 10 - depth.
+        ///       Чем меньше depth, тем выше оценка, что предпочтительнее (быстрая победа).
+        ///       Победа игрока: Оценивается как depth - 10.
+        ///       Чем больше depth, тем выше значение (меньше отрицательное число), но все еще отрицательное, так как это нежелательно для компьютера.
+        ///       Ничья: Оценивается как 0.
+        ///       Нейтральный результат.
+    }
+    
+    // Проверить, есть ли победитель на текущей доске и вернуть победившего игрока (Player?)
+    private func checkWinner(for board: [GameSquare]) -> Player? {
+        
+        // Проходим по всем возможным выигрышным комбинациям, определенным в Move.winningMoves.
+        for combination in Move.winningMoves {
+            
+            // Используем опциональное связывание (if let) для безопасного извлечения игроков из клеток комбинации.
+            if let firstPlayer = board[combination[0]].player,
+               let secondPlayer = board[combination[1]].player,
+               let thirdPlayer = board[combination[2]].player,
+               
+                // Сравниваем gamePiece (.x или .o) каждого игрока, чтобы убедиться, что они одинаковые.
+               firstPlayer.gamePiece == secondPlayer.gamePiece,
+               secondPlayer.gamePiece == thirdPlayer.gamePiece {
+                
+                // Если все условия выполняются, возвращаем firstPlayer как победителя.
+                return firstPlayer
+            }
+        }
+        
+        // Если ни одна комбинация не привела к победе, возвращаем nil.
+        return nil
+    }
+    
+    // Проверить, заполнена ли доска полностью (нет ли свободных клеток).
+    private func isBoardFull(board: [GameSquare]) -> Bool {
+        // Если находим хотя бы одну клетку, где player == nil, функция contains вернет true.
+        return !board.contains { $0.player == nil}
+        // Мы инвертируем результат с помощью !, чтобы получить true, когда доска полна, и false, когда есть хотя бы одна пустая клетка.
     }
 }
+
+//// MARK: - Hard Level: Minimax Algorithm
+//private func selectHardMove() -> Int {
+//    var bestScore = Int.min
+//    var bestMove = -1
+//
+//    for index in possibleMoves {
+//        var newBoard = gameBoard
+//        newBoard[index].player = player2
+//        let score = minimax(board: newBoard, depth: 0, isMaximizing: false)
+//        if score > bestScore {
+//            bestScore = score
+//            bestMove = index
+//        }
+//    }
+//    return bestMove
+//}
+//
+//private func minimax(board: [GameSquare], depth: Int, isMaximizing: Bool) -> Int {
+//    if let winner = checkWinner(for: board) {
+//        if winner.gamePiece == player2.gamePiece {
+//            return 10 - depth
+//        } else if winner.gamePiece == player1.gamePiece {
+//            return depth - 10
+//        }
+//    } else if isBoardFull(board) {
+//        return 0 // Ничья
+//    }
+//
+//    if isMaximizing {
+//        var bestScore = Int.min
+//        for index in 0..<board.count where board[index].player == nil {
+//            var newBoard = board
+//            newBoard[index].player = player2
+//            let score = minimax(board: newBoard, depth: depth + 1, isMaximizing: false)
+//            bestScore = max(score, bestScore)
+//        }
+//        return bestScore
+//    } else {
+//        var bestScore = Int.max
+//        for index in 0..<board.count where board[index].player == nil {
+//            var newBoard = board
+//            newBoard[index].player = player1
+//            let score = minimax(board: newBoard, depth: depth + 1, isMaximizing: true)
+//            bestScore = min(score, bestScore)
+//        }
+//        return bestScore
+//    }
+//}
+//
+//private func checkWinner(for board: [GameSquare]) -> Player? {
+//    for combination in Move.winningMoves {
+//        if let firstPlayer = board[combination[0]].player,
+//           let secondPlayer = board[combination[1]].player,
+//           let thirdPlayer = board[combination[2]].player,
+//           firstPlayer.gamePiece == secondPlayer.gamePiece,
+//           secondPlayer.gamePiece == thirdPlayer.gamePiece {
+//            return firstPlayer
+//        }
+//    }
+//    return nil
+//}
+//
+//private func isBoardFull(_ board: [GameSquare]) -> Bool {
+//    return !board.contains { $0.player == nil }
+//}
