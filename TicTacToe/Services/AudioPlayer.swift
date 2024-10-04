@@ -8,7 +8,12 @@
 import SwiftUI
 import AVFoundation
 
-class AudioPlayer: ObservableObject {
+protocol AudioPlayerProtocol {
+    func playSound()
+    func stopSound()
+}
+
+class AudioPlayer: AudioPlayerProtocol {
     var player: AVAudioPlayer?
     
     // Функция для инициализации и запуска аудиоплеера

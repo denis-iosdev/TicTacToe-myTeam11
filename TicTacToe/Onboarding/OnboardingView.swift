@@ -14,6 +14,8 @@ struct OnboardingView: View {
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
     
+    private var audioPlayer: AudioPlayerProtocol = AudioPlayer() // Создаем экземпляр аудио-плеера
+
     var body: some View {
         NBNavigationLink(value: Router.help) {
             EmptyView()
@@ -47,7 +49,7 @@ struct OnboardingView: View {
                     GameModesView()
                 case .game(let isTwoPlayer, let difficultyLevel):
                     let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer, difficultyLevel: difficultyLevel, settings: storageManager)
-                    GameView(viewModel: gameVM, settings: storageManager)
+                    GameView(viewModel: gameVM, storageManager: storageManager, audioPlayer: audioPlayer)
                 case .difficultyLevel:
                     DifficultyLevelView()
                 case .leaderboard:
