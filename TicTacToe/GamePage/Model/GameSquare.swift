@@ -16,10 +16,6 @@ struct GameSquare {
         return player.gamePiece == .x ? "Xskin\(gameSettings.xSkin)" : "Oskin\(gameSettings.oSkin)"
     }
     
-    //    var image: String? {
-    //        player?.gamePiece.rawValue
-    //    }
-    
     static func defaultValue() -> [GameSquare] {
         var squares: [GameSquare] = []
         for i in 0..<9 {
