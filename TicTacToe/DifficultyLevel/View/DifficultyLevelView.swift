@@ -14,7 +14,7 @@ struct DifficultyLevelView: View {
     
     var body: some View {
         ZStack {
-            Color.lightBlue
+            Color.background
                 .ignoresSafeArea()
             VStack {
                 VStack(spacing: 20) {
@@ -26,21 +26,24 @@ struct DifficultyLevelView: View {
                         navigator.push(Router.game(false, .easy))
                         storageManager.settings.difficultyLevel = .easy
                     } label: {
-                        DifficultyButton(text: "Easy")
+                        DifficultyButton(text: "Easy",
+                                         isSelected: storageManager.difficultyLevelRawValue == "easy")
                     }
 
                     Button {
                         navigator.push(Router.game(false, .medium))
                         storageManager.settings.difficultyLevel = .medium
                     } label: {
-                        DifficultyButton(text: "Medium")
+                        DifficultyButton(text: "Medium",
+                                         isSelected: storageManager.difficultyLevelRawValue == "medium")
                     }
                     
                     Button {
                         navigator.push(Router.game(false, .hard))
                         storageManager.settings.difficultyLevel = .hard
                     } label: {
-                        DifficultyButton(text: "Hard")
+                        DifficultyButton(text: "Hard",
+                                         isSelected: storageManager.difficultyLevelRawValue == "hard")
                     }
                 }
                 .padding(20)
@@ -60,43 +63,3 @@ struct DifficultyLevelView: View {
         }
     }
 }
-
-//struct DifficultyLevelView: View {
-//    @ObservedObject private var storageManager: StorageManager
-//    
-//    var body: some View {
-//        ZStack {
-//            Color.background.ignoresSafeArea()
-//            
-//            VStack(spacing: 20) {
-//                Text("Select Game")
-//                    .font(.system(size: 24, weight: .medium))
-//                    .fontWeight(.semibold)
-//                    .foregroundStyle(.appBlack)
-//                
-//                ForEach(DifficultyLevel.allCases) { level in
-//                    let isChoosed = level == storageManager.settings.difficultyLevel
-//                    
-//                    Button {
-//                        storageManager.settings.difficultyLevel = level
-//                    } label: {
-//                        Text(level.rawValue)
-//                            .font(.system(size: 20, weight: .medium))
-//                            .foregroundStyle(isChoosed ? .white : .black)
-//                            .padding()
-//                            .frame(minWidth: 260)
-//                            .background(isChoosed
-//                                        ? Color.leaderboardButton
-//                                        : Color.buttonLightBackground)
-//                            .cornerRadius(30)
-//                    }
-//                    
-//                }
-//            }
-//            .padding(20)
-//            .background(.white)
-//            .cornerRadius(30)
-//            .shadow(color: Color.black.opacity(0.15), radius: 10)
-//        }
-//    }
-//}

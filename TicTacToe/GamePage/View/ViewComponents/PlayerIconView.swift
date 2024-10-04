@@ -15,10 +15,10 @@ struct PlayerIconView: View {
         VStack {
             Image(image)
                 .padding(.horizontal, 24)
+                .frame(height: 53)
             Text(text)
                 .font(.system(size: 16, weight: .semibold))
         }
-        
         .padding(.vertical, 10)
         .background(.lightBlue)
         .clipShape(RoundedRectangle(cornerRadius: 30))
