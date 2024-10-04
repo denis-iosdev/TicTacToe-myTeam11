@@ -7,16 +7,26 @@
 
 import SwiftUI
 
+
+enum DifficultyLevel {
+    case easy, medium, hard
+}
+
 @MainActor
 final class GameViewModel: ObservableObject {
     @Published var player1: Player
     @Published var player2: Player
-    @Published var possibleMoves = Move.all
-    @Published var gameOver = false
-    @Published var gameBoard = GameSquare.defaultValue()
-    @Published var isThinking = false
-    @Published var winningCombination: [Int]? = nil
     @Published var winner: Player?
+    
+    @Published var difficultyLevel: DifficultyLevel = .easy
+    
+    @Published var possibleMoves = Move.all
+    @Published var winningCombination: [Int]? = nil
+    
+    @Published var gameOver = false
+    @Published var isThinking = false
+    
+    @Published var gameBoard = GameSquare.defaultValue()
     
     var isTwoPlayerMode: Bool
     
@@ -113,15 +123,36 @@ final class GameViewModel: ObservableObject {
         guard !gameOver else { return }
         isThinking.toggle()
         
-        // Выбираем случайный доступный ход
+        // Задержка для имитации "мышления" компьютера
         try? await Task.sleep(nanoseconds: 1_000_000_000)
-        if let move = possibleMoves.randomElement() {
-            if let matchingIndex = Move.all.firstIndex(where: { $0 == move }) {
-                withAnimation {
-                    makeMove(index: matchingIndex)
-                }
-            }
+        
+        let moveIndex: Int
+        
+        switch difficultyLevel {
+        case .easy:
+            moveIndex = selectEasyMove()
+        case .medium:
+            moveIndex = selectMediumMove()
+        case .hard:
+            moveIndex = selectHardMove()
         }
-        isThinking.toggle()
+        
+        withAnimation {
+            makeMove(index: moveIndex)
+            isThinking.toggle()
+        }
+    }
+    
+    private func selectEasyMove() -> Int {
+        guard let move = possibleMoves.randomElement() else { return 0 }
+        return move
+    }
+    
+    private func selectMediumMove() -> Int {
+        return 0
+    }
+    
+    private func selectHardMove() -> Int {
+        return 0
     }
 }

@@ -26,7 +26,7 @@ struct OnboardingView: View {
             .toolbar {
                 ToolBarNavigationItems(
                     leftButtonState: .help,
-                    rightButtonHiddeb: false,
+                    rightButtonHidden: false,
                     leftAction: {
                         navigator.push(Router.help)
                     },
@@ -48,6 +48,8 @@ struct OnboardingView: View {
                 case .game(let isTwoPlayer):
                     let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer)
                     GameView(viewModel: gameVM, settings: storageManager)
+                case .difficultyLevel:
+                    DifficultyLevelView()
                 case .leaderboard:
                     Text("leaderboard")
                 case .result(let resultGame):
