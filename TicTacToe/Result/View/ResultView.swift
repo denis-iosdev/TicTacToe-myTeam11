@@ -14,7 +14,7 @@ struct ResultView: View {
 
     let result: ResultGameModel
 
-    @ObservedObject var audioPlayer: AudioPlayer // Получаем переданный аудиоплеер
+    
     var body: some View {
         VStack {
             Spacer()
@@ -49,9 +49,7 @@ struct ResultView: View {
                 }
             }
             .font(.system(size: 20, weight: .medium))
-            .onAppear {
-                audioPlayer.stopSound() // Воспроизведение музыки при появлении экрана
-            }
+          
         }
         .navigationBarHidden(true)
         .padding(.horizontal, 21)
