@@ -13,6 +13,7 @@ struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @ObservedObject var settings: StorageManager
     
+    @StateObject private var audioPlayer = AudioPlayer() // Создаем экземпляр аудио-плеера
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -71,5 +72,13 @@ struct GameView: View {
         .toolbar {
             ToolBarNavigationItems(leftAction: { navigator.pop() })
         }
+        
+        .onAppear {
+            audioPlayer.playSound() // Воспроизведение музыки при появлении экрана
+        }
+        .onDisappear {
+            audioPlayer.stopSound() // Остановка музыки при исчезновении экрана
+        }
+        
     }
 }

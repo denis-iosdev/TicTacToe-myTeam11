@@ -48,6 +48,10 @@
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
 		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
+		F103BB2A2CADE61400B125E1 /* swingin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB272CADE61400B125E1 /* swingin.mp3 */; };
+		F103BB2B2CADE61400B125E1 /* pixel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB282CADE61400B125E1 /* pixel.mp3 */; };
+		F103BB2C2CADE61400B125E1 /* moonlit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB292CADE61400B125E1 /* moonlit.mp3 */; };
+		F103BB2F2CADE64D00B125E1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +96,10 @@
 		CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGameModel.swift; sourceTree = "<group>"; };
 		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
 		CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNativeNavAppView.swift; sourceTree = "<group>"; };
+		F103BB272CADE61400B125E1 /* swingin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swingin.mp3; sourceTree = "<group>"; };
+		F103BB282CADE61400B125E1 /* pixel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pixel.mp3; sourceTree = "<group>"; };
+		F103BB292CADE61400B125E1 /* moonlit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moonlit.mp3; sourceTree = "<group>"; };
+		F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,7 @@
 		2275D5FB2CA9931800C16C8B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				F103BB2D2CADE62E00B125E1 /* Music */,
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
 				489ACDF12CAF23A200A10B59 /* DifficultyLevel */,
 				487C8F062CA9BDC2000C3486 /* GamePage */,
@@ -141,6 +150,9 @@
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,
 				CECFF1AC2CAEA4970082C2DC /* NativeNavTest */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
+				F103BB292CADE61400B125E1 /* moonlit.mp3 */,
+				F103BB282CADE61400B125E1 /* pixel.mp3 */,
+				F103BB272CADE61400B125E1 /* swingin.mp3 */,
 				2275D6022CA9931A00C16C8B /* Preview Content */,
 			);
 			path = TicTacToe;
@@ -369,6 +381,14 @@
 			path = NativeNavTest;
 			sourceTree = "<group>";
 		};
+		F103BB2D2CADE62E00B125E1 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -434,6 +454,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2275D6042CA9931A00C16C8B /* Preview Assets.xcassets in Resources */,
+				F103BB2B2CADE61400B125E1 /* pixel.mp3 in Resources */,
+				F103BB2A2CADE61400B125E1 /* swingin.mp3 in Resources */,
+				F103BB2C2CADE61400B125E1 /* moonlit.mp3 in Resources */,
 				2275D6012CA9931A00C16C8B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +490,7 @@
 				480507442CAC5ED6005EB458 /* MenuButtonsLabel.swift in Sources */,
 				CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */,
 				480507452CAC5ED6005EB458 /* GameModesView.swift in Sources */,
+				F103BB2F2CADE64D00B125E1 /* AudioPlayer.swift in Sources */,
 				2275D5FD2CA9931800C16C8B /* TicTacToeApp.swift in Sources */,
 				2275D60B2CAAD31C00C16C8B /* RulesView.swift in Sources */,
 				CE0F1B762CA9C4F300EFADE5 /* MainButtonView.swift in Sources */,
