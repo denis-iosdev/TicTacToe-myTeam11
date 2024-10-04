@@ -42,3 +42,9 @@ struct SettingsView: View {
         }
     }
 }
+
+#Preview {
+    NavigationView {
+        SettingsView(storageManager: StorageManager())
+    }
+}
