@@ -25,6 +25,8 @@
 		4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD8F2CAAADEE00F1CE8B /* GameSquare.swift */; };
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
+		489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */; };
+		489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
 		7945FE2D2CAD80AA004749A9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2C2CAD80AA004749A9 /* TimerView.swift */; };
@@ -68,6 +70,8 @@
 		4888FD8F2CAAADEE00F1CE8B /* GameSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSquare.swift; sourceTree = "<group>"; };
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevelView.swift; sourceTree = "<group>"; };
+		489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7945FE2C2CAD80AA004749A9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				2275D5FC2CA9931800C16C8B /* TicTacToeApp.swift */,
+				489ACDF12CAF23A200A10B59 /* DifficultyLevel */,
 				487C8F062CA9BDC2000C3486 /* GamePage */,
 				4876F0242CAD2F9800C13A46 /* Result */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
@@ -178,9 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				487C8F072CA9BE20000C3486 /* GameView.swift */,
-				48075E912CAAFE7200811224 /* PlayingFieldView.swift */,
-				48DABBF42CABD38800B92FF4 /* WinningLineView.swift */,
-				48075E8F2CAAFD9300811224 /* PlayerIconView.swift */,
+				489ACDF52CAFCF5200A10B59 /* ViewComponents */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +239,33 @@
 				4888FD912CAAAE1100F1CE8B /* Player.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		489ACDF12CAF23A200A10B59 /* DifficultyLevel */ = {
+			isa = PBXGroup;
+			children = (
+				489ACDF22CAF23B800A10B59 /* View */,
+			);
+			path = DifficultyLevel;
+			sourceTree = "<group>";
+		};
+		489ACDF22CAF23B800A10B59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */,
+				489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		489ACDF52CAFCF5200A10B59 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				48075E912CAAFE7200811224 /* PlayingFieldView.swift */,
+				48DABBF42CABD38800B92FF4 /* WinningLineView.swift */,
+				48075E8F2CAAFD9300811224 /* PlayerIconView.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		7945FE292CAD6CF8004749A9 /* SettingsScreen */ = {
@@ -431,6 +461,7 @@
 				4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */,
 				480507432CAC5ED6005EB458 /* Color + Ext.swift in Sources */,
 				484AFD6A2CAD3CDC007CD7B4 /* Int+Ex.swift in Sources */,
+				489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */,
 				CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */,
 				CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */,
 				480507442CAC5ED6005EB458 /* MenuButtonsLabel.swift in Sources */,
@@ -442,6 +473,7 @@
 				CE0F1B812CAB507A00EFADE5 /* CustomNavPreferenceKeys.swift in Sources */,
 				CE0F1B7F2CAB0EA900EFADE5 /* CustomNavigationLink.swift in Sources */,
 				79B40DC92CAC73C60062B8C7 /* Settings.swift in Sources */,
+				489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */,
 				CE0F1B782CAAFDB600EFADE5 /* CustomNavigationView.swift in Sources */,
 				CE0F1B7B2CAB060600EFADE5 /* CustomNavigationConteinerView.swift in Sources */,
 				CE0F1B7D2CAB08C900EFADE5 /* CustomNavView.swift in Sources */,

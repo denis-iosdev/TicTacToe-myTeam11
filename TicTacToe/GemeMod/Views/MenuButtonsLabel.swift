@@ -14,7 +14,7 @@ struct MenuButtonsLabel: View {
     
     var body: some View {
         Label(title, image: iconName)
-            .frame(minWidth: 260)
+            .frame(maxWidth: .infinity)
             .frame(height: 29)
             .padding(.vertical, 20)
             .font(.system(size: 20, weight: .medium))

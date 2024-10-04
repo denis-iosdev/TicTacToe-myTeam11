@@ -104,7 +104,7 @@ struct TestNativeNextView02: View {
                 ToolBarNavigationItems(
                     title: "GemeMod",
                     leftButtonState: .help,
-                    rightButtonHiddeb: false,
+                    rightButtonHidden: false,
                     leftAction: {
                     presentationMode.wrappedValue.dismiss()
                 }, rightAction: {
