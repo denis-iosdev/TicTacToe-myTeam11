@@ -10,6 +10,8 @@ import NavigationBackport
 
 enum DifficultyLevel {
     case easy, medium, hard
+    
+//    static var selectedLevel: DifficultyLevel = .easy
 }
 
 @MainActor
@@ -18,8 +20,6 @@ final class GameViewModel: ObservableObject {
     @Published var player1: Player
     @Published var player2: Player
     @Published var winner: Player?
-    
-    @Published var difficultyLevel: DifficultyLevel = .easy
     
     @Published var possibleMoves = Move.all
     @Published var winningCombination: [Int]? = nil
@@ -38,6 +38,7 @@ final class GameViewModel: ObservableObject {
     let settings: StorageManager
     
     var isTwoPlayerMode: Bool
+    var difficultyLevel: DifficultyLevel?
     
     var currentPlayer: Player {
         player1.isCurrent ? player1 : player2
@@ -48,8 +49,9 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Initializer
-    init(isTwoPlayerMode: Bool, settings: StorageManager) {
+    init(isTwoPlayerMode: Bool, difficultyLevel: DifficultyLevel?, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
+        self.difficultyLevel = difficultyLevel
         self.settings = settings
         self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One" : "You")
         self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two" : "Computer")
@@ -200,6 +202,8 @@ final class GameViewModel: ObservableObject {
             moveIndex = selectMediumMove()
         case .hard:
             moveIndex = selectHardMove()
+        case .none:
+            return
         }
         
         withAnimation {
@@ -216,12 +220,41 @@ final class GameViewModel: ObservableObject {
     
     // Средний уровень: попытка выиграть или блокировать игрока, иначе случайный ход
     private func selectMediumMove() -> Int {
-        return 0
+        // Попытка выиграть
+        if let winningMove = findWinningMove(for: player2) {
+            return winningMove
+        }
+        
+        // Блокировка игрока
+        if let blockingMove = findWinningMove(for: player1) {
+            return blockingMove
+        }
+        
+        // Случайный ход
+        return selectEasyMove()
     }
     
     // Поиск выигрышного хода для заданного игрока
-    private func findWinningMove(for player: Player) -> Int {
-        return 0
+    private func findWinningMove(for player: Player) -> Int? {
+        for move in possibleMoves {
+            var newBoard = gameBoard
+            newBoard[move].player = player
+            let tempMove = player.isCurrent ? player1.moves + [move] : player2.moves + [move]
+            if isWinning(board: newBoard, moves: tempMove) {
+                return move
+            }
+        }
+        return nil
+    }
+    
+    private func isWinning(board: [GameSquare], moves: [Int]) -> Bool {
+        let winningCombinations = Move.winningMoves
+        for combination in winningCombinations {
+            if combination.allSatisfy(moves.contains) {
+                return true
+            }
+        }
+        return false
     }
     
     // Сложный уровень: алгоритм Minimax

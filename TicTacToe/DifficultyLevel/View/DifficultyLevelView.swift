@@ -22,19 +22,22 @@ struct DifficultyLevelView: View {
                         .foregroundStyle(.appBlack)
                     
                     Button {
-                        navigator.push(Router.game(false))
+                        navigator.push(Router.game(false, .easy))
+//                        DifficultyLevel.selectedLevel = .easy
                     } label: {
                         DifficultyButton(text: "Easy")
                     }
 
                     Button {
-                        navigator.push(Router.game(false))
+                        navigator.push(Router.game(false, .medium))
+//                        DifficultyLevel.selectedLevel = .medium
                     } label: {
-                        DifficultyButton(text: "Standart")
+                        DifficultyButton(text: "Medium")
                     }
                     
                     Button {
-                        navigator.push(Router.game(false))
+                        navigator.push(Router.game(false, .hard))
+//                        DifficultyLevel.selectedLevel = .hard
                     } label: {
                         DifficultyButton(text: "Hard")
                     }
@@ -55,8 +58,4 @@ struct DifficultyLevelView: View {
             )
         }
     }
-}
-
-#Preview {
-    DifficultyLevelView()
 }

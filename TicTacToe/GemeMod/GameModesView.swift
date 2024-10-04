@@ -23,7 +23,7 @@ struct GameModesView: View {
                     .foregroundStyle(.appBlack)
                 
                 Button {
-                    navigator.push(Router.game(false))
+                    navigator.push(Router.game(false, .easy))
                 } label: {
                     MenuButtonsLabel(
                         title: "Single Player",
@@ -33,7 +33,7 @@ struct GameModesView: View {
                 }
                 
                 Button {
-                    navigator.push(Router.game(true))
+                    navigator.push(Router.game(true, nil))
                 } label: {
                     MenuButtonsLabel(
                         title: "Two Players",
