@@ -142,7 +142,6 @@
 				4819E0362CB1283000AD5231 /* Leaderboard */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
-				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
 				480507422CAC5ED6005EB458 /* GemeMod */,
 				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
@@ -254,6 +253,7 @@
 		4876F0252CAD2FB400C13A46 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				4876F0262CAD2FC500C13A46 /* ResultView.swift */,
 			);
 			path = View;

@@ -8,6 +8,10 @@
 import SwiftUI
 import NavigationBackport
 
+// FIXME: -
+// - можно перенести логику в vm (будет маленькая, но все же)
+// - в LeaderboardView body сократить размер вложенных вью до нескольких строк чтоб проще читалось условие if else
+
 struct LeaderboardView: View {
     @ObservedObject var storageManager: StorageManager
     @EnvironmentObject var navigator: PathNavigator

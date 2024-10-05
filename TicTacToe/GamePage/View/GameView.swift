@@ -26,7 +26,7 @@ struct GameView: View {
                 
                 VStack(spacing: 45) {
                     
-                    HStack {
+                    HStack { // FIXME: выглядить так что можно перенести в отдельную структуру
                         PlayerIconView(text: viewModel.player1.name, image: "Xskin\(storageManager.xSkin)")
                         
                         Spacer()
@@ -41,14 +41,17 @@ struct GameView: View {
                     .foregroundStyle(.appBlack)
                     
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(storageManager.xSkin)" : "Oskin\(viewModel.settings.oSkin)")
-                            .frame(height: 53)
+                        Image(viewModel.currentPlayer.gamePiece == .x
+                              ? "Xskin\(storageManager.xSkin)"
+                              : "Oskin\(viewModel.settings.oSkin)")
+                        .frame(height: 53)
+                        
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
                     }
                     
-                    PlayingFieldView(settings: storageManager, viewModel: viewModel)
+                    PlayingFieldView(settings: storageManager, viewModel: viewModel) // FIXME: выглядить так что можно не передавать storageManager, а передать значения в vm и потом достать из нее.
                     
                     Spacer()
                 }
@@ -58,10 +61,10 @@ struct GameView: View {
         }
         .onAppear {
             viewModel.reset()
-            audioPlayer.playSound() // Воспроизведение музыки при появлении экрана
+            audioPlayer.playSound()
         }
         .onDisappear {
-            audioPlayer.stopSound() // Остановка музыки при исчезновении экрана
+            audioPlayer.stopSound()
         }
         .onReceive(timer) { _ in
             viewModel.timerTick()
