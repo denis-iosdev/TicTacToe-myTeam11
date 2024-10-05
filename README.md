@@ -29,14 +29,20 @@
 
 ## Авторы
 ### Над проектом трудились
-https://github.com/13NotReal13
 
-https://github.com/DaNiIlaIoS
 
-https://github.com/pavelMobileDev
 
-https://github.com/denisgindulin
-
-https://github.com/Igor1901
+<p align="left"> 
+<a href="https://github.com/denisgindulin">
+<img src="https://img.shields.io/badge/denisgindulin-pink"/></a>
+<a href="https://github.com/13NotReal13">
+<img src="https://img.shields.io/badge/13NotReal13-red"/></a>
+<a href="https://github.com/DaNiIlaIoS">
+<img src="https://img.shields.io/badge/DaNiIlaIoS-green"/></a>
+<a href="https://github.com/pavelMobileDev">
+<img src="https://img.shields.io/badge/pavelMobileDev-blue"/></a>
+<a href="https://github.com/Igor1901">
+<img src="https://img.shields.io/badge/Igor1901-purple"/></a>
+</p>
 
 
