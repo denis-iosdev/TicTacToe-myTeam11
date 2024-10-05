@@ -41,6 +41,10 @@ final class GameViewModel: ObservableObject {
         gameOver || isThinking || timeRemaining == 0
     }
     
+    var isDraw: Bool {
+        possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0)
+    }
+    
     // MARK: - Initializer
     init(isTwoPlayerMode: Bool, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
@@ -170,7 +174,7 @@ final class GameViewModel: ObservableObject {
     }
     
     private func openResultView() {
-        if possibleMoves.isEmpty || (settings.isTimerEnabled && timeRemaining == 0) {
+        if isDraw {
             createResultView(text: "Draw!", result: .draw)
         } else if isTwoPlayerMode {
             createResultView(text: "\(winner?.name ?? "") win!", result: .win)
@@ -189,7 +193,7 @@ final class GameViewModel: ObservableObject {
         isThinking.toggle()
         
         // Задержка для имитации "мышления" компьютера
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        try? await Task.sleep(nanoseconds: 100_000_000)
         
         let moveIndex: Int
         
