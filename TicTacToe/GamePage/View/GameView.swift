@@ -42,6 +42,7 @@ struct GameView: View {
                     
                     HStack {
                         Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(storageManager.xSkin)" : "Oskin\(viewModel.settings.oSkin)")
+                            .frame(height: 53)
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)

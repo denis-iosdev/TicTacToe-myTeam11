@@ -8,10 +8,6 @@
 import SwiftUI
 import NavigationBackport
 
-enum DifficultyLevel: String {
-    case easy, medium, hard
-}
-
 @MainActor
 final class GameViewModel: ObservableObject {
     // MARK: - Published Properties
@@ -47,9 +43,8 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Initializer
-    init(isTwoPlayerMode: Bool, /*difficultyLevel: DifficultyLevel?,*/ settings: StorageManager) {
+    init(isTwoPlayerMode: Bool, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
-//        self.difficultyLevel = difficultyLevel
         self.settings = settings
         self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One" : "You")
         self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two" : "Computer")
@@ -58,6 +53,18 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Methods
+    func handleGameOver() {
+        if gameOver {
+            openResultView()
+            saveGameResult()
+        }
+    }
+    
+    func saveGameResult() {
+        guard settings.isTimerEnabled else { return }
+        settings.addResultTime(settings.timerSeconds - timeRemaining)
+    }
+    
     func timerTick() {
         guard timerRunning, timeRemaining > 0 else {
             if settings.isTimerEnabled {
@@ -68,12 +75,6 @@ final class GameViewModel: ObservableObject {
         }
         
         timeRemaining -= 1
-    }
-    
-    func handleGameOver() {
-        if gameOver {
-            self.openResultView()
-        }
     }
     
     func reset() {

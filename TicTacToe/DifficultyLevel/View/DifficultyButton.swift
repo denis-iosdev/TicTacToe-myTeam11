@@ -17,6 +17,6 @@ struct DifficultyButton: View {
             .frame(maxWidth: .infinity)
             .font(.system(size: 20, weight: .medium))
             .foregroundStyle(.appBlack)
-            .background(RoundedRectangle(cornerRadius: 30).fill(isSelected ? .basicBlue : .lightBlue))
+            .background(RoundedRectangle(cornerRadius: 30).fill(isSelected ? .appPurple : .lightBlue))
     }
 }

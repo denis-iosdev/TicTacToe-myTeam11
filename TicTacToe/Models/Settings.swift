@@ -14,8 +14,8 @@ struct GameSettings {
     var xSkin: Int
     var oSkin: Int
     
-    init(difficultyLevel: DifficultyLevel, isTimerEnabled: Bool = false, timerSeconds: Int = 60, xSkin: Int = 1, oSkin: Int = 1) {
-        self.difficultyLevel = .easy
+    init(difficultyLevel: DifficultyLevel = .easy, isTimerEnabled: Bool = false, timerSeconds: Int = 60, xSkin: Int = 1, oSkin: Int = 1) {
+        self.difficultyLevel = difficultyLevel
         self.isTimerEnabled = isTimerEnabled
         self.timerSeconds = timerSeconds
         self.xSkin = xSkin

@@ -53,7 +53,7 @@ struct OnboardingView: View {
                 case .difficultyLevel:
                     DifficultyLevelView(storageManager: storageManager)
                 case .leaderboard:
-                    Text("leaderboard")
+                    LeaderboardView(storageManager: storageManager)
                 case .result(let resultGame):
                     ResultView(result: resultGame)
                 }
