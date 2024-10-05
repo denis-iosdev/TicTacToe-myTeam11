@@ -15,7 +15,7 @@ final class StorageManager: ObservableObject {
     @AppStorage("xSkin") var xSkin = 1
     @AppStorage("oSkin") var oSkin = 1
     
-    var choosedGenre: MusicGenres {
+    private var choosedGenre: MusicGenres {
         get {
             MusicGenres(rawValue: choosedGenreRawValue) ?? .classic
         } set {
@@ -27,6 +27,7 @@ final class StorageManager: ObservableObject {
         get {
             GameSettings(
                 isMusicEnabled: isMusicEnabled,
+                choosedGenre: choosedGenre,
                 isTimerEnabled: isTimerEnabled,
                 timerSeconds: timerSeconds,
                 xSkin: xSkin,
@@ -34,6 +35,7 @@ final class StorageManager: ObservableObject {
             )
         } set {
             isMusicEnabled = newValue.isMusicEnabled
+            choosedGenre = newValue.choosedGenre
             isTimerEnabled = newValue.isTimerEnabled
             timerSeconds = newValue.timerSeconds
             xSkin = newValue.xSkin

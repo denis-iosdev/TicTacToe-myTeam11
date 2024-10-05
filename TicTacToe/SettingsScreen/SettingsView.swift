@@ -18,15 +18,21 @@ struct SettingsView: View {
             
             ScrollView {
                 VStack(spacing: 40) {
-                    TimerView(
-                        isTimerEnabled: $storageManager.settings.isTimerEnabled,
-                        timerSeconds: $storageManager.settings.timerSeconds
-                    )
-                    
-                    MusicView(
-                        isMusicEnabled: $storageManager.isMusicEnabled,
-                        choosedGenre: $storageManager.choosedGenre
-                    )
+                    VStack(spacing: 20) {
+                        TimerView(
+                            isTimerEnabled: $storageManager.settings.isTimerEnabled,
+                            timerSeconds: $storageManager.settings.timerSeconds
+                        )
+                        
+                        MusicView(
+                            isMusicEnabled: $storageManager.isMusicEnabled,
+                            choosedGenre: $storageManager.choosedGenre
+                        )
+                    }
+                    .padding()
+                    .background(.white)
+                    .cornerRadius(30)
+                    .shadow(color: Color.black.opacity(0.15), radius: 10)
                     
                     SkinSelectionView(
                         selectedXSkin: $storageManager.settings.xSkin,

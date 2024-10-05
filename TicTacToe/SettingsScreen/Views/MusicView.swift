@@ -10,9 +10,10 @@ import SwiftUI
 struct MusicView: View {
     @Binding var isMusicEnabled: Bool
     @Binding var choosedGenre: MusicGenres
+    
     @State private var currentIndex: Int = 0
     
-    private let musicGenres = MusicGenres.allCases
+    private let allMusicGenres = MusicGenres.allCases
     
     var body: some View {
         VStack(spacing: 20) {
@@ -33,7 +34,7 @@ struct MusicView: View {
                         if currentIndex > 0 {
                             currentIndex -= 1
                         }
-                        choosedGenre = musicGenres[currentIndex]
+                        choosedGenre = allMusicGenres[currentIndex]
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.largeTitle)
@@ -44,7 +45,7 @@ struct MusicView: View {
                     
                     Spacer()
                     
-                    Text(musicGenres[currentIndex].rawValue)
+                    Text(allMusicGenres[currentIndex].rawValue)
                         .font(.system(size: 20, weight: .medium))
                         .frame(maxWidth: .infinity)
                         .animation(.interactiveSpring(), value: currentIndex)
@@ -52,29 +53,25 @@ struct MusicView: View {
                     Spacer()
                     
                     Button {
-                        if currentIndex < musicGenres.count - 1 {
+                        if currentIndex < allMusicGenres.count - 1 {
                             currentIndex += 1
                         }
-                        choosedGenre = musicGenres[currentIndex]
+                        choosedGenre = allMusicGenres[currentIndex]
                     } label: {
                         Image(systemName: "chevron.right")
                             .font(.largeTitle)
                             .foregroundStyle(Color.buttonDarkBackground)
-                            .opacity(currentIndex == musicGenres.count - 1 ? 0.3 : 1)
+                            .opacity(currentIndex == allMusicGenres.count - 1 ? 0.3 : 1)
                     }
-                    .disabled(currentIndex == musicGenres.count - 1)
+                    .disabled(currentIndex == allMusicGenres.count - 1)
                 }
                 .padding()
                 .background(Color.buttonLightBackground)
                 .cornerRadius(30)
             }
         }
-        .padding()
-        .background(.white)
-        .cornerRadius(30)
-        .shadow(color: Color.black.opacity(0.15), radius: 10)
         .onAppear {
-            if let savedGenreIndex = musicGenres.firstIndex(of: choosedGenre) {
+            if let savedGenreIndex = allMusicGenres.firstIndex(of: choosedGenre) {
                 currentIndex = savedGenreIndex
             }
         }

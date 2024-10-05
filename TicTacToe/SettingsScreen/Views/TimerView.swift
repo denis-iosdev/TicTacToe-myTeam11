@@ -43,10 +43,6 @@ struct TimerView: View {
                 .cornerRadius(30)
             }
         }
-        .padding()
-        .background(.white)
-        .cornerRadius(30)
-        .shadow(color: Color.black.opacity(0.15), radius: 10)
     }
     
     private func formattedTime(seconds: Int) -> String {
