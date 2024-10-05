@@ -12,7 +12,7 @@ enum Router: Hashable {
     case help
     case setting
     case gameMod
-    case game(Bool, DifficultyLevel?)
+    case game(Bool)
     case difficultyLevel
     case leaderboard
     case result(ResultGameModel)

@@ -9,11 +9,12 @@ import SwiftUI
 import NavigationBackport
 
 struct DifficultyLevelView: View {
+    @ObservedObject var storageManager: StorageManager
     @EnvironmentObject var navigator: PathNavigator
     
     var body: some View {
         ZStack {
-            Color.lightBlue
+            Color.background
                 .ignoresSafeArea()
             VStack {
                 VStack(spacing: 20) {
@@ -22,21 +23,27 @@ struct DifficultyLevelView: View {
                         .foregroundStyle(.appBlack)
                     
                     Button {
-                        navigator.push(Router.game(false, .easy))
+                        navigator.push(Router.game(false))
+                        storageManager.settings.difficultyLevel = .easy
                     } label: {
-                        DifficultyButton(text: "Easy")
+                        DifficultyButton(text: "Easy",
+                                         isSelected: storageManager.difficultyLevelRawValue == "easy")
                     }
 
                     Button {
-                        navigator.push(Router.game(false, .medium))
+                        navigator.push(Router.game(false))
+                        storageManager.settings.difficultyLevel = .medium
                     } label: {
-                        DifficultyButton(text: "Medium")
+                        DifficultyButton(text: "Medium",
+                                         isSelected: storageManager.difficultyLevelRawValue == "medium")
                     }
                     
                     Button {
-                        navigator.push(Router.game(false, .hard))
+                        navigator.push(Router.game(false))
+                        storageManager.settings.difficultyLevel = .hard
                     } label: {
-                        DifficultyButton(text: "Hard")
+                        DifficultyButton(text: "Hard",
+                                         isSelected: storageManager.difficultyLevelRawValue == "hard")
                     }
                 }
                 .padding(20)

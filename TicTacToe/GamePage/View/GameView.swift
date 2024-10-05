@@ -57,6 +57,10 @@ struct GameView: View {
         }
         .onAppear {
             viewModel.reset()
+            audioPlayer.playSound() // Воспроизведение музыки при появлении экрана
+        }
+        .onDisappear {
+            audioPlayer.stopSound() // Остановка музыки при исчезновении экрана
         }
         .onReceive(timer) { _ in
             viewModel.timerTick()
@@ -73,13 +77,5 @@ struct GameView: View {
         .toolbar {
             ToolBarNavigationItems(leftAction: { navigator.pop() })
         }
-        
-        .onAppear {
-            audioPlayer.playSound() // Воспроизведение музыки при появлении экрана
-        }
-        .onDisappear {
-            audioPlayer.stopSound() // Остановка музыки при исчезновении экрана
-        }
-        
     }
 }

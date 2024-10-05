@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DifficultyButton: View {
     let text: String
+    let isSelected: Bool
     
     var body: some View {
         Text(text)
@@ -16,6 +17,6 @@ struct DifficultyButton: View {
             .frame(maxWidth: .infinity)
             .font(.system(size: 20, weight: .medium))
             .foregroundStyle(.appBlack)
-            .background(RoundedRectangle(cornerRadius: 30).fill(.lightBlue))
+            .background(RoundedRectangle(cornerRadius: 30).fill(isSelected ? .basicBlue : .lightBlue))
     }
 }

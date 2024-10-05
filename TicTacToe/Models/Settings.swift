@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct GameSettings {
+    var difficultyLevel: DifficultyLevel
     var isTimerEnabled: Bool
     var timerSeconds: Int
     var xSkin: Int
     var oSkin: Int
     
-    init(isTimerEnabled: Bool = false, timerSeconds: Int = 60, xSkin: Int = 1, oSkin: Int = 1) {
+    init(difficultyLevel: DifficultyLevel, isTimerEnabled: Bool = false, timerSeconds: Int = 60, xSkin: Int = 1, oSkin: Int = 1) {
+        self.difficultyLevel = .easy
         self.isTimerEnabled = isTimerEnabled
         self.timerSeconds = timerSeconds
         self.xSkin = xSkin
