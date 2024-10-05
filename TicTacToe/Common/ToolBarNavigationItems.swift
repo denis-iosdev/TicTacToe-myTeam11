@@ -52,7 +52,7 @@ struct ToolBarNavigationItems: ToolbarContent {
         }
         ToolbarItem(placement: .principal) {
             Text(title)
-                .font(.title)
+                .font(.title3)
                 .fontWeight(.bold)
         }
         ToolbarItem(placement: .topBarTrailing) {

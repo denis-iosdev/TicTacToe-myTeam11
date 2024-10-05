@@ -11,4 +11,8 @@ extension View {
     func resultButton(color: Color) -> some View {
         modifier(ResultButton(color: color))
     }
+    
+    func leaderboardText(index: Int) -> some View {
+        modifier(LeaderboardText(index: index))
+    }
 }
