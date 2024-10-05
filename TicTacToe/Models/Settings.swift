@@ -17,7 +17,7 @@ struct GameSettings {
     
     init(
         isMusicEnabled: Bool = true,
-        choosedGenre: MusicGenres = .classical,
+        choosedGenre: MusicGenres = .classic,
         isTimerEnabled: Bool = false,
         timerSeconds: Int = 60,
         xSkin: Int = 1,
@@ -41,7 +41,11 @@ struct GameSettings {
 }
 
 enum MusicGenres: String, CaseIterable {
-    case classical = "Classical"
-    case instrumentals = "Instrumentals"
-    case nature = "Nature"
+    case classic = "Classic"
+    case pixel = "Pixel"
+    case jazz = "Jazz"
+    
+    var songName: String {
+        "\(self.rawValue).mp3"
+    }
 }

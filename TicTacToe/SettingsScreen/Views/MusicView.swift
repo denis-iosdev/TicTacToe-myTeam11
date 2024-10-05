@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MusicView: View {
     @Binding var isMusicEnabled: Bool
-//    @Binding var
+    @Binding var choosedGenre: MusicGenres
+    @State private var currentIndex: Int = 0
     
     private let musicGenres = MusicGenres.allCases
-    @State private var currentIndex: Int = 0
     
     var body: some View {
         VStack(spacing: 20) {
@@ -33,6 +33,7 @@ struct MusicView: View {
                         if currentIndex > 0 {
                             currentIndex -= 1
                         }
+                        choosedGenre = musicGenres[currentIndex]
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.largeTitle)
@@ -54,6 +55,7 @@ struct MusicView: View {
                         if currentIndex < musicGenres.count - 1 {
                             currentIndex += 1
                         }
+                        choosedGenre = musicGenres[currentIndex]
                     } label: {
                         Image(systemName: "chevron.right")
                             .font(.largeTitle)
@@ -71,9 +73,14 @@ struct MusicView: View {
         .background(.white)
         .cornerRadius(30)
         .shadow(color: Color.black.opacity(0.15), radius: 10)
+        .onAppear {
+            if let savedGenreIndex = musicGenres.firstIndex(of: choosedGenre) {
+                currentIndex = savedGenreIndex
+            }
+        }
     }
 }
 
 #Preview {
-    MusicView(isMusicEnabled: .constant(true))
+    MusicView(isMusicEnabled: .constant(true), choosedGenre: .constant(.classic))
 }

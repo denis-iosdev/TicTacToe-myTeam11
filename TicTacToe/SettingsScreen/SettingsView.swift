@@ -23,7 +23,10 @@ struct SettingsView: View {
                         timerSeconds: $storageManager.settings.timerSeconds
                     )
                     
-                    MusicView(isMusicEnabled: .constant(false))
+                    MusicView(
+                        isMusicEnabled: $storageManager.isMusicEnabled,
+                        choosedGenre: $storageManager.choosedGenre
+                    )
                     
                     SkinSelectionView(
                         selectedXSkin: $storageManager.settings.xSkin,
