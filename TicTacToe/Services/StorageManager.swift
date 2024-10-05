@@ -9,6 +9,8 @@ import SwiftUI
 
 final class StorageManager: ObservableObject {
     @AppStorage("difficultyLevel") var difficultyLevelRawValue: String = DifficultyLevel.easy.rawValue
+    @AppStorage("isMusicEnabled") var isMusicEnabled = true
+    @AppStorage("choosedGenre") var choosedGenreRawValue: String = MusicGenres.classic.rawValue
     @AppStorage("isTimerEnabled") var isTimerEnabled = false
     @AppStorage("timerSeconds") var timerSeconds = 60
     @AppStorage("xSkin") var xSkin = 1
@@ -29,10 +31,20 @@ final class StorageManager: ObservableObject {
         }
     }
     
+    private var choosedGenre: MusicGenres {
+        get {
+            MusicGenres(rawValue: choosedGenreRawValue) ?? .classic
+        } set {
+            choosedGenreRawValue = newValue.rawValue
+        }
+    }
+    
     var settings: GameSettings {
         get {
             GameSettings(
                 difficultyLevel: difficultyLevel,
+                isMusicEnabled: isMusicEnabled,
+                choosedGenre: choosedGenre,
                 isTimerEnabled: isTimerEnabled,
                 timerSeconds: timerSeconds,
                 xSkin: xSkin,
@@ -40,6 +52,8 @@ final class StorageManager: ObservableObject {
             )
         } set {
             difficultyLevel = newValue.difficultyLevel
+            isMusicEnabled = newValue.isMusicEnabled
+            choosedGenre = newValue.choosedGenre
             isTimerEnabled = newValue.isTimerEnabled
             timerSeconds = newValue.timerSeconds
             xSkin = newValue.xSkin

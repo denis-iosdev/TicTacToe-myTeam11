@@ -16,8 +16,7 @@ struct TimerView: View {
             HStack {
                 Toggle(isOn: $isTimerEnabled) {
                     Text("Game Time")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
+                        .font(.system(size: 20, weight: .semibold))
                 }
                 .tint(.buttonDarkBackground)
             }
@@ -44,10 +43,6 @@ struct TimerView: View {
                 .cornerRadius(30)
             }
         }
-        .padding()
-        .background(.white)
-        .cornerRadius(30)
-        .shadow(color: Color.black.opacity(0.15), radius: 10)
     }
     
     private func formattedTime(seconds: Int) -> String {
