@@ -16,6 +16,8 @@ struct LeaderboardView: View {
     @ObservedObject var storageManager: StorageManager
     @EnvironmentObject var navigator: PathNavigator
     
+    @State private var isPresentAlert = false
+    
     var body: some View {
         ZStack {
             Color.background
@@ -35,10 +37,11 @@ struct LeaderboardView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .leaderboardText(index: index)
                                     .clipShape(RoundedRectangle(cornerRadius: 30))
-                                    
+                                
                             }
                         }
                     }
+                    .padding(.vertical, 16)
                     .padding(.horizontal, 21)
                 }
             } else {
@@ -50,10 +53,24 @@ struct LeaderboardView: View {
             }
             
         }
+        .alert(isPresented: $isPresentAlert) {
+            Alert(title: Text("Clear Leaderboard?"),
+                  message: Text("Are you sure you want to clear the leaderboard?"),
+                  primaryButton: .default(Text("Cancel")),
+                  secondaryButton: .destructive(Text("Delete"), action: {
+                withAnimation(.easeInOut(duration: 1)) {
+                    storageManager.clearLeaderboard()
+                }
+            })
+            )
+        }
+        
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolBarNavigationItems(title: "Leaderboard", leftAction: { navigator.pop() })
+            ToolBarNavigationItems(title: "Leaderboard",  rightButtonState: .basket, rightButtonHidden: false, leftAction: { navigator.pop() }, rightAction: {
+                isPresentAlert.toggle()
+            })
         }
     }
 }
