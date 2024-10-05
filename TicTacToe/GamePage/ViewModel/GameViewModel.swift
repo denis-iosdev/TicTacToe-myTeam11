@@ -32,7 +32,6 @@ final class GameViewModel: ObservableObject {
     let settings: StorageManager
     
     var isTwoPlayerMode: Bool
-//    var difficultyLevel: DifficultyLevel?
     
     var currentPlayer: Player {
         player1.isCurrent ? player1 : player2
@@ -66,7 +65,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func timerTick() {
-        guard timerRunning, timeRemaining > 0 else {
+        guard timerRunning, timeRemaining > 0, !gameOver else {
             if settings.isTimerEnabled {
                 gameOver = true
             }
