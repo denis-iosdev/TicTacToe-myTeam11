@@ -7,12 +7,12 @@
 
 import Foundation
 
+enum GamePiece {
+    case x
+    case o
+}
+
 struct Player: Equatable {
-    
-    enum GamePiece {
-        case x
-        case o
-    }
     
     let gamePiece: GamePiece
     let name: String

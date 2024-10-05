@@ -13,11 +13,11 @@ struct RulesView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 0.96,
-                  green: 0.97,
-                  blue: 1)
+            Color(red: 0.96, green: 0.97, blue: 1)
             .ignoresSafeArea()
-            
+            // FIXME: убрать все данные в модель, тут нужно вынести только свойства модели. line 22 25 28 31
+            // FIXME: убрать все данные в модель, тут нужно вынести только свойства модели. line 22 25 28 31
+
             ScrollView(showsIndicators: false){
             VStack {
                     RuleItem(number: "1",
@@ -74,6 +74,5 @@ struct RuleItem: View {
         .foregroundColor(Color(red: 0.14, 
                                green: 0.16,
                                blue: 0.27))
-
     }
 }

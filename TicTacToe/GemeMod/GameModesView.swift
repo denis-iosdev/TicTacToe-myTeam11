@@ -16,8 +16,6 @@ struct GameModesView: View {
             Color.background
                 .ignoresSafeArea()
             
-            Spacer()
-            
             VStack(spacing: 20) {
                 Text("Select Game")
                     .font(.system(size: 24))
@@ -45,7 +43,7 @@ struct GameModesView: View {
                 }
                 
                 Button {
-                    // TODO: open modally DifficultyLevel
+                    navigator.push(Router.difficultyLevel)
                 } label: {
                     MenuButtonsLabel(
                         title: "Difficulty Level",
@@ -68,14 +66,13 @@ struct GameModesView: View {
             .background(.white)
             .cornerRadius(30)
             .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
-            
-            Spacer()
+            .padding(50)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolBarNavigationItems(
-                rightButtonHiddeb: false,
+                rightButtonHidden: false,
                 leftAction: { navigator.pop()},
                 rightAction: { navigator.push(Router.setting) }
             )

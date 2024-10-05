@@ -35,13 +35,13 @@ struct ToolBarNavigationItems: ToolbarContent {
     init(
         title: String = "",
         leftButtonState: ToolBarLeftItemState = .back,
-        rightButtonHiddeb: Bool = true,
+        rightButtonHidden: Bool = true,
         leftAction: VoidBlock? = nil,
         rightAction: VoidBlock? = nil
     ) {
         self.title = title
         self.leftButtonState = leftButtonState
-        self.rightButtonHiddeb = rightButtonHiddeb
+        self.rightButtonHiddeb = rightButtonHidden
         self.leftAction = leftAction
         self.rightAction = rightAction
     }
@@ -52,7 +52,7 @@ struct ToolBarNavigationItems: ToolbarContent {
         }
         ToolbarItem(placement: .principal) {
             Text(title)
-                .font(.title)
+                .font(.title3)
                 .fontWeight(.bold)
         }
         ToolbarItem(placement: .topBarTrailing) {

@@ -13,7 +13,8 @@ struct OnboardingView: View {
     @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
-    
+    private var audioPlayer: AudioPlayerProtocol = AudioPlayer()
+
     var body: some View {
         NBNavigationLink(value: Router.help) {
             EmptyView()
@@ -26,7 +27,7 @@ struct OnboardingView: View {
             .toolbar {
                 ToolBarNavigationItems(
                     leftButtonState: .help,
-                    rightButtonHiddeb: false,
+                    rightButtonHidden: false,
                     leftAction: {
                         navigator.push(Router.help)
                     },
@@ -46,10 +47,12 @@ struct OnboardingView: View {
                 case .gameMod:
                     GameModesView()
                 case .game(let isTwoPlayer):
-                    let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer)
-                    GameView(viewModel: gameVM, settings: storageManager)
+                    let gameVM = GameViewModel(isTwoPlayerMode: isTwoPlayer, settings: storageManager)
+                    GameView(viewModel: gameVM, storageManager: storageManager, audioPlayer: audioPlayer)
+                case .difficultyLevel:
+                    DifficultyLevelView(storageManager: storageManager)
                 case .leaderboard:
-                    Text("leaderboard")
+                    LeaderboardView(storageManager: storageManager)
                 case .result(let resultGame):
                     ResultView(result: resultGame)
                 }
