@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GameSettings {
     var isMusicEnabled: Bool
-    var musicGenres: MusicGenres
+    var choosedGenre: MusicGenres
     var isTimerEnabled: Bool
     var timerSeconds: Int
     var xSkin: Int
@@ -17,13 +17,13 @@ struct GameSettings {
     
     init(
         isMusicEnabled: Bool = true,
-        musicGenres: MusicGenres = .classical,
+        choosedGenre: MusicGenres = .classical,
         isTimerEnabled: Bool = false,
         timerSeconds: Int = 60,
         xSkin: Int = 1,
         oSkin: Int = 1
     ) {
-        self.musicGenres = musicGenres
+        self.choosedGenre = choosedGenre
         self.isMusicEnabled = isMusicEnabled
         self.isTimerEnabled = isTimerEnabled
         self.timerSeconds = timerSeconds
