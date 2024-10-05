@@ -193,7 +193,7 @@ final class GameViewModel: ObservableObject {
         isThinking.toggle()
         
         // Задержка для имитации "мышления" компьютера
-        try? await Task.sleep(nanoseconds: 100_000_000)
+        try? await Task.sleep(nanoseconds: 300_000_000)
         
         let moveIndex: Int
         
