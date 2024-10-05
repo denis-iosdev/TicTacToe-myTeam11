@@ -13,8 +13,7 @@ struct OnboardingView: View {
     @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
-    
-    private var audioPlayer: AudioPlayerProtocol = AudioPlayer() // Создаем экземпляр аудио-плеера
+    private var audioPlayer: AudioPlayerProtocol = AudioPlayer()
 
     var body: some View {
         NBNavigationLink(value: Router.help) {
