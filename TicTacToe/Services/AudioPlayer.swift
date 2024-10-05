@@ -13,26 +13,48 @@ protocol AudioPlayerProtocol {
     func stopSound()
 }
 
-class AudioPlayer: AudioPlayerProtocol {
-    var player: AVAudioPlayer?
+class AudioPlayer: AudioPlayerProtocol, ObservableObject {
     
-    // Функция для инициализации и запуска аудиоплеера
+    var player: AVAudioPlayer?
+    @ObservedObject var storageManager: StorageManager
+
+    init(storageManager: StorageManager) {
+        self.storageManager = storageManager
+    }
+    
     func playSound() {
-        // Убедитесь, что файл аудио существует в проекте
-        if let url = Bundle.main.url(forResource: "Jazz", withExtension: "mp3") {
+        // Проверяем, включена ли музыка в настройках
+        guard storageManager.isMusicEnabled else {
+            print("Музыка выключена в настройках")
+            return
+        }
+        
+        let genre = storageManager.settings.choosedGenre
+        let songName = genre.songName
+        
+        if let url = Bundle.main.url(forResource: songName, withExtension: nil) {
             do {
-                // Инициализация аудиоплеера
                 player = try AVAudioPlayer(contentsOf: url)
-                player?.numberOfLoops = -1 // Бесконечный повтор
-                player?.play() // Воспроизведение аудио
+                player?.numberOfLoops = -1
+                player?.volume = 0.0 // Начинаем с нулевой громкости
+                player?.play()
+                // Плавное нарастание громкости
+                player?.setVolume(1.0, fadeDuration: 2.0)
             } catch {
                 print("Ошибка воспроизведения звука: \(error.localizedDescription)")
             }
         }
     }
     
-    // Функция для остановки воспроизведения
+    
+    // Плавное затухание музыки
     func stopSound() {
-        player?.stop()
+        let duration: TimeInterval = 1.0
+        player?.setVolume(0.0, fadeDuration: duration)
+        
+        // Остановка музыки после завершения затухания
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.player?.stop()
+        }
     }
 }
