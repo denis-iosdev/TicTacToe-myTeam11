@@ -23,10 +23,25 @@ struct ToolBarNavigationItems: ToolbarContent {
         }
     }
     
+    enum ToolBarRightItemState {
+        case settings
+        case basket
+        
+        var image: UIImage {
+            switch self {
+            case .settings:
+                    .settingIcon
+            case .basket:
+                    .basket
+            }
+        }
+    }
+    
     @Environment(\.presentationMode) private var presentationMode
     let title: String
     let leftButtonState: ToolBarLeftItemState
-    let rightButtonHiddeb: Bool
+    let rightButtonState: ToolBarRightItemState
+    let rightButtonHidden: Bool
     var leftAction: VoidBlock?
     var rightAction: VoidBlock?
     
@@ -35,13 +50,15 @@ struct ToolBarNavigationItems: ToolbarContent {
     init(
         title: String = "",
         leftButtonState: ToolBarLeftItemState = .back,
+        rightButtonState: ToolBarRightItemState = .settings,
         rightButtonHidden: Bool = true,
         leftAction: VoidBlock? = nil,
         rightAction: VoidBlock? = nil
     ) {
         self.title = title
         self.leftButtonState = leftButtonState
-        self.rightButtonHiddeb = rightButtonHidden
+        self.rightButtonState = rightButtonState
+        self.rightButtonHidden = rightButtonHidden
         self.leftAction = leftAction
         self.rightAction = rightAction
     }
@@ -56,7 +73,7 @@ struct ToolBarNavigationItems: ToolbarContent {
                 .fontWeight(.bold)
         }
         ToolbarItem(placement: .topBarTrailing) {
-            if !rightButtonHiddeb {
+            if !rightButtonHidden {
                 rightButton
             }
         }
@@ -80,8 +97,18 @@ struct ToolBarNavigationItems: ToolbarContent {
         Button {
             rightAction?()
         } label: {
-            Image(uiImage: .settingIcon)
-                .padding(.bottom, 4)
+            switch rightButtonState {
+            case .settings:
+                Image(uiImage: rightButtonState.image)
+                    .padding(.bottom, 4)
+            case .basket:
+                Image(uiImage: rightButtonState.image)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.bottom, 4)
+                    .frame(width: 36, height: 32)
+            }
+            
         }
     }
 }

@@ -16,10 +16,15 @@ final class StorageManager: ObservableObject {
     @AppStorage("xSkin") var xSkin = 1
     @AppStorage("oSkin") var oSkin = 1
     
-    var resultsTime: [Int] = UserDefaults.standard.array(forKey: "resultsTime") as? [Int] ?? []
+    @Published var resultsTime: [Int] = UserDefaults.standard.array(forKey: "resultsTime") as? [Int] ?? []
     
     func addResultTime(_ value: Int) {
         resultsTime.append(value)
+        UserDefaults.standard.set(resultsTime, forKey: "resultsTime")
+    }
+    
+    func clearLeaderboard() {
+        resultsTime.removeAll()
         UserDefaults.standard.set(resultsTime, forKey: "resultsTime")
     }
     
