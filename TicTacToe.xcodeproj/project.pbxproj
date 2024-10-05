@@ -16,9 +16,11 @@
 		480507452CAC5ED6005EB458 /* GameModesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480507412CAC5ED6005EB458 /* GameModesView.swift */; };
 		48075E902CAAFD9300811224 /* PlayerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48075E8F2CAAFD9300811224 /* PlayerIconView.swift */; };
 		48075E922CAAFE7200811224 /* PlayingFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48075E912CAAFE7200811224 /* PlayingFieldView.swift */; };
+		4819E0392CB1285400AD5231 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819E0382CB1285400AD5231 /* LeaderboardView.swift */; };
 		484AFD6A2CAD3CDC007CD7B4 /* Int+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484AFD692CAD3CDC007CD7B4 /* Int+Ex.swift */; };
 		484AFD6C2CAD4D43007CD7B4 /* View+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484AFD6B2CAD4D43007CD7B4 /* View+Ex.swift */; };
 		484AFD6F2CAD5C02007CD7B4 /* ResultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484AFD6E2CAD5C02007CD7B4 /* ResultButton.swift */; };
+		486175762CB14D1300FCECE6 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486175752CB14D1300FCECE6 /* DifficultyLevel.swift */; };
 		4876F0272CAD2FC500C13A46 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876F0262CAD2FC500C13A46 /* ResultView.swift */; };
 		487C8F082CA9BE20000C3486 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C8F072CA9BE20000C3486 /* GameView.swift */; };
 		4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD8D2CAA8B7E00F1CE8B /* GameViewModel.swift */; };
@@ -26,7 +28,6 @@
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
 		489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */; };
-		489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		792527282CB067B300473FFD /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792527272CB067B300473FFD /* MusicView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
@@ -49,6 +50,10 @@
 		CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */; };
 		CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */; };
 		CECFF1AF2CAEA5D60082C2DC /* NavigationBackport in Frameworks */ = {isa = PBXBuildFile; productRef = CECFF1AE2CAEA5D60082C2DC /* NavigationBackport */; };
+		F103BB2A2CADE61400B125E1 /* Jazz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB272CADE61400B125E1 /* Jazz.mp3 */; };
+		F103BB2B2CADE61400B125E1 /* Pixel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB282CADE61400B125E1 /* Pixel.mp3 */; };
+		F103BB2C2CADE61400B125E1 /* Classic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F103BB292CADE61400B125E1 /* Classic.mp3 */; };
+		F103BB2F2CADE64D00B125E1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,9 +67,11 @@
 		480507412CAC5ED6005EB458 /* GameModesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModesView.swift; sourceTree = "<group>"; };
 		48075E8F2CAAFD9300811224 /* PlayerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIconView.swift; sourceTree = "<group>"; };
 		48075E912CAAFE7200811224 /* PlayingFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingFieldView.swift; sourceTree = "<group>"; };
+		4819E0382CB1285400AD5231 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		484AFD692CAD3CDC007CD7B4 /* Int+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ex.swift"; sourceTree = "<group>"; };
 		484AFD6B2CAD4D43007CD7B4 /* View+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ex.swift"; sourceTree = "<group>"; };
 		484AFD6E2CAD5C02007CD7B4 /* ResultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButton.swift; sourceTree = "<group>"; };
+		486175752CB14D1300FCECE6 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		4876F0262CAD2FC500C13A46 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		487C8F072CA9BE20000C3486 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		4888FD8D2CAA8B7E00F1CE8B /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -72,7 +79,6 @@
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevelView.swift; sourceTree = "<group>"; };
-		489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		792527272CB067B300473FFD /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -94,6 +100,10 @@
 		CE6DE6F62CAEC16C00684647 /* ResultGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultGameModel.swift; sourceTree = "<group>"; };
 		CECFF1812CAD62580082C2DC /* ToolBarNavigationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarNavigationItems.swift; sourceTree = "<group>"; };
 		CECFF1AA2CAEA47D0082C2DC /* TestNativeNavAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNativeNavAppView.swift; sourceTree = "<group>"; };
+		F103BB272CADE61400B125E1 /* Jazz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jazz.mp3; sourceTree = "<group>"; };
+		F103BB282CADE61400B125E1 /* Pixel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pixel.mp3; sourceTree = "<group>"; };
+		F103BB292CADE61400B125E1 /* Classic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Classic.mp3; sourceTree = "<group>"; };
+		F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +141,9 @@
 				489ACDF12CAF23A200A10B59 /* DifficultyLevel */,
 				487C8F062CA9BDC2000C3486 /* GamePage */,
 				4876F0242CAD2F9800C13A46 /* Result */,
+				4819E0362CB1283000AD5231 /* Leaderboard */,
 				CE0F1B742CA9C4CE00EFADE5 /* Common */,
 				CE0F1B8E2CAC06FE00EFADE5 /* Extension */,
-				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				CE0F1B712CA9C49000EFADE5 /* Onboarding */,
 				480507422CAC5ED6005EB458 /* GemeMod */,
 				7945FE292CAD6CF8004749A9 /* SettingsScreen */,
@@ -143,6 +153,9 @@
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,
 				CECFF1AC2CAEA4970082C2DC /* NativeNavTest */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
+				F103BB292CADE61400B125E1 /* Classic.mp3 */,
+				F103BB282CADE61400B125E1 /* Pixel.mp3 */,
+				F103BB272CADE61400B125E1 /* Jazz.mp3 */,
 				2275D6022CA9931A00C16C8B /* Preview Content */,
 			);
 			path = TicTacToe;
@@ -198,12 +211,36 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4819E0362CB1283000AD5231 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				4819E0372CB1284300AD5231 /* View */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		4819E0372CB1284300AD5231 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4819E0382CB1285400AD5231 /* LeaderboardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		484AFD6D2CAD5BE3007CD7B4 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
 				484AFD6E2CAD5C02007CD7B4 /* ResultButton.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		486175742CB14D0100FCECE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				486175752CB14D1300FCECE6 /* DifficultyLevel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4876F0242CAD2F9800C13A46 /* Result */ = {
@@ -218,6 +255,7 @@
 		4876F0252CAD2FB400C13A46 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				484AFD6D2CAD5BE3007CD7B4 /* Modifiers */,
 				4876F0262CAD2FC500C13A46 /* ResultView.swift */,
 			);
 			path = View;
@@ -246,6 +284,7 @@
 		489ACDF12CAF23A200A10B59 /* DifficultyLevel */ = {
 			isa = PBXGroup;
 			children = (
+				486175742CB14D0100FCECE6 /* Model */,
 				489ACDF22CAF23B800A10B59 /* View */,
 			);
 			path = DifficultyLevel;
@@ -255,7 +294,6 @@
 			isa = PBXGroup;
 			children = (
 				489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */,
-				489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				79B40DCB2CAC74FC0062B8C7 /* StorageManager.swift */,
+				F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -437,6 +476,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2275D6042CA9931A00C16C8B /* Preview Assets.xcassets in Resources */,
+				F103BB2B2CADE61400B125E1 /* Pixel.mp3 in Resources */,
+				F103BB2A2CADE61400B125E1 /* Jazz.mp3 in Resources */,
+				F103BB2C2CADE61400B125E1 /* Classic.mp3 in Resources */,
 				2275D6012CA9931A00C16C8B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4819E0392CB1285400AD5231 /* LeaderboardView.swift in Sources */,
 				48075E922CAAFE7200811224 /* PlayingFieldView.swift in Sources */,
 				487C8F082CA9BE20000C3486 /* GameView.swift in Sources */,
 				79B40DCC2CAC74FC0062B8C7 /* StorageManager.swift in Sources */,
@@ -464,13 +507,14 @@
 				4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */,
 				480507432CAC5ED6005EB458 /* Color + Ext.swift in Sources */,
 				484AFD6A2CAD3CDC007CD7B4 /* Int+Ex.swift in Sources */,
-				489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */,
 				CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */,
 				CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */,
 				480507442CAC5ED6005EB458 /* MenuButtonsLabel.swift in Sources */,
 				CECFF1AB2CAEA47D0082C2DC /* TestNativeNavAppView.swift in Sources */,
 				480507452CAC5ED6005EB458 /* GameModesView.swift in Sources */,
 				792527282CB067B300473FFD /* MusicView.swift in Sources */,
+				F103BB2F2CADE64D00B125E1 /* AudioPlayer.swift in Sources */,
+				486175762CB14D1300FCECE6 /* DifficultyLevel.swift in Sources */,
 				2275D5FD2CA9931800C16C8B /* TicTacToeApp.swift in Sources */,
 				2275D60B2CAAD31C00C16C8B /* RulesView.swift in Sources */,
 				CE0F1B762CA9C4F300EFADE5 /* MainButtonView.swift in Sources */,

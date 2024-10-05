@@ -11,7 +11,9 @@ import NavigationBackport
 struct GameView: View {
     @EnvironmentObject var navigator: PathNavigator
     @ObservedObject var viewModel: GameViewModel
-    @ObservedObject var settings: StorageManager
+    @ObservedObject var storageManager: StorageManager
+    
+    var audioPlayer: AudioPlayerProtocol
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -24,28 +26,32 @@ struct GameView: View {
                 
                 VStack(spacing: 45) {
                     
-                    HStack {
-                        PlayerIconView(text: viewModel.player1.name, image: "Xskin\(settings.xSkin)")
+                    HStack { // FIXME: выглядить так что можно перенести в отдельную структуру
+                        PlayerIconView(text: viewModel.player1.name, image: "Xskin\(storageManager.xSkin)")
                         
                         Spacer()
-                        if settings.isTimerEnabled {
+                        if storageManager.isTimerEnabled {
                             Text(viewModel.timeRemaining.timeFormatter)
                                 .font(.system(size: 20, weight: .bold))
                         }
                         Spacer()
                         
-                        PlayerIconView(text: viewModel.player2.name, image: "Oskin\(settings.oSkin)")
+                        PlayerIconView(text: viewModel.player2.name, image: "Oskin\(storageManager.oSkin)")
                     }
                     .foregroundStyle(.appBlack)
                     
                     HStack {
-                        Image(viewModel.currentPlayer.gamePiece == .x ? "Xskin\(settings.xSkin)" : "Oskin\(viewModel.settings.oSkin)")
+                        Image(viewModel.currentPlayer.gamePiece == .x
+                              ? "Xskin\(storageManager.xSkin)"
+                              : "Oskin\(viewModel.settings.oSkin)")
+                        .frame(height: 53)
+                        
                         Text("\(viewModel.currentPlayer.name) turn")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
                     }
                     
-                    PlayingFieldView(settings: settings, viewModel: viewModel)
+                    PlayingFieldView(settings: storageManager, viewModel: viewModel) // FIXME: выглядить так что можно не передавать storageManager, а передать значения в vm и потом достать из нее.
                     
                     Spacer()
                 }
@@ -55,6 +61,10 @@ struct GameView: View {
         }
         .onAppear {
             viewModel.reset()
+            audioPlayer.playSound()
+        }
+        .onDisappear {
+            audioPlayer.stopSound()
         }
         .onReceive(timer) { _ in
             viewModel.timerTick()

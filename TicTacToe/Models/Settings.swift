@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameSettings {
+    var difficultyLevel: DifficultyLevel
     var isMusicEnabled: Bool
     var choosedGenre: MusicGenres
     var isTimerEnabled: Bool
@@ -16,6 +17,7 @@ struct GameSettings {
     var oSkin: Int
     
     init(
+        difficultyLevel: DifficultyLevel = .easy,
         isMusicEnabled: Bool = true,
         choosedGenre: MusicGenres = .classic,
         isTimerEnabled: Bool = false,
@@ -23,8 +25,9 @@ struct GameSettings {
         xSkin: Int = 1,
         oSkin: Int = 1
     ) {
-        self.choosedGenre = choosedGenre
+        self.difficultyLevel = difficultyLevel
         self.isMusicEnabled = isMusicEnabled
+        self.choosedGenre = choosedGenre
         self.isTimerEnabled = isTimerEnabled
         self.timerSeconds = timerSeconds
         self.xSkin = xSkin

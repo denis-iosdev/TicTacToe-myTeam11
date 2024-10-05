@@ -14,6 +14,7 @@ struct ResultView: View {
 
     let result: ResultGameModel
 
+    
     var body: some View {
         VStack {
             Spacer()
@@ -48,6 +49,7 @@ struct ResultView: View {
                 }
             }
             .font(.system(size: 20, weight: .medium))
+          
         }
         .navigationBarHidden(true)
         .padding(.horizontal, 21)

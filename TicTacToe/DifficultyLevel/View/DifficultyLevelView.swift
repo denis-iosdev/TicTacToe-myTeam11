@@ -9,34 +9,33 @@ import SwiftUI
 import NavigationBackport
 
 struct DifficultyLevelView: View {
+    private let title: String = "Choose level"
+    @ObservedObject var storageManager: StorageManager
     @EnvironmentObject var navigator: PathNavigator
+    
+    @State private var difflvl: DifficultyLevel = .easy
     
     var body: some View {
         ZStack {
-            Color.lightBlue
+            Color.background
                 .ignoresSafeArea()
             VStack {
                 VStack(spacing: 20) {
-                    Text("Select Game")
+                    Text(title)
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundStyle(.appBlack)
                     
-                    Button {
-                        navigator.push(Router.game(false, .easy))
-                    } label: {
-                        DifficultyButton(text: "Easy")
+                    DifficultyButton(text: .easy, difflvl) {
+                        storageManager.settings.difficultyLevel = .easy
+                        navigator.push(Router.game(false))
                     }
-
-                    Button {
-                        navigator.push(Router.game(false, .medium))
-                    } label: {
-                        DifficultyButton(text: "Medium")
+                    DifficultyButton(text: .medium, difflvl) {
+                        storageManager.settings.difficultyLevel = .medium
+                        navigator.push(Router.game(false))
                     }
-                    
-                    Button {
-                        navigator.push(Router.game(false, .hard))
-                    } label: {
-                        DifficultyButton(text: "Hard")
+                    DifficultyButton(text: .hard, difflvl) {
+                        storageManager.settings.difficultyLevel = .hard
+                        navigator.push(Router.game(false))
                     }
                 }
                 .padding(20)
@@ -46,6 +45,11 @@ struct DifficultyLevelView: View {
             }
             .padding(52)
         }
+        .onAppear {
+            if let value = DifficultyLevel(rawValue: storageManager.difficultyLevelRawValue) {
+                difflvl = value
+            }
+        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolBarNavigationItems(
@@ -54,5 +58,40 @@ struct DifficultyLevelView: View {
                 rightAction: { navigator.push(Router.setting) }
             )
         }
+    }
+}
+
+// MARK: - DifficultyButton
+
+fileprivate struct DifficultyButton: View {
+    let text: DifficultyLevel
+    let difflvl: DifficultyLevel
+    let action: VoidBlock
+    
+    init(
+        text: DifficultyLevel,
+        _ difflvl: DifficultyLevel,
+        action: @escaping VoidBlock
+    ) {
+        self.text = text
+        self.difflvl = difflvl
+        self.action = action
+    }
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Text(text.title)
+                .padding(.vertical, 20)
+                .frame(maxWidth: .infinity)
+                .font(.system(size: 20, weight: .medium))
+                .foregroundStyle(.appBlack)
+                .background(RoundedRectangle(cornerRadius: 30).fill(isSelected ? .appPurple : .lightBlue))
+        }
+    }
+    
+    private var isSelected: Bool {
+        text == difflvl
     }
 }

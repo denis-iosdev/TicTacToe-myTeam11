@@ -26,7 +26,7 @@ struct SettingsView: View {
                         
                         MusicView(
                             isMusicEnabled: $storageManager.isMusicEnabled,
-                            choosedGenre: $storageManager.choosedGenre
+                            choosedGenre: $storageManager.settings.choosedGenre
                         )
                     }
                     .padding()
