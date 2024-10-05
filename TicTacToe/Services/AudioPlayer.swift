@@ -19,7 +19,7 @@ class AudioPlayer: AudioPlayerProtocol {
     // Функция для инициализации и запуска аудиоплеера
     func playSound() {
         // Убедитесь, что файл аудио существует в проекте
-        if let url = Bundle.main.url(forResource: "pixel", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "Jazz", withExtension: "mp3") {
             do {
                 // Инициализация аудиоплеера
                 player = try AVAudioPlayer(contentsOf: url)

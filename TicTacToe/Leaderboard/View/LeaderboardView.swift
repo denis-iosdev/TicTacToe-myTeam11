@@ -18,24 +18,33 @@ struct LeaderboardView: View {
                 .ignoresSafeArea()
             let sortedTimes = storageManager.resultsTime.sorted(by: { $0 < $1 })
             
-            ScrollView {
-                VStack(spacing: 8) {
-                    ForEach(Array(sortedTimes.enumerated()), id: \.offset) { index, time in
-                        HStack {
-                            Text("\(index + 1)")
-                                .leaderboardText(index: index)
-                                .clipShape(Circle())
-                            
-                            Text(index == 0 ? "Best time \(time.timeFormatter)" : "Time \(time.timeFormatter)")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .leaderboardText(index: index)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
+            if !storageManager.resultsTime.isEmpty {
+                ScrollView {
+                    VStack(spacing: 8) {
+                        ForEach(Array(sortedTimes.enumerated()), id: \.offset) { index, time in
+                            HStack {
+                                Text("\(index + 1)")
+                                    .leaderboardText(index: index)
+                                    .clipShape(Circle())
                                 
+                                Text(index == 0 ? "Best time \(time.timeFormatter)" : "Time \(time.timeFormatter)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .leaderboardText(index: index)
+                                    .clipShape(RoundedRectangle(cornerRadius: 30))
+                                    
+                            }
                         }
                     }
+                    .padding(.horizontal, 21)
                 }
-                .padding(.horizontal, 21)
+            } else {
+                VStack(spacing: 40) {
+                    Text("No game history\nwith turn on time")
+                        .font(.system(size: 20, weight: .semibold))
+                    Image(.emptyLeaderboard)
+                }
             }
+            
         }
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
