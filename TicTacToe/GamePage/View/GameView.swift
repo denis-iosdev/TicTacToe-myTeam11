@@ -71,8 +71,10 @@ struct GameView: View {
         }
         .onChange(of: viewModel.gameOver) { _ in
             viewModel.handleGameOver()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                guard let resultModel  = viewModel.resultModel else { return }
+            
+            guard let resultModel  = viewModel.resultModel else { return }
+            let delay = viewModel.isDraw ? 0.5 : 1.2
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 navigator.push(Router.result(resultModel))
             }
         }
