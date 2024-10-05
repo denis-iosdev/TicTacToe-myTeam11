@@ -9,4 +9,11 @@ import Foundation
 
 enum DifficultyLevel: String {
     case easy, medium, hard
+    
+    var title: String {
+        switch self {
+        default:
+            self.rawValue.capitalized
+        }
+    }
 }

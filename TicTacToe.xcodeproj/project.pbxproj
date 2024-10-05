@@ -28,7 +28,6 @@
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
 		489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */; };
-		489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
 		7945FE2D2CAD80AA004749A9 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2C2CAD80AA004749A9 /* TimerView.swift */; };
@@ -79,7 +78,6 @@
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevelView.swift; sourceTree = "<group>"; };
-		489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyButton.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7945FE2C2CAD80AA004749A9 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */,
-				489ACDF62CAFCFA900A10B59 /* DifficultyButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 				4888FD902CAAADEE00F1CE8B /* GameSquare.swift in Sources */,
 				480507432CAC5ED6005EB458 /* Color + Ext.swift in Sources */,
 				484AFD6A2CAD3CDC007CD7B4 /* Int+Ex.swift in Sources */,
-				489ACDF72CAFCFA900A10B59 /* DifficultyButton.swift in Sources */,
 				CE0F1B8D2CAC00AE00EFADE5 /* CustomNavigationLinkWithAction.swift in Sources */,
 				CE0F1B732CA9C4BE00EFADE5 /* OnboardingView.swift in Sources */,
 				480507442CAC5ED6005EB458 /* MenuButtonsLabel.swift in Sources */,
