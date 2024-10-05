@@ -23,7 +23,7 @@ struct DifficultyLevelView: View {
                         .foregroundStyle(.appBlack)
                     
                     Button {
-                        navigator.push(Router.game(false, .easy))
+                        navigator.push(Router.game(false))
                         storageManager.settings.difficultyLevel = .easy
                     } label: {
                         DifficultyButton(text: "Easy",
@@ -31,7 +31,7 @@ struct DifficultyLevelView: View {
                     }
 
                     Button {
-                        navigator.push(Router.game(false, .medium))
+                        navigator.push(Router.game(false))
                         storageManager.settings.difficultyLevel = .medium
                     } label: {
                         DifficultyButton(text: "Medium",
@@ -39,7 +39,7 @@ struct DifficultyLevelView: View {
                     }
                     
                     Button {
-                        navigator.push(Router.game(false, .hard))
+                        navigator.push(Router.game(false))
                         storageManager.settings.difficultyLevel = .hard
                     } label: {
                         DifficultyButton(text: "Hard",

@@ -36,7 +36,7 @@ final class GameViewModel: ObservableObject {
     let settings: StorageManager
     
     var isTwoPlayerMode: Bool
-    var difficultyLevel: DifficultyLevel?
+//    var difficultyLevel: DifficultyLevel?
     
     var currentPlayer: Player {
         player1.isCurrent ? player1 : player2
@@ -47,9 +47,9 @@ final class GameViewModel: ObservableObject {
     }
     
     // MARK: - Initializer
-    init(isTwoPlayerMode: Bool, difficultyLevel: DifficultyLevel?, settings: StorageManager) {
+    init(isTwoPlayerMode: Bool, /*difficultyLevel: DifficultyLevel?,*/ settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
-        self.difficultyLevel = difficultyLevel
+//        self.difficultyLevel = difficultyLevel
         self.settings = settings
         self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One" : "You")
         self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two" : "Computer")
