@@ -63,13 +63,11 @@ struct GameView: View {
             viewModel.reset()
             audioPlayer.playSound()
         }
-        .onDisappear {
-            audioPlayer.stopSound()
-        }
         .onReceive(timer) { _ in
             viewModel.timerTick()
         }
         .onChange(of: viewModel.gameOver) { _ in
+            viewModel.gameOver ? audioPlayer.stopSound() : ()
             viewModel.handleGameOver()
             
             guard let resultModel  = viewModel.resultModel else { return }
