@@ -11,28 +11,16 @@ import AVFoundation
 protocol AudioPlayerProtocol {
     func playSound()
     func stopSound()
+    func setSong(_ song: MusicGenres)
 }
 
 class AudioPlayer: AudioPlayerProtocol, ObservableObject {
     
     var player: AVAudioPlayer?
-    @ObservedObject var storageManager: StorageManager
-
-    init(storageManager: StorageManager) {
-        self.storageManager = storageManager
-    }
+    private var song: MusicGenres = .classic
     
     func playSound() {
-        // Проверяем, включена ли музыка в настройках
-        guard storageManager.isMusicEnabled else {
-            print("Музыка выключена в настройках")
-            return
-        }
-        
-        let genre = storageManager.settings.choosedGenre
-        let songName = genre.songName
-        
-        if let url = Bundle.main.url(forResource: songName, withExtension: nil) {
+        if let url = Bundle.main.url(forResource: song.songName, withExtension: nil) {
             do {
                 player = try AVAudioPlayer(contentsOf: url)
                 player?.numberOfLoops = -1
@@ -56,5 +44,9 @@ class AudioPlayer: AudioPlayerProtocol, ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             self.player?.stop()
         }
+    }
+    
+    func setSong(_ song: MusicGenres) {
+        self.song = song
     }
 }
