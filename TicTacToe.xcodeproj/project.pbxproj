@@ -28,6 +28,8 @@
 		4888FD922CAAAE1100F1CE8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD912CAAAE1100F1CE8B /* Player.swift */; };
 		4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4888FD932CAAAE2300F1CE8B /* Move.swift */; };
 		489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */; };
+		48BDE52D2CB29B9500BFAD13 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 48BDE52C2CB29B9500BFAD13 /* Localizable.xcstrings */; };
+		48BDE52F2CB29D3F00BFAD13 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BDE52E2CB29D3F00BFAD13 /* String+Ex.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		792527282CB067B300473FFD /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792527272CB067B300473FFD /* MusicView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
@@ -79,6 +81,8 @@
 		4888FD912CAAAE1100F1CE8B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4888FD932CAAAE2300F1CE8B /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevelView.swift; sourceTree = "<group>"; };
+		48BDE52C2CB29B9500BFAD13 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		48BDE52E2CB29D3F00BFAD13 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		792527272CB067B300473FFD /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				CE0F1B822CAB682D00EFADE5 /* TestCustomNavigation */,
 				CECFF1AC2CAEA4970082C2DC /* NativeNavTest */,
 				2275D6002CA9931A00C16C8B /* Assets.xcassets */,
+				48BDE52C2CB29B9500BFAD13 /* Localizable.xcstrings */,
 				F103BB292CADE61400B125E1 /* Classic.mp3 */,
 				F103BB282CADE61400B125E1 /* Pixel.mp3 */,
 				F103BB272CADE61400B125E1 /* Jazz.mp3 */,
@@ -391,6 +396,7 @@
 				484AFD692CAD3CDC007CD7B4 /* Int+Ex.swift */,
 				CE0F1B8A2CAB707F00EFADE5 /* TypeAliases.swift */,
 				484AFD6B2CAD4D43007CD7B4 /* View+Ex.swift */,
+				48BDE52E2CB29D3F00BFAD13 /* String+Ex.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 2275D5F02CA9931800C16C8B;
 			packageReferences = (
@@ -477,6 +484,7 @@
 			files = (
 				2275D6042CA9931A00C16C8B /* Preview Assets.xcassets in Resources */,
 				F103BB2B2CADE61400B125E1 /* Pixel.mp3 in Resources */,
+				48BDE52D2CB29B9500BFAD13 /* Localizable.xcstrings in Resources */,
 				F103BB2A2CADE61400B125E1 /* Jazz.mp3 in Resources */,
 				F103BB2C2CADE61400B125E1 /* Classic.mp3 in Resources */,
 				2275D6012CA9931A00C16C8B /* Assets.xcassets in Resources */,
@@ -499,6 +507,7 @@
 				CE6DE6F42CAEB61D00684647 /* Router.swift in Sources */,
 				CECFF1822CAD62580082C2DC /* ToolBarNavigationItems.swift in Sources */,
 				4888FD8E2CAA8B7E00F1CE8B /* GameViewModel.swift in Sources */,
+				48BDE52F2CB29D3F00BFAD13 /* String+Ex.swift in Sources */,
 				4876F0272CAD2FC500C13A46 /* ResultView.swift in Sources */,
 				4888FD942CAAAE2300F1CE8B /* Move.swift in Sources */,
 				7945FE302CAD86D6004749A9 /* SkinSelectionView.swift in Sources */,
@@ -596,6 +605,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -652,6 +662,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

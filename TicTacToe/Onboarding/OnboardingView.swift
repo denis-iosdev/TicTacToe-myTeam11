@@ -77,7 +77,7 @@ struct OnboardingView: View {
 
 struct OnboardingContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    private let buttonTitle: String = "Let's play"
+    private let buttonTitle: String = "Let's play".localized
     private let titleText: String = "TIC-TAC-TOE"
     
     var body: some View {

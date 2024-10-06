@@ -49,8 +49,8 @@ final class GameViewModel: ObservableObject {
     init(isTwoPlayerMode: Bool, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
         self.settings = settings
-        self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One" : "You")
-        self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two" : "Computer")
+        self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One".localized : "You".localized)
+        self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two".localized : "Computer".localized)
         
         settings.isTimerEnabled ? startTimer() : nil
     }

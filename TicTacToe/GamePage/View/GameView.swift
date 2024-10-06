@@ -46,7 +46,7 @@ struct GameView: View {
                               : "Oskin\(viewModel.settings.oSkin)")
                         .frame(height: 53)
                         
-                        Text("\(viewModel.currentPlayer.name) turn")
+                        Text("\(viewModel.currentPlayer.name) " + "turn".localized)
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(.appBlack)
                     }
