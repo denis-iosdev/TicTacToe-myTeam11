@@ -23,7 +23,7 @@ struct WinningLineView: View {
                 path.addLine(to: endPoint)
             }
             .trim(from: 0, to: animateLine) // Используем trim для анимации
-            .stroke(Color.appBlue, style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+            .stroke(Color.basicBlue, style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
             .animation(.easeInOut(duration: 1.0), value: animateLine) // Настройка анимации
             .onAppear {
                 self.animateLine = 1.0 // Запуск анимации при появлении

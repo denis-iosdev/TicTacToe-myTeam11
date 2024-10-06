@@ -17,6 +17,7 @@ struct TimerView: View {
                 Toggle(isOn: $isTimerEnabled) {
                     Text("Game Time")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(.appBlack)
                 }
                 .tint(.buttonDarkBackground)
             }
@@ -29,11 +30,13 @@ struct TimerView: View {
                     Text("Duration")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
+                        .foregroundStyle(.appBlack)
                     
                     HStack() {
                         Text("\(formattedTime(seconds: timerSeconds))")
                             .font(.system(size: 20))
                             .fontWeight(.semibold)
+                            .foregroundStyle(.appBlack)
                         
                         Stepper("", value: $timerSeconds, in: 15...300, step: 15)
                     }
