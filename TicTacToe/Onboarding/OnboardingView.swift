@@ -72,22 +72,27 @@ struct OnboardingContentView: View {
     private let titleText: String = "TIC-TAC-TOE"
     
     var body: some View {
-        VStack {
-            Spacer()
+        ZStack {
+            Color.white
+                .ignoresSafeArea()
             
-            Image(uiImage: .logo)
-                .padding(.horizontal, 60)
-            
-            Text(titleText)
-                .font(.title)
-                .bold()
-                .padding(.top, 30)
-            
-            Spacer()
-            
-            NBNavigationLink(value: Router.gameMod) {
-                MainButtonView(title: buttonTitle, style: .fill)
-                    .padding(.bottom, isSmallScreen() ? 20 : 0)
+            VStack {
+                Spacer()
+                
+                Image(uiImage: .logo)
+                    .padding(.horizontal, 60)
+                
+                Text(titleText)
+                    .font(.title.bold())
+                    .foregroundStyle(.appBlack)
+                    .padding(.top, 30)
+                
+                Spacer()
+                
+                NBNavigationLink(value: Router.gameMod) {
+                    MainButtonView(title: buttonTitle, style: .fill)
+                        .padding(.bottom, isSmallScreen() ? 20 : 0)
+                }
             }
         }
     }
