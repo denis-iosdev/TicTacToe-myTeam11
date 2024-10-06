@@ -21,6 +21,7 @@ struct MusicView: View {
                 Toggle(isOn: $isMusicEnabled) {
                     Text("Music")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(.appBlack)
                 }
                 .tint(.buttonDarkBackground)
                 .padding()
@@ -48,6 +49,7 @@ struct MusicView: View {
                     Text(allMusicGenres[currentIndex].rawValue)
                         .font(.system(size: 20, weight: .medium))
                         .frame(maxWidth: .infinity)
+                        .foregroundStyle(.appBlack)
                         .animation(.interactiveSpring(), value: currentIndex)
                     
                     Spacer()
