@@ -18,8 +18,8 @@
 <img src="https://img.shields.io/badge/13NotReal13-red"/></a>
 <a href="https://github.com/DaNiIlaIoS">
 <img src="https://img.shields.io/badge/DaNiIlaIoS-green"/></a>
-<a href="https://github.com/pavelMobileDev">
-<img src="https://img.shields.io/badge/pavelMobileDev-blue"/></a>
+<a href="https://github.com/pashaGriDev">
+<img src="https://img.shields.io/badge/pashaGriDev-blue"/></a>
 <a href="https://github.com/Igor1901">
 <img src="https://img.shields.io/badge/Igor1901-purple"/></a>
 </p>
