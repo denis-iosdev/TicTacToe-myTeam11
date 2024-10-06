@@ -73,7 +73,7 @@ struct OnboardingContentView: View {
     
     var body: some View {
         ZStack {
-            Color.background
+            Color.white
                 .ignoresSafeArea()
             
             VStack {
