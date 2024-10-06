@@ -13,16 +13,7 @@ struct OnboardingView: View {
     @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
-
-    // Создаем экземпляр AudioPlayer, используя storageManager
-    private var audioPlayer: AudioPlayerProtocol
-    
-    init() {
-            // Инициализируем AudioPlayer после инициализации storageManager
-            let storageManagerInstance = StorageManager()
-            self._storageManager = StateObject(wrappedValue: storageManagerInstance)
-            self.audioPlayer = AudioPlayer(storageManager: storageManagerInstance)
-        }
+    private var audioPlayer: AudioPlayerProtocol = AudioPlayer()
     
     var body: some View {
         NBNavigationLink(value: Router.help) {

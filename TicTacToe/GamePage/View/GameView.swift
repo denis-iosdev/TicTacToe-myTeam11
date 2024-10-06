@@ -61,10 +61,15 @@ struct GameView: View {
         }
         .onAppear {
             viewModel.reset()
-            audioPlayer.playSound()
+            if storageManager.isMusicEnabled {
+                audioPlayer.setSong(storageManager.settings.choosedGenre)
+                audioPlayer.playSound()
+            }
         }
         .onDisappear {
-            audioPlayer.stopSound()
+            if storageManager.isMusicEnabled {
+                audioPlayer.stopSound()
+            }
         }
         .onReceive(timer) { _ in
             viewModel.timerTick()
