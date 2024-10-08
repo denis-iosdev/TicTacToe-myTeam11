@@ -48,6 +48,7 @@ struct LeaderboardView: View {
                 VStack(spacing: 40) {
                     Text("No game history\nwith turn on time")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(.appBlack)
                     Image(.emptyLeaderboard)
                 }
             }
