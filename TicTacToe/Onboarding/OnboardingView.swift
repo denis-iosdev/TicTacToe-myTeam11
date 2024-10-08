@@ -13,16 +13,7 @@ struct OnboardingView: View {
     @EnvironmentObject var navigator: PathNavigator
     @State private var settingViewIsOn: Bool = false
     @State private var helpViewIsOn: Bool = false
-
-    // Создаем экземпляр AudioPlayer, используя storageManager
-    private var audioPlayer: AudioPlayerProtocol
-    
-    init() {
-            // Инициализируем AudioPlayer после инициализации storageManager
-            let storageManagerInstance = StorageManager()
-            self._storageManager = StateObject(wrappedValue: storageManagerInstance)
-            self.audioPlayer = AudioPlayer(storageManager: storageManagerInstance)
-        }
+    private var audioPlayer: AudioPlayerProtocol = AudioPlayer()
     
     var body: some View {
         NBNavigationLink(value: Router.help) {
@@ -81,22 +72,27 @@ struct OnboardingContentView: View {
     private let titleText: String = "TIC-TAC-TOE"
     
     var body: some View {
-        VStack {
-            Spacer()
+        ZStack {
+            Color.white
+                .ignoresSafeArea()
             
-            Image(uiImage: .logo)
-                .padding(.horizontal, 60)
-            
-            Text(titleText)
-                .font(.title)
-                .bold()
-                .padding(.top, 30)
-            
-            Spacer()
-            
-            NBNavigationLink(value: Router.gameMod) {
-                MainButtonView(title: buttonTitle, style: .fill)
-                    .padding(.bottom, isSmallScreen() ? 20 : 0)
+            VStack {
+                Spacer()
+                
+                Image(uiImage: .logo)
+                    .padding(.horizontal, 60)
+                
+                Text(titleText)
+                    .font(.title.bold())
+                    .foregroundStyle(.appBlack)
+                    .padding(.top, 30)
+                
+                Spacer()
+                
+                NBNavigationLink(value: Router.gameMod) {
+                    MainButtonView(title: buttonTitle, style: .fill)
+                        .padding(.bottom, isSmallScreen() ? 20 : 0)
+                }
             }
         }
     }

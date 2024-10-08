@@ -48,6 +48,7 @@ struct LeaderboardView: View {
                 VStack(spacing: 40) {
                     Text("No game history\nwith turn on time")
                         .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(.appBlack)
                     Image(.emptyLeaderboard)
                 }
             }
@@ -68,9 +69,13 @@ struct LeaderboardView: View {
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolBarNavigationItems(title: "Leaderboard".localized,  rightButtonState: .basket, rightButtonHidden: false, leftAction: { navigator.pop() }, rightAction: {
-                isPresentAlert.toggle()
-            })
+            ToolBarNavigationItems(
+                title: "Leaderboard".localized,
+                rightButtonState: .basket,
+                rightButtonHidden: storageManager.resultsTime.isEmpty,
+                leftAction: { navigator.pop() }, rightAction: {
+                    isPresentAlert.toggle()
+             })
         }
     }
 }

@@ -61,7 +61,10 @@ struct GameView: View {
         }
         .onAppear {
             viewModel.reset()
-            audioPlayer.playSound()
+            if storageManager.isMusicEnabled {
+                audioPlayer.setSong(storageManager.settings.choosedGenre)
+                audioPlayer.playSound()
+            }
         }
         .onReceive(timer) { _ in
             viewModel.timerTick()

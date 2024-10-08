@@ -71,6 +71,7 @@ struct ToolBarNavigationItems: ToolbarContent {
             Text(title)
                 .font(.title3)
                 .fontWeight(.bold)
+                .foregroundStyle(.appBlack)
         }
         ToolbarItem(placement: .topBarTrailing) {
             if !rightButtonHidden {
