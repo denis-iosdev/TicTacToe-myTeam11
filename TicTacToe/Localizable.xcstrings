@@ -36,7 +36,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Лучшее Время"
+            "value" : "Лучшее Время %@"
           }
         }
       }
@@ -82,6 +82,17 @@
         }
       }
     },
+    "Computer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Компьютер"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "ru" : {
@@ -110,6 +121,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нарисуйте сетку из трех строк и трех столбцов, всего создав девять квадратов."
+          }
+        }
+      }
+    },
+    "Draw!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ничья!"
           }
         }
       }
@@ -203,6 +225,17 @@
     "link gemeMod" : {
 
     },
+    "Lose!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проиграл!"
+          }
+        }
+      }
+    },
     "Medium" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -225,7 +258,14 @@
       }
     },
     "No game history\nwith turn on time" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "История игр отсутствует"
+          }
+        }
+      }
     },
     "Picked" : {
       "localizations" : {
@@ -244,6 +284,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Играть заново"
+          }
+        }
+      }
+    },
+    "Player" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игрок"
           }
         }
       }
@@ -382,7 +433,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Время"
+            "value" : "Время %@"
           }
         }
       }
@@ -409,24 +460,13 @@
         }
       }
     },
-    "You" : {
+    "Win!" : {
       "extractionState" : "manual",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ты"
-          }
-        }
-      }
-    },
-    "Your turn" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Твой ход"
+            "value" : "победил!"
           }
         }
       }

@@ -49,7 +49,7 @@ final class GameViewModel: ObservableObject {
     init(isTwoPlayerMode: Bool, settings: StorageManager) {
         self.isTwoPlayerMode = isTwoPlayerMode
         self.settings = settings
-        self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One".localized : "You".localized)
+        self.player1 = Player(gamePiece: .x, name: isTwoPlayerMode ? "Player One".localized : "Player".localized)
         self.player2 = Player(gamePiece: .o, name: isTwoPlayerMode ? "Player Two".localized : "Computer".localized)
         
         settings.isTimerEnabled ? startTimer() : nil
@@ -175,14 +175,14 @@ final class GameViewModel: ObservableObject {
     
     private func openResultView() {
         if isDraw {
-            createResultView(text: "Draw!", result: .draw)
+            createResultView(text: "Draw!".localized, result: .draw)
         } else if isTwoPlayerMode {
-            createResultView(text: "\(winner?.name ?? "") win!", result: .win)
+            createResultView(text: "\(winner?.name ?? "") " + "Win!".localized, result: .win)
         } else {
             if winner == player1 {
-                createResultView(text: "\(player1.name) win!", result: .win)
+                createResultView(text: "\(player1.name) " + "Win!".localized, result: .win)
             } else {
-                createResultView(text: "\(player1.name) Lose!", result: .lose)
+                createResultView(text: "\(player1.name) " + "Lose!".localized, result: .lose)
             }
         }
     }

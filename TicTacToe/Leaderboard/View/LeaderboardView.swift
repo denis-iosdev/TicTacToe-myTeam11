@@ -68,7 +68,7 @@ struct LeaderboardView: View {
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolBarNavigationItems(title: "Leaderboard",  rightButtonState: .basket, rightButtonHidden: false, leftAction: { navigator.pop() }, rightAction: {
+            ToolBarNavigationItems(title: "Leaderboard".localized,  rightButtonState: .basket, rightButtonHidden: false, leftAction: { navigator.pop() }, rightAction: {
                 isPresentAlert.toggle()
             })
         }

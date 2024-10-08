@@ -30,6 +30,7 @@
 		489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */; };
 		48BDE52D2CB29B9500BFAD13 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 48BDE52C2CB29B9500BFAD13 /* Localizable.xcstrings */; };
 		48BDE52F2CB29D3F00BFAD13 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BDE52E2CB29D3F00BFAD13 /* String+Ex.swift */; };
+		48BDE59C2CB5343200BFAD13 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BDE59B2CB5343200BFAD13 /* LanguageManager.swift */; };
 		48DABBF52CABD38800B92FF4 /* WinningLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DABBF42CABD38800B92FF4 /* WinningLineView.swift */; };
 		792527282CB067B300473FFD /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792527272CB067B300473FFD /* MusicView.swift */; };
 		7945FE2B2CAD6D13004749A9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945FE2A2CAD6D13004749A9 /* SettingsView.swift */; };
@@ -83,6 +84,7 @@
 		489ACDF32CAF23C700A10B59 /* DifficultyLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevelView.swift; sourceTree = "<group>"; };
 		48BDE52C2CB29B9500BFAD13 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		48BDE52E2CB29D3F00BFAD13 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
+		48BDE59B2CB5343200BFAD13 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		48DABBF42CABD38800B92FF4 /* WinningLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningLineView.swift; sourceTree = "<group>"; };
 		792527272CB067B300473FFD /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
 		7945FE2A2CAD6D13004749A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				79B40DCB2CAC74FC0062B8C7 /* StorageManager.swift */,
 				F103BB2E2CADE64D00B125E1 /* AudioPlayer.swift */,
+				48BDE59B2CB5343200BFAD13 /* LanguageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -448,7 +451,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2275D5F82CA9931800C16C8B = {
 						CreatedOnToolsVersion = 15.4;
@@ -533,6 +536,7 @@
 				489ACDF42CAF23C700A10B59 /* DifficultyLevelView.swift in Sources */,
 				CE0F1B782CAAFDB600EFADE5 /* CustomNavigationView.swift in Sources */,
 				CE0F1B7B2CAB060600EFADE5 /* CustomNavigationConteinerView.swift in Sources */,
+				48BDE59C2CB5343200BFAD13 /* LanguageManager.swift in Sources */,
 				CE0F1B7D2CAB08C900EFADE5 /* CustomNavView.swift in Sources */,
 				CE0F1B8B2CAB707F00EFADE5 /* TypeAliases.swift in Sources */,
 				CE0F1B862CAB687300EFADE5 /* TestAppContentView.swift in Sources */,
@@ -551,6 +555,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -615,6 +620,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -675,7 +681,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
-				DEVELOPMENT_TEAM = 689Q9C7S84;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -709,7 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe/Preview Content\"";
-				DEVELOPMENT_TEAM = 689Q9C7S84;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
