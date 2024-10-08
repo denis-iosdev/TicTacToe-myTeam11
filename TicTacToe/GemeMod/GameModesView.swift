@@ -26,7 +26,7 @@ struct GameModesView: View {
                     navigator.push(Router.game(false))
                 } label: {
                     MenuButtonsLabel(
-                        title: "Single Player",
+                        title: "Single Player".localized,
                         iconName: "SinglePlayerButtonIcon",
                         colorButton: Color.buttonLightBackground
                     )
@@ -36,7 +36,7 @@ struct GameModesView: View {
                     navigator.push(Router.game(true))
                 } label: {
                     MenuButtonsLabel(
-                        title: "Two Players",
+                        title: "Two Players".localized,
                         iconName: "TwoPlayersButtonIcon",
                         colorButton: Color.buttonLightBackground
                     )
@@ -46,7 +46,7 @@ struct GameModesView: View {
                     navigator.push(Router.difficultyLevel)
                 } label: {
                     MenuButtonsLabel(
-                        title: "Difficulty Level",
+                        title: "Difficulty Level".localized,
                         iconName: "DifficultyLevelButtonIcon",
                         colorButton: Color.buttonLightBackground
                     )
@@ -56,7 +56,7 @@ struct GameModesView: View {
                     navigator.push(Router.leaderboard)
                 } label: {
                     MenuButtonsLabel(
-                        title: "Leaderboard",
+                        title: "Leaderboard".localized,
                         iconName: "LeaderboardButtonIcon",
                         colorButton: Color.leaderboardButton
                     )

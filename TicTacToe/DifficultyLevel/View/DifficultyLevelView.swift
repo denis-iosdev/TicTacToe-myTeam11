@@ -9,7 +9,7 @@ import SwiftUI
 import NavigationBackport
 
 struct DifficultyLevelView: View {
-    private let title: String = "Choose level"
+    private let title: String = "Choose level".localized
     @ObservedObject var storageManager: StorageManager
     @EnvironmentObject var navigator: PathNavigator
     
@@ -82,7 +82,7 @@ fileprivate struct DifficultyButton: View {
         Button {
             action()
         } label: {
-            Text(text.title)
+            Text(text.title.localized)
                 .padding(.vertical, 20)
                 .frame(maxWidth: .infinity)
                 .font(.system(size: 20, weight: .medium))

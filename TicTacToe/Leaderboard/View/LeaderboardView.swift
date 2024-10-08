@@ -70,12 +70,12 @@ struct LeaderboardView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolBarNavigationItems(
-                title: "Leaderboard",
+                title: "Leaderboard".localized,
                 rightButtonState: .basket,
                 rightButtonHidden: storageManager.resultsTime.isEmpty,
                 leftAction: { navigator.pop() }, rightAction: {
                     isPresentAlert.toggle()
-                })
+             })
         }
     }
 }
