@@ -18,6 +18,13 @@ struct TicTacToeApp: App {
             NBNavigationStack(path: $path) {
                 OnboardingView()
             }
+            .onAppear {
+                changeNavBarBackgroundColor()
+            }
         }
+    }
+    
+    private func changeNavBarBackgroundColor() {
+        UINavigationBar.appearance().barTintColor = .white
     }
 }
