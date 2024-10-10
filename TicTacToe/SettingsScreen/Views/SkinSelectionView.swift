@@ -17,7 +17,7 @@ struct SkinSelectionView: View {
                 let isChoosedSkin = skinNumber == selectedXSkin
                 
                 VStack {
-                    HStack(spacing: 20) {
+                    HStack {
                         Image("Xskin\(skinNumber)")
                         Image("Oskin\(skinNumber)")
                     }
