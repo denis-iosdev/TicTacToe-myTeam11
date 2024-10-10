@@ -10,6 +10,9 @@
     "%lld" : {
 
     },
+    "About Us" : {
+
+    },
     "Are you sure you want to clear the leaderboard?" : {
       "localizations" : {
         "ru" : {
@@ -343,7 +346,7 @@
         }
       }
     },
-    "Player X starts by choosing a square (e.g., square 5).\nPlayer O follows by choosing an empty square (e.g., square 1).\nContinue alternating turns until the game ends." : {
+    "Player X starts by choosing a square (e.g., square 5). Player O follows by choosing an empty square (e.g., square 1). Continue alternating turns until the game ends." : {
       "extractionState" : "manual",
       "localizations" : {
         "ru" : {
@@ -354,7 +357,7 @@
         }
       }
     },
-    "Players take turns placing their marker (X or O) in an empty square.\nTo make a move, a player selects a number corresponding to the square where they want to place their marker." : {
+    "Players take turns placing their marker (X or O) in an empty square. To make a move, a player selects a number corresponding to the square where they want to place their marker." : {
       "extractionState" : "manual",
       "localizations" : {
         "ru" : {
@@ -417,7 +420,7 @@
     "TestSettingView" : {
 
     },
-    "The first player to align three of their markers horizontally, vertically, or diagonally wins.\nExamples of Winning Combinations:\nHorizontal: Squares 1, 2, 3 or 4, 5, 6 or 7, 8, 9\nVertical: Squares 1, 4, 7 or 2, 5, 8 or 3, 6, 9\nDiagonal: Squares 1, 5, 9 or 3, 5, 7" : {
+    "The first player to align three of their markers horizontally, vertically, or diagonally wins. Examples of Winning Combinations: Horizontal: Squares 1, 2, 3 or 4, 5, 6 or 7, 8, 9 Vertical: Squares 1, 4, 7 or 2, 5, 8 or 3, 6, 9 Diagonal: Squares 1, 5, 9 or 3, 5, 7." : {
       "extractionState" : "manual",
       "localizations" : {
         "ru" : {
