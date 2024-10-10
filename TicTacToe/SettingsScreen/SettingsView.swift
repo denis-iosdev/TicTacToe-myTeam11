@@ -41,6 +41,7 @@ struct SettingsView: View {
                 }
                 .padding()
                 .animation(.easeInOut(duration: 0.3), value: storageManager.settings.isTimerEnabled)
+                .animation(.easeInOut(duration: 0.3), value: storageManager.settings.isMusicEnabled)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
                 .toolbar {
