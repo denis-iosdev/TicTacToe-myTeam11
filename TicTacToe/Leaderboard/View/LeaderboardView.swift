@@ -65,7 +65,6 @@ struct LeaderboardView: View {
             })
             )
         }
-        
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

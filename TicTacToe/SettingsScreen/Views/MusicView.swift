@@ -46,7 +46,7 @@ struct MusicView: View {
                     
                     Spacer()
                     
-                    Text(allMusicGenres[currentIndex].rawValue)
+                    Text(allMusicGenres[currentIndex].rawValue.localized)
                         .font(.system(size: 20, weight: .medium))
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(.appBlack)

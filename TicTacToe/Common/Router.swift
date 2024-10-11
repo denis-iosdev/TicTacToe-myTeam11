@@ -16,6 +16,7 @@ enum Router: Hashable {
     case difficultyLevel
     case leaderboard
     case result(ResultGameModel)
+    case aboutUs
 }
 
 // window
