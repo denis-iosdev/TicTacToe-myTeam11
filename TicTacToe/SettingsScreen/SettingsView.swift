@@ -38,6 +38,11 @@ struct SettingsView: View {
                         selectedXSkin: $storageManager.settings.xSkin,
                         selectedOSkin: $storageManager.settings.oSkin
                     )
+                    
+                    Button("Developers".localized) {
+                        navigator.push(Router.aboutUs)
+                    }
+                    .foregroundStyle(.gray)
                 }
                 .padding()
                 .animation(.easeInOut(duration: 0.3), value: storageManager.settings.isTimerEnabled)

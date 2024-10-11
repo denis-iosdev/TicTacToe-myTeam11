@@ -10,9 +10,6 @@
     "%lld" : {
 
     },
-    "About Us" : {
-
-    },
     "Are you sure you want to clear the leaderboard?" : {
       "localizations" : {
         "ru" : {
@@ -75,6 +72,17 @@
         }
       }
     },
+    "Classic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Класика"
+          }
+        }
+      }
+    },
     "Clear Leaderboard?" : {
       "localizations" : {
         "ru" : {
@@ -96,6 +104,17 @@
         }
       }
     },
+    "Daniil Sivozhelezov" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Даниил Сивожелезов"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "ru" : {
@@ -105,6 +124,42 @@
           }
         }
       }
+    },
+    "Denis Gindulin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Денис Гиндулин"
+          }
+        }
+      }
+    },
+    "Developed for" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разработано для"
+          }
+        }
+      }
+    },
+    "Developers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разработчики"
+          }
+        }
+      }
+    },
+    "DevRush" : {
+
     },
     "Difficulty Level" : {
       "extractionState" : "manual",
@@ -203,6 +258,39 @@
         }
       }
     },
+    "Igor Pachkin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игорь Пачкин"
+          }
+        }
+      }
+    },
+    "Ivan Semikin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иван Семикин"
+          }
+        }
+      }
+    },
+    "Jazz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Джаз"
+          }
+        }
+      }
+    },
     "Leaderboard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -250,6 +338,17 @@
         }
       }
     },
+    "min." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мин."
+          }
+        }
+      }
+    },
     "Music" : {
       "localizations" : {
         "ru" : {
@@ -270,12 +369,34 @@
         }
       }
     },
+    "Pavel Gritskov" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Павел Грицков"
+          }
+        }
+      }
+    },
     "Picked" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выбрано"
+          }
+        }
+      }
+    },
+    "Pixel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пиксель"
           }
         }
       }
@@ -374,6 +495,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Результат"
+          }
+        }
+      }
+    },
+    "sec." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "сек."
           }
         }
       }

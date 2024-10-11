@@ -51,7 +51,7 @@ struct TimerView: View {
     private func formattedTime(seconds: Int) -> String {
         let minute = seconds / 60
         let seconds = seconds % 60
-        return "\(minute) min. \(seconds) sec."
+        return "\(minute) " + "min.".localized + " \(seconds) " + "sec.".localized
     }
 }
 
