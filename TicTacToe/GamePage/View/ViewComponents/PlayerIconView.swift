@@ -17,7 +17,8 @@ struct PlayerIconView: View {
                 .padding(.horizontal, 24)
                 .frame(height: 53)
             Text(text)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 15, weight: .semibold))
+                .minimumScaleFactor(0.5)
         }
         .padding(.vertical, 10)
         .background(.lightBlue)
