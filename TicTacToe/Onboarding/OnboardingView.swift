@@ -55,6 +55,8 @@ struct OnboardingView: View {
                     LeaderboardView(storageManager: storageManager)
                 case .result(let resultGame):
                     ResultView(result: resultGame)
+                case .aboutUs:
+                    DevelopersView()
                 }
             }
     }
