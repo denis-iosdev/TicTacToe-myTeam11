@@ -13,7 +13,7 @@
 ### Над проектом трудились
 <p align="left"> 
 <a href="https://github.com/denisgindulin">
-<img src="https://img.shields.io/badge/denisgindulin-Teamleader-pink"/></a>
+<img src="https://img.shields.io/badge/denisgindulin- (Team leader) -pink"/></a>
 <a href="https://github.com/13NotReal13">
 <img src="https://img.shields.io/badge/13NotReal13-red"/></a>
 <a href="https://github.com/DaNiIlaIoS">
