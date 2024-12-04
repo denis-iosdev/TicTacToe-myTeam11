@@ -10,7 +10,7 @@
 В этом репозитории хранится код нашей версия всем известной игры Крестики-Нолики.
 
 Хотите сыграть? Приложение есть в App Store
-![Tic-Tac-Toe](https://apps.apple.com/ru/app/tic-tac-toe-devrush/id6736774439)
+https://apps.apple.com/ru/app/tic-tac-toe-devrush/id6736774439
 
 ## Авторы
 ### Над проектом трудились
