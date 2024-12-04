@@ -16,7 +16,7 @@ https://apps.apple.com/ru/app/tic-tac-toe-devrush/id6736774439
 ### Над проектом трудились
 <p align="left"> 
 <a href="https://github.com/denisgindulin">
-<img src="https://img.shields.io/badge/denisgindulin- (Team leader) -pink"/></a>
+<img src="https://img.shields.io/badge/Denis Gindulin- (Team leader) -pink"/></a>
 <a href="https://github.com/13NotReal13">
 <img src="https://img.shields.io/badge/13NotReal13-red"/></a>
 <a href="https://github.com/DaNiIlaIoS">
